@@ -101,18 +101,20 @@
 
 
 
-<meta name="description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc key 复制到服务端。 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/authori">
+<meta name="description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key  将图中pulibc key 复制到服务端。 2. 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/">
 <meta name="keywords" content="ssh,dropbear">
 <meta property="og:type" content="article">
 <meta property="og:title" content="openwrt-ssh">
 <meta property="og:url" content="http://yoursite.com/2017/09/04/openwrt-ssh/index.html">
 <meta property="og:site_name" content="JShell07&#39;s Blog">
-<meta property="og:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc key 复制到服务端。 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/authori">
+<meta property="og:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key  将图中pulibc key 复制到服务端。 2. 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-09-04T15:34:19.392Z">
+<meta property="og:image" content="http://yoursite.com/image/public_key.png">
+<meta property="og:updated_time" content="2017-09-04T15:39:22.673Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="openwrt-ssh">
-<meta name="twitter:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc key 复制到服务端。 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/authori">
+<meta name="twitter:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key  将图中pulibc key 复制到服务端。 2. 服务端dropbear 与openssh 有点区别在于，authorized_keys 文件并不在~/.ssh/">
+<meta name="twitter:image" content="http://yoursite.com/image/public_key.png">
 
 
 
@@ -360,12 +362,13 @@
 
       
         <p>openwrt 一般采用dropbear 作为ssh 客户端/服务端。</p>
-<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</div></pre></td></tr></table></figure></p>
+<h1 id="1-客户端"><a href="#1-客户端" class="headerlink" title="1. 客户端"></a>1. 客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</div></pre></td></tr></table></figure></p>
+<p><img src="/image/public_key.png" alt=""></p>
 <p>将图中pulibc key 复制到服务端。</p>
-<h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><p>dropbear 与openssh 有点区别在于，<strong>authorized_keys 文件并不在~/.ssh/authorized_keys 文件中</strong>，如下图：</p>
+<h1 id="2-服务端"><a href="#2-服务端" class="headerlink" title="2. 服务端"></a>2. 服务端</h1><p>dropbear 与openssh 有点区别在于，<strong>authorized_keys 文件并不在~/.ssh/authorized_keys 文件中</strong>，如下图：</p>
 <p>之后重启服务端dropbear service</p>
 <p>dropbear 的配置如下：</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</div></pre></td></tr></table></figure></p>
+<h1 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</div></pre></td></tr></table></figure></p>
 <p>需要使用 “-i”选项指明identify 文件， “-p 6350” 是指明端口号</p>
 
       
@@ -541,7 +544,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#客户端"><span class="nav-number">1.</span> <span class="nav-text">客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#服务端"><span class="nav-number">2.</span> <span class="nav-text">服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#使用"><span class="nav-number">3.</span> <span class="nav-text">使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-客户端"><span class="nav-number">1.</span> <span class="nav-text">1. 客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-服务端"><span class="nav-number">2.</span> <span class="nav-text">2. 服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a></li></ol></div>
             
 
           </div>
