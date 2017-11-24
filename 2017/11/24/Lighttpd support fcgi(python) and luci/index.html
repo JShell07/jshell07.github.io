@@ -85,7 +85,7 @@
 <link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="ssh,dropbear," />
+  <meta name="keywords" content="webserver," />
 
 
 
@@ -101,24 +101,18 @@
 
 
 
-<meta name="description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
-<meta name="keywords" content="ssh,dropbear">
+<meta name="description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
+<meta name="keywords" content="webserver">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openwrt-ssh 跳过密码验证">
-<meta property="og:url" content="http://yoursite.com/2017/09/04/openwrt-ssh/index.html">
+<meta property="og:title" content="Lighttpd Support FastCGI (python) and LUCI(OpenWrt)">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/index.html">
 <meta property="og:site_name" content="JShell07&#39;s Blog">
-<meta property="og:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
+<meta property="og:description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/dropbear_config.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/ssh_help.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/login_ssh_without_password.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/simple_ssh_login.png">
-<meta property="og:updated_time" content="2017-11-24T07:27:29.989Z">
+<meta property="og:updated_time" content="2017-11-24T07:30:08.223Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openwrt-ssh 跳过密码验证">
-<meta name="twitter:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png">
+<meta name="twitter:title" content="Lighttpd Support FastCGI (python) and LUCI(OpenWrt)">
+<meta name="twitter:description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
 
 
 
@@ -147,13 +141,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/04/openwrt-ssh/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/"/>
 
 
 
 
 
-  <title>openwrt-ssh 跳过密码验证 | JShell07's Blog</title>
+  <title>Lighttpd Support FastCGI (python) and LUCI(OpenWrt) | JShell07's Blog</title>
   
 
 
@@ -276,7 +270,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/04/openwrt-ssh/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JShell07">
@@ -293,7 +287,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">openwrt-ssh 跳过密码验证</h1>
+          <h1 class="post-title" itemprop="name headline">Lighttpd Support FastCGI (python) and LUCI(OpenWrt)</h1>
         
 
         <div class="post-meta">
@@ -305,8 +299,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-09-04T23:29:54+08:00">
-                2017-09-04
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T14:25:57+08:00">
+                2017-11-24
               </time>
             
 
@@ -365,17 +359,36 @@
       
 
       
-        <p>openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。</p>
-<h1 id="1-客户端"><a href="#1-客户端" class="headerlink" title="1. 客户端"></a>1. 客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png" alt=""><br>将图中pulibc key 复制到服务端。<br><a id="more"></a></p>
-<h1 id="2-服务端"><a href="#2-服务端" class="headerlink" title="2. 服务端"></a>2. 服务端</h1><p>dropbear 与openssh 有点区别在于，<strong>authorized_keys 文件并不在~/.ssh/authorized_keys 文件中, 而是在/etc/dropbear/authorized_keys</strong></p>
-<p>之后重启服务端dropbear service<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">/etc/init.d/dropbear restart</div></pre></td></tr></table></figure></p>
-<p>dropbear 的配置如下：<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/dropbear_config.png" alt=""></p>
-<h1 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</div></pre></td></tr></table></figure></p>
-<p>需要使用 “-i”选项指明identify 文件， “-p 6350” 是指明端口号<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/ssh_help.png" alt=""><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/login_ssh_without_password.png" alt=""><br>当然我们可以不指明<strong>-i</strong> option 指定文件，直接登录。</p>
-<p>作如下步骤：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/dropbear/dropbear_rsa_host_key ~/.ssh/id_dropbear</div></pre></td></tr></table></figure></p>
-<p>使用如下命令直接登陆：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh 172.28.52.151 -l root -p 6350</div></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/simple_ssh_login.png" alt=""></p>
+        <h1 id="1-Backgroud"><a href="#1-Backgroud" class="headerlink" title="1.Backgroud"></a>1.Backgroud</h1><p>We need to use lighttpd as webserver to servive two web page:  </p>
+<ul>
+<li>FastCGI (python bottle web micro framework)  </li>
+<li>LUCI (openwrt’s cgi-bin/luci, which is CGI)</li>
+</ul>
+<h1 id="2-Support-LUCI"><a href="#2-Support-LUCI" class="headerlink" title="2. Support LUCI"></a>2. Support LUCI</h1><p>After we study OpenWrt wiki docs, we know how to make lighttpd support luci.<br>Two key steps:  </p>
+<ul>
+<li>enable lighttpd’s “mod_cgi” module  </li>
+<li>tell lighttpd all requests to “cgi-bin/luci” will send to lua, lighttpd ignore them</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Ensure we have to enable mod_cgi, which is in conf.d</span></div><div class="line"><span class="comment"># server.modules += ( "mod_cgi" )</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># detail see openwrt org doc: https://wiki.openwrt.org/doc/howto/luci.on.lighttpd</span></div><div class="line"><span class="comment"># </span></div><div class="line"><span class="comment"># wang.kai@sunmedia.com.cn</span></div><div class="line"></div><div class="line"><span class="comment"># tell lighttpd to process requests using lua</span></div><div class="line">cgi.assign += ( <span class="string">"cgi-bin/luci"</span> =&gt; <span class="string">""</span> )</div></pre></td></tr></table></figure>
+<p>Detail see OpenWrt Wiki about <a href="https://wiki.openwrt.org/doc/howto/luci.on.lighttpd?s[]=lighttpd" target="_blank" rel="external">LuCI on lighttpd</a></p>
+<a id="more"></a>
+<h1 id="3-Support-FastCGI"><a href="#3-Support-FastCGI" class="headerlink" title="3. Support FastCGI"></a>3. Support FastCGI</h1><p>The lighttpd fastcgi configuration like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Ensure mod_fastcgi mod_rewrite  have been enabled, some modules will be enabled</span></div><div class="line"><span class="comment"># in conf.d, BSP3's configuration will have effect on this.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Server.modules += ( </span></div><div class="line"><span class="comment">#		"mod_fastcgi",</span></div><div class="line"><span class="comment">#		"mod_rewrite",</span></div><div class="line"><span class="comment"># 		)</span></div><div class="line"><span class="comment"># wang.kai@sunmedia.com.cn</span></div><div class="line"></div><div class="line">var.webapp_path = <span class="string">"/usr/share/httpstation"</span></div><div class="line">var.webapp_fcgi = <span class="string">"main.py"</span></div><div class="line"></div><div class="line">fastcgi.server = (</div><div class="line">	<span class="string">"/python_entry"</span> =&gt; (</div><div class="line">		<span class="string">"icatchtek"</span> =&gt; (</div><div class="line">			<span class="string">"bin-path"</span> =&gt; webapp_path + <span class="string">"/"</span> + webapp_fcgi,</div><div class="line">			<span class="string">"socket"</span> =&gt; <span class="string">"/tmp/httpstation-fcgi.socket"</span>,</div><div class="line">			<span class="string">"max-procs"</span> =&gt; 1,</div><div class="line">			<span class="string">"check-local"</span> =&gt; <span class="string">"disable"</span>,</div><div class="line">		)</div><div class="line">	),</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment"># [Note]</span></div><div class="line"><span class="comment"># Python request will send to "/python_entry" + "$1", except:</span></div><div class="line"><span class="comment"># 1. document.domain + "/cgi-bin/luci"</span></div><div class="line"><span class="comment"># 2. document.domain + "/luci-static"</span></div><div class="line">url.rewrite-once = (</div><div class="line">	<span class="string">"^(/(?!(cgi|luci-static)).*)"</span> =&gt; <span class="string">"/python_entry"</span> + <span class="string">"<span class="variable">$1</span>"</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="3-1-fcgi-server"><a href="#3-1-fcgi-server" class="headerlink" title="3.1. fcgi server"></a>3.1. fcgi server</h2><p>We need to tell lighttpd:  </p>
+<ul>
+<li>“bin-path”     : where lighttpd will startup executable file</li>
+<li>“socket”       : fast cgi use socket send/receive msg</li>
+<li>“check-local”  : Whether check file is existed in “server.document-root”</li>
+<li>“max-procs”    : lighttpd support multiple process (optional)  </li>
+</ul>
+<p>Lighttpd docs about FastCGI <a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModFastCGI" target="_blank" rel="external">http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModFastCGI</a></p>
+<h2 id="3-2-URL-Redirect"><a href="#3-2-URL-Redirect" class="headerlink" title="3.2. URL Redirect"></a>3.2. URL Redirect</h2><p>Because lighttpd support two web pages, we need to do something make url access ok.  </p>
+<h3 id="3-2-1-Bottle-Python-Redirect"><a href="#3-2-1-Bottle-Python-Redirect" class="headerlink" title="3.2.1. Bottle Python Redirect"></a>3.2.1. Bottle Python Redirect</h3><p>If fastcgi server work well, we need to add “/python_entry”. For example, we access “172.28.52.152/home” should be “172.28.52.152/python_entry”. We use “mod_rewrite” module to avoid this embarrassed situation. This module will pre-process URL before we really access it.   </p>
+<h3 id="3-2-2-LUCI-Redirect"><a href="#3-2-2-LUCI-Redirect" class="headerlink" title="3.2.2. LUCI Redirect"></a>3.2.2. LUCI Redirect</h3><p>We need to keep luci access like “cgi-bin/luci” and “luci-static”(which is used for js, css, etc resource files). So we use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># [Note]</span></div><div class="line"><span class="comment"># Python request will send to "/python_entry" + "$1", except:</span></div><div class="line"><span class="comment"># 1. document.domain + "/cgi-bin/luci"</span></div><div class="line"><span class="comment"># 2. document.domain + "/luci-static"</span></div><div class="line">url.rewrite-once = (</div><div class="line">	<span class="string">"^(/(?!(cgi|luci-static)).*)"</span> =&gt; <span class="string">"/python_entry"</span> + <span class="string">"<span class="variable">$1</span>"</span>,</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p><strong><em> How to represent “except xxx” ?</em></strong><br>In Reluar Expression, we use “<strong>?!</strong>“ to express except. So next regular expression is except begin with “cgi” or “luci-staic”.</p>
+<blockquote>
+<p>^(/(?!(cgi|luci-static)).*)</p>
+</blockquote>
 
       
     </div>
@@ -393,9 +406,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssh/" rel="tag"># ssh</a>
-          
-            <a href="/tags/dropbear/" rel="tag"># dropbear</a>
+            <a href="/tags/webserver/" rel="tag"># webserver</a>
           
         </div>
       
@@ -408,8 +419,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/04/ssh-of-openwrt/" rel="next" title="ssh_of_openwrt">
-                <i class="fa fa-chevron-left"></i> ssh_of_openwrt
+              <a href="/2017/11/24/hello-world/" rel="next" title="Hello World">
+                <i class="fa fa-chevron-left"></i> Hello World
               </a>
             
           </div>
@@ -417,10 +428,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/24/hello-world/" rel="prev" title="Hello World">
-                Hello World <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -554,7 +561,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-客户端"><span class="nav-number">1.</span> <span class="nav-text">1. 客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-服务端"><span class="nav-number">2.</span> <span class="nav-text">2. 服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用"><span class="nav-number">3.</span> <span class="nav-text">3. 使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Backgroud"><span class="nav-number">1.</span> <span class="nav-text">1.Backgroud</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Support-LUCI"><span class="nav-number">2.</span> <span class="nav-text">2. Support LUCI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Support-FastCGI"><span class="nav-number">3.</span> <span class="nav-text">3. Support FastCGI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-fcgi-server"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. fcgi server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-URL-Redirect"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. URL Redirect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-Bottle-Python-Redirect"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. Bottle Python Redirect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-LUCI-Redirect"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. LUCI Redirect</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
