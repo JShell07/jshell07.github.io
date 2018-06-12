@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next mist use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.2" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="webserver," />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.2" />
+
+
+
+
+
+
+<meta name="description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
+<meta name="keywords" content="webserver">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lighttpd Support FastCGI (python) and LUCI(OpenWrt)">
+<meta property="og:url" content="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/index.html">
+<meta property="og:site_name" content="JShell07&#39;s Blog">
+<meta property="og:description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:updated_time" content="2018-03-19T11:34:31.341Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Lighttpd Support FastCGI (python) and LUCI(OpenWrt)">
+<meta name="twitter:description" content="1.BackgroudWe need to use lighttpd as webserver to servive two web page:    FastCGI (python bottle web micro framework)   LUCI (openwrt’s cgi-bin/luci, which is CGI)  2. Support LUCIAfter we study Ope">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Mist',
+    sidebar: {"position":"left","display":"hide","offset":12,"offset_float":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: true,
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/"/>
+
+
+
+
+
+  <title>Lighttpd Support FastCGI (python) and LUCI(OpenWrt) | JShell07's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">JShell07's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/24/Lighttpd support fcgi(python) and luci/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JShell07">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/./images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JShell07's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lighttpd Support FastCGI (python) and LUCI(OpenWrt)</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-11-24T14:25:57+08:00">
+                2017-11-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/openwrt/" itemprop="url" rel="index">
+                    <span itemprop="name">openwrt</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="1-Backgroud"><a href="#1-Backgroud" class="headerlink" title="1.Backgroud"></a>1.Backgroud</h1><p>We need to use lighttpd as webserver to servive two web page:  </p>
+<ul>
+<li>FastCGI (python bottle web micro framework)  </li>
+<li>LUCI (openwrt’s cgi-bin/luci, which is CGI)</li>
+</ul>
+<h1 id="2-Support-LUCI"><a href="#2-Support-LUCI" class="headerlink" title="2. Support LUCI"></a>2. Support LUCI</h1><p>After we study OpenWrt wiki docs, we know how to make lighttpd support luci.<br>Two key steps:  </p>
+<ul>
+<li>enable lighttpd’s “mod_cgi” module  </li>
+<li>tell lighttpd all requests to “cgi-bin/luci” will send to lua, lighttpd ignore them</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Ensure we have to enable mod_cgi, which is in conf.d</span></div><div class="line"><span class="comment"># server.modules += ( "mod_cgi" )</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># detail see openwrt org doc: https://wiki.openwrt.org/doc/howto/luci.on.lighttpd</span></div><div class="line"><span class="comment"># </span></div><div class="line"><span class="comment"># wang.kai@sunmedia.com.cn</span></div><div class="line"></div><div class="line"><span class="comment"># tell lighttpd to process requests using lua</span></div><div class="line">cgi.assign += ( <span class="string">"cgi-bin/luci"</span> =&gt; <span class="string">""</span> )</div></pre></td></tr></table></figure>
+<p>Detail see OpenWrt Wiki about <a href="https://wiki.openwrt.org/doc/howto/luci.on.lighttpd?s[]=lighttpd" target="_blank" rel="external">LuCI on lighttpd</a></p>
+<a id="more"></a>
+<h1 id="3-Support-FastCGI"><a href="#3-Support-FastCGI" class="headerlink" title="3. Support FastCGI"></a>3. Support FastCGI</h1><p>The lighttpd fastcgi configuration like this:</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Ensure mod_fastcgi mod_rewrite  have been enabled, some modules will be enabled</span></div><div class="line"><span class="comment"># in conf.d, BSP3's configuration will have effect on this.</span></div><div class="line"><span class="comment">#</span></div><div class="line"><span class="comment"># Server.modules += ( </span></div><div class="line"><span class="comment">#		"mod_fastcgi",</span></div><div class="line"><span class="comment">#		"mod_rewrite",</span></div><div class="line"><span class="comment"># 		)</span></div><div class="line"><span class="comment"># wang.kai@sunmedia.com.cn</span></div><div class="line"></div><div class="line">var.webapp_path = <span class="string">"/usr/share/httpstation"</span></div><div class="line">var.webapp_fcgi = <span class="string">"main.py"</span></div><div class="line"></div><div class="line">fastcgi.server = (</div><div class="line">	<span class="string">"/python_entry"</span> =&gt; (</div><div class="line">		<span class="string">"icatchtek"</span> =&gt; (</div><div class="line">			<span class="string">"bin-path"</span> =&gt; webapp_path + <span class="string">"/"</span> + webapp_fcgi,</div><div class="line">			<span class="string">"socket"</span> =&gt; <span class="string">"/tmp/httpstation-fcgi.socket"</span>,</div><div class="line">			<span class="string">"max-procs"</span> =&gt; 1,</div><div class="line">			<span class="string">"check-local"</span> =&gt; <span class="string">"disable"</span>,</div><div class="line">		)</div><div class="line">	),</div><div class="line">)</div><div class="line"></div><div class="line"><span class="comment"># [Note]</span></div><div class="line"><span class="comment"># Python request will send to "/python_entry" + "$1", except:</span></div><div class="line"><span class="comment"># 1. document.domain + "/cgi-bin/luci"</span></div><div class="line"><span class="comment"># 2. document.domain + "/luci-static"</span></div><div class="line">url.rewrite-once = (</div><div class="line">	<span class="string">"^(/(?!(cgi|luci-static)).*)"</span> =&gt; <span class="string">"/python_entry"</span> + <span class="string">"<span class="variable">$1</span>"</span>,</div><div class="line">)</div></pre></td></tr></table></figure>
+<h2 id="3-1-fcgi-server"><a href="#3-1-fcgi-server" class="headerlink" title="3.1. fcgi server"></a>3.1. fcgi server</h2><p>We need to tell lighttpd:  </p>
+<ul>
+<li>“bin-path”     : where lighttpd will startup executable file</li>
+<li>“socket”       : fast cgi use socket send/receive msg</li>
+<li>“check-local”  : Whether check file is existed in “server.document-root”</li>
+<li>“max-procs”    : lighttpd support multiple process (optional)  </li>
+</ul>
+<p>Lighttpd docs about FastCGI <a href="http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModFastCGI" target="_blank" rel="external">http://redmine.lighttpd.net/projects/lighttpd/wiki/Docs_ModFastCGI</a></p>
+<h2 id="3-2-URL-Redirect"><a href="#3-2-URL-Redirect" class="headerlink" title="3.2. URL Redirect"></a>3.2. URL Redirect</h2><p>Because lighttpd support two web pages, we need to do something make url access ok.  </p>
+<h3 id="3-2-1-Bottle-Python-Redirect"><a href="#3-2-1-Bottle-Python-Redirect" class="headerlink" title="3.2.1. Bottle Python Redirect"></a>3.2.1. Bottle Python Redirect</h3><p>If fastcgi server work well, we need to add “/python_entry”. For example, we access “172.28.52.152/home” should be “172.28.52.152/python_entry”. We use “mod_rewrite” module to avoid this embarrassed situation. This module will pre-process URL before we really access it.   </p>
+<h3 id="3-2-2-LUCI-Redirect"><a href="#3-2-2-LUCI-Redirect" class="headerlink" title="3.2.2. LUCI Redirect"></a>3.2.2. LUCI Redirect</h3><p>We need to keep luci access like “cgi-bin/luci” and “luci-static”(which is used for js, css, etc resource files). So we use:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># [Note]</span></div><div class="line"><span class="comment"># Python request will send to "/python_entry" + "$1", except:</span></div><div class="line"><span class="comment"># 1. document.domain + "/cgi-bin/luci"</span></div><div class="line"><span class="comment"># 2. document.domain + "/luci-static"</span></div><div class="line">url.rewrite-once = (</div><div class="line">	<span class="string">"^(/(?!(cgi|luci-static)).*)"</span> =&gt; <span class="string">"/python_entry"</span> + <span class="string">"<span class="variable">$1</span>"</span>,</div><div class="line">)</div></pre></td></tr></table></figure></p>
+<p><strong><em> How to represent “except xxx” ?</em></strong><br>In Reluar Expression, we use “<strong>?!</strong>“ to express except. So next regular expression is except begin with “cgi” or “luci-staic”.</p>
+<blockquote>
+<p>^(/(?!(cgi|luci-static)).*)</p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/webserver/" rel="tag"># webserver</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/04/openwrt-ssh/" rel="next" title="openwrt-ssh 跳过密码验证">
+                <i class="fa fa-chevron-left"></i> openwrt-ssh 跳过密码验证
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/27/the Siege webserver test tool/" rel="prev" title="the Siege webserver performance test tool">
+                the Siege webserver performance test tool <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/./images/avatar.png"
+               alt="JShell07" />
+          <p class="site-author-name" itemprop="name">JShell07</p>
+           
+              <p class="site-description motion-element" itemprop="description"></p>
+          
+        </div>
+        <nav class="site-state motion-element">
+
+          
+            <div class="site-state-item site-state-posts">
+              <a href="/archives/">
+                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-name">日志</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-categories">
+              <a href="/categories/index.html">
+                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+        
+
+
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Backgroud"><span class="nav-number">1.</span> <span class="nav-text">1.Backgroud</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Support-LUCI"><span class="nav-number">2.</span> <span class="nav-text">2. Support LUCI</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Support-FastCGI"><span class="nav-number">3.</span> <span class="nav-text">3. Support FastCGI</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-fcgi-server"><span class="nav-number">3.1.</span> <span class="nav-text">3.1. fcgi server</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-URL-Redirect"><span class="nav-number">3.2.</span> <span class="nav-text">3.2. URL Redirect</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-1-Bottle-Python-Redirect"><span class="nav-number">3.2.1.</span> <span class="nav-text">3.2.1. Bottle Python Redirect</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-2-LUCI-Redirect"><span class="nav-number">3.2.2.</span> <span class="nav-text">3.2.2. LUCI Redirect</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">JShell07</span>
+</div>
+
+
+<div class="powered-by">
+  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Mist
+  </a>
+</div>
+
+
+        
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+  
+  <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.2"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.2"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.2"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.2"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
