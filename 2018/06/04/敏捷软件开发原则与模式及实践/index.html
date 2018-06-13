@@ -115,7 +115,7 @@
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：  纪律和反馈的时间  保持软件灵活、可维护的设计原则  平衡这些原则的设计模式">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-12T12:32:33.059Z">
+<meta property="og:updated_time" content="2018-06-13T15:15:38.315Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="敏捷软件开发原则与模式及实践">
 <meta name="twitter:description" content="敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：  纪律和反馈的时间  保持软件灵活、可维护的设计原则  平衡这些原则的设计模式">
@@ -229,7 +229,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">13</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">14</span></a>
   </li>
         
         
@@ -355,7 +355,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-12 20:32:33" itemprop="dateModified" datetime="2018-06-12T20:32:33+08:00">2018-06-12</time>
+                <time title="Modified: 2018-06-13 23:15:38" itemprop="dateModified" datetime="2018-06-13T23:15:38+08:00">2018-06-13</time>
               
             
           </span>
@@ -401,7 +401,7 @@
 <h2 id="1-敏捷开发"><a href="#1-敏捷开发" class="headerlink" title="1. 敏捷开发"></a>1. 敏捷开发</h2><blockquote>
 <p>人与人之间的交互是复杂的，并且其效果从来都难以预期，但确实工作中最为重要的方面。 –《人件》</p>
 </blockquote>
-<p><a href="https://baike.baidu.com/item/%E4%BA%BA%E4%BB%B6/4119178?fr=aladdin" target="_blank" rel="noopener">人件-百度百科</a></p>
+<p><a href="https://baike.baidu.com/item/%E4%BA%BA%E4%BB%B6/4119178?fr=aladdin" target="_blank" rel="external">人件-百度百科</a></p>
 <p>原则(principle)、模式（parttern）、实践（practice）是重要的，但是人更重要。<em>如果想要项目取得成功，就必须构建起具有合作精神的、自组织的团队。</em></p>
 <h3 id="1-1-敏捷实践"><a href="#1-1-敏捷实践" class="headerlink" title="1.1. 敏捷实践"></a>1.1. 敏捷实践</h3><p>缺乏有效的实践会导致不可预测、重复的错误。</p>
 <h4 id="1-1-1-敏捷联盟"><a href="#1-1-1-敏捷联盟" class="headerlink" title="1.1.1. 敏捷联盟"></a>1.1.1. 敏捷联盟</h4><p>以下观点不是认为后面的不重要，而是前者重要性更高。</p>
@@ -458,9 +458,9 @@
 <li>应用适当的设计模式解决问题</li>
 </ul>
 <h3 id="2-2-单一职责原则（SRP）"><a href="#2-2-单一职责原则（SRP）" class="headerlink" title="2.2. 单一职责原则（SRP）"></a>2.2. 单一职责原则（SRP）</h3><p>就一个类而言，应该仅有一个引起他变化的原因。<br>如果一个类承担的职责太多，就等于把这些职责耦合在一起，进而导致脆弱的设计。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Modem</span> </span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dial</span><span class="params">(string pno)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hanguo</span><span class="params">()</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(<span class="keyword">char</span> c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recv</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Modem</span> </span></div><div class="line">&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dial</span><span class="params">(string pno)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hanguo</span><span class="params">()</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(<span class="keyword">char</span> c)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recv</span><span class="params">()</span></span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>接口中有两个职责：连接， 数据通信。如果应用程序的变化会影响连接函数的签名，那么这个设计就具有僵化性的臭味。在这情况下，我们分离两个职责。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Data_Channel</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(<span class="keyword">char</span> c)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recv</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Connection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dial</span><span class="params">(stirng pno)</span></span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hangup</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Modem_middle</span> <span class="keyword">extends</span> <span class="title">Data_Channel</span>, <span class="title">Connection</span></span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Data_Channel</span></span></div><div class="line">&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">send</span><span class="params">(<span class="keyword">char</span> c)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">recv</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Connection</span></span></div><div class="line">&#123;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">dial</span><span class="params">(stirng pno)</span></span>;</div><div class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">hangup</span><span class="params">()</span></span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">interface</span> <span class="title">Modem_middle</span> <span class="keyword">extends</span> <span class="title">Data_Channel</span>, <span class="title">Connection</span></span></div><div class="line">&#123;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>但是，如果程序的变化总是导致这两个职责同事变化，就不必分离他们。</p>
 <h3 id="2-3-开放-封闭原则（OCP）"><a href="#2-3-开放-封闭原则（OCP）" class="headerlink" title="2.3. 开放-封闭原则（OCP）"></a>2.3. 开放-封闭原则（OCP）</h3><p>主要特征：</p>
 <ol>
@@ -526,6 +526,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/13/TED-Notes/" rel="prev" title="TED_Notes">
+                TED_Notes <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -663,7 +667,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">13</span>
+                      
+                    
+                    <span class="site-state-item-count">14</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -747,7 +753,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
 
 
 
