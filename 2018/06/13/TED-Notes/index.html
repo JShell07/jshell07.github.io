@@ -115,31 +115,27 @@
 
 
 
-  <meta name="description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
-<meta name="keywords" content="ssh,dropbear">
+  <meta name="description" content="TED 总是有些让你惊艳的话语。让我们去Keep it. TED: Ideas worth spreading TED 网易公开课">
+<meta name="keywords" content="TED">
 <meta property="og:type" content="article">
-<meta property="og:title" content="openwrt-ssh 跳过密码验证">
-<meta property="og:url" content="http://yoursite.com/2017/09/04/openwrt-ssh/index.html">
+<meta property="og:title" content="TED_Notes">
+<meta property="og:url" content="http://yoursite.com/2018/06/13/TED-Notes/index.html">
 <meta property="og:site_name" content="JShell07&#39;s Blog">
-<meta property="og:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
+<meta property="og:description" content="TED 总是有些让你惊艳的话语。让我们去Keep it. TED: Ideas worth spreading TED 网易公开课">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/dropbear_config.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/ssh_help.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/login_ssh_without_password.png">
-<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/simple_ssh_login.png">
-<meta property="og:updated_time" content="2018-05-24T11:57:58.022Z">
+<meta property="og:image" content="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=23f2f937dcb44aed4d43b6b6d275ec64/2fdda3cc7cd98d10a403f64c273fb80e7aec90fc.jpg">
+<meta property="og:updated_time" content="2018-06-19T03:26:15.080Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="openwrt-ssh 跳过密码验证">
-<meta name="twitter:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。 1. 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc k">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png">
+<meta name="twitter:title" content="TED_Notes">
+<meta name="twitter:description" content="TED 总是有些让你惊艳的话语。让我们去Keep it. TED: Ideas worth spreading TED 网易公开课">
+<meta name="twitter:image" content="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=23f2f937dcb44aed4d43b6b6d275ec64/2fdda3cc7cd98d10a403f64c273fb80e7aec90fc.jpg">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2017/09/04/openwrt-ssh/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/13/TED-Notes/"/>
 
 
 
@@ -149,7 +145,7 @@
   };
 </script>
 
-  <title>openwrt-ssh 跳过密码验证 | JShell07's Blog</title>
+  <title>TED_Notes | JShell07's Blog</title>
   
 
 
@@ -312,7 +308,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/09/04/openwrt-ssh/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/13/TED-Notes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JShell07">
@@ -329,7 +325,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">openwrt-ssh 跳过密码验证
+          <h1 class="post-title" itemprop="name headline">TED_Notes
               
             
           </h1>
@@ -354,7 +350,7 @@
                 
               
 
-              <time title="Created: 2017-09-04 23:29:54" itemprop="dateCreated datePublished" datetime="2017-09-04T23:29:54+08:00">2017-09-04</time>
+              <time title="Created: 2018-06-13 23:21:49" itemprop="dateCreated datePublished" datetime="2018-06-13T23:21:49+08:00">2018-06-13</time>
             
 
             
@@ -371,29 +367,11 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-05-24 19:57:58" itemprop="dateModified" datetime="2018-05-24T19:57:58+08:00">2018-05-24</time>
+                <time title="Modified: 2018-06-19 11:26:15" itemprop="dateModified" datetime="2018-06-19T11:26:15+08:00">2018-06-19</time>
               
             
           </span>
 
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/openwrt/" itemprop="url" rel="index"><span itemprop="name">openwrt</span></a></span>
-
-                
-                
-              
-            </span>
           
 
           
@@ -422,17 +400,26 @@
       
 
       
-        <p>openwrt 一般采用dropbear 作为ssh 客户端/服务端。 但一般都是使用password  的形式登录ssh. 我们使用public/private key 的形式来跳过需要password的验证。</p>
-<h1 id="1-客户端"><a href="#1-客户端" class="headerlink" title="1. 客户端"></a>1. 客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/public_key.png" alt=""><br>将图中pulibc key 复制到服务端。<br><a id="more"></a></p>
-<h1 id="2-服务端"><a href="#2-服务端" class="headerlink" title="2. 服务端"></a>2. 服务端</h1><p>dropbear 与openssh 有点区别在于，<strong>authorized_keys 文件并不在~/.ssh/authorized_keys 文件中, 而是在/etc/dropbear/authorized_keys</strong></p>
-<p>之后重启服务端dropbear service<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">/etc/init.d/dropbear restart</span><br></pre></td></tr></table></figure></p>
-<p>dropbear 的配置如下：<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/dropbear_config.png" alt=""></p>
-<h1 id="3-使用"><a href="#3-使用" class="headerlink" title="3. 使用"></a>3. 使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</span><br></pre></td></tr></table></figure></p>
-<p>需要使用 “-i”选项指明identify 文件， “-p 6350” 是指明端口号<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/ssh_help.png" alt=""><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/login_ssh_without_password.png" alt=""><br>当然我们可以不指明<strong>-i</strong> option 指定文件，直接登录。</p>
-<p>作如下步骤：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/dropbear/dropbear_rsa_host_key ~/.ssh/id_dropbear</span><br></pre></td></tr></table></figure></p>
-<p>使用如下命令直接登陆：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 172.28.52.151 -l root -p 6350</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/openwrt-ssh/simple_ssh_login.png" alt=""></p>
+        <p><img src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=23f2f937dcb44aed4d43b6b6d275ec64/2fdda3cc7cd98d10a403f64c273fb80e7aec90fc.jpg" alt=""></p>
+<p><a href="https://baike.baidu.com/item/TED/8095?fr=aladdin" target="_blank" rel="noopener">TED</a> 总是有些让你惊艳的话语。让我们去Keep it.</p>
+<p><a href="https://www.ted.com/" target="_blank" rel="noopener">TED: Ideas worth spreading</a></p>
+<p><a href="https://open.163.com/ted/" target="_blank" rel="noopener">TED 网易公开课</a></p>
+<a id="more"></a>
+<h2 id="1-如何有效地学习"><a href="#1-如何有效地学习" class="headerlink" title="1. 如何有效地学习"></a>1. 如何有效地学习</h2><p><a href="https://www.bilibili.com/video/av10821708" target="_blank" rel="noopener">TED 视频：如何有效地学习</a></p>
+<ul>
+<li>关闭其他影响注意力的事物，例如手机、电脑等</li>
+<li>初始时慢，建立正确的行为</li>
+<li>有针对性训练薄弱部分</li>
+<li>合理计划休息、训练</li>
+</ul>
+<h2 id="2-提高自信"><a href="#2-提高自信" class="headerlink" title="2. 提高自信"></a>2. 提高自信</h2><p><a href="https://www.bilibili.com/video/av10969854" target="_blank" rel="noopener">TED 视频： 如何提升自信</a></p>
+<ul>
+<li>重复、重复、重复（一万小时定律，陈平安练百万拳《剑来》）</li>
+<li>意识影响行为，自我积极暗示</li>
+<li>适时地称赞自己认为做的好的点</li>
+<li>原理拖自己后退的人</li>
+<li>自信的人别人的反馈有一套自己的理解</li>
+</ul>
 
       
     </div>
@@ -453,9 +440,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/ssh/" rel="tag"># ssh</a>
-          
-            <a href="/tags/dropbear/" rel="tag"># dropbear</a>
+            <a href="/tags/TED/" rel="tag"># TED</a>
           
         </div>
       
@@ -468,8 +453,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/09/04/ssh-of-openwrt/" rel="next" title="ssh_of_openwrt">
-                <i class="fa fa-chevron-left"></i> ssh_of_openwrt
+              <a href="/2018/06/04/敏捷软件开发原则与模式及实践/" rel="next" title="敏捷软件开发原则与模式及实践">
+                <i class="fa fa-chevron-left"></i> 敏捷软件开发原则与模式及实践
               </a>
             
           </div>
@@ -477,10 +462,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/11/28/webRTCDirectory/" rel="prev" title="webRTC_Directory">
-                webRTC_Directory <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -670,7 +651,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-客户端"><span class="nav-text">1. 客户端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-服务端"><span class="nav-text">2. 服务端</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-使用"><span class="nav-text">3. 使用</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-如何有效地学习"><span class="nav-text">1. 如何有效地学习</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-提高自信"><span class="nav-text">2. 提高自信</span></a></li></ol></div>
             
 
           </div>
