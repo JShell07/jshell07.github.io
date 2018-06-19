@@ -26,6 +26,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -86,7 +93,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -298,6 +305,8 @@
   
   
 
+  
+    <div class="reading-progress-bar"></div>
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -760,7 +769,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebRTC-如何避免拥塞？"><span class="nav-number">1.</span> <span class="nav-text">WebRTC 如何避免拥塞？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WebRTC-网络传输背景"><span class="nav-number">1.1.</span> <span class="nav-text">1. WebRTC 网络传输背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-WebRTC-amp-amp-多数直播"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1. WebRTC &amp;&amp; 多数直播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-WebRTC-处理"><span class="nav-number">1.2.</span> <span class="nav-text">2. WebRTC 处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-NACK"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1. NACK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-前向纠错编码-FEC"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2. 前向纠错编码( FEC )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-抖动缓冲-Jitterbuffer"><span class="nav-number">1.2.3.</span> <span class="nav-text">2.3. 抖动缓冲( Jitterbuffer )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-带宽自适应"><span class="nav-number">1.2.4.</span> <span class="nav-text">2.4. 带宽自适应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资源"><span class="nav-number">1.3.</span> <span class="nav-text">参考资源:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#WebRTC-如何避免拥塞？"><span class="nav-text">WebRTC 如何避免拥塞？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-WebRTC-网络传输背景"><span class="nav-text">1. WebRTC 网络传输背景</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-WebRTC-amp-amp-多数直播"><span class="nav-text">1.1. WebRTC &amp;&amp; 多数直播</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-WebRTC-处理"><span class="nav-text">2. WebRTC 处理</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-NACK"><span class="nav-text">2.1. NACK</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-前向纠错编码-FEC"><span class="nav-text">2.2. 前向纠错编码( FEC )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-3-抖动缓冲-Jitterbuffer"><span class="nav-text">2.3. 抖动缓冲( Jitterbuffer )</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-4-带宽自适应"><span class="nav-text">2.4. 带宽自适应</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#参考资源"><span class="nav-text">参考资源:</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -824,6 +833,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -852,6 +863,14 @@
 
 
 
+  
+
+
+
+
+
+  
+  
 
 
 
@@ -859,8 +878,7 @@
 
 
 
-
-
+  
 
 
 
@@ -877,6 +895,26 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
   
 
 

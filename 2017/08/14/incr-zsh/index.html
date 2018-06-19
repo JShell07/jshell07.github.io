@@ -26,6 +26,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -86,7 +93,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -292,6 +299,8 @@
   
   
 
+  
+    <div class="reading-progress-bar"></div>
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -655,7 +664,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#incr-zsh"><span class="nav-number">1.</span> <span class="nav-text">incr.zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-number">1.1.</span> <span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enable-Steps"><span class="nav-number">2.</span> <span class="nav-text">Enable Steps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#download-incr-zsh"><span class="nav-number">2.1.</span> <span class="nav-text">download incr.zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enable-incr-zsh"><span class="nav-number">2.2.</span> <span class="nav-text">enable incr.zsh</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#incr-zsh"><span class="nav-text">incr.zsh</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#"><span class="nav-text"></span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Enable-Steps"><span class="nav-text">Enable Steps</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#download-incr-zsh"><span class="nav-text">download incr.zsh</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#enable-incr-zsh"><span class="nav-text">enable incr.zsh</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -719,6 +728,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -747,6 +758,14 @@
 
 
 
+  
+
+
+
+
+
+  
+  
 
 
 
@@ -754,8 +773,7 @@
 
 
 
-
-
+  
 
 
 
@@ -772,6 +790,26 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
   
 
 
