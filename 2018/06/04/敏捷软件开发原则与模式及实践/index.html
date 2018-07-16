@@ -26,6 +26,13 @@
 
 
 
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-bounce.min.css?v=1.0.2" rel="stylesheet">
+
 
 
 
@@ -86,7 +93,7 @@
     root: '/',
     scheme: 'Gemini',
     version: '6.3.0',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":true,"onmobile":false},
     fancybox: false,
     fastclick: false,
     lazyload: false,
@@ -109,16 +116,19 @@
 
 
   <meta name="description" content="敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：  纪律和反馈的时间  保持软件灵活、可维护的设计原则  平衡这些原则的设计模式">
+<meta name="keywords" content="bookmarks">
 <meta property="og:type" content="article">
 <meta property="og:title" content="敏捷软件开发原则与模式及实践">
 <meta property="og:url" content="http://yoursite.com/2018/06/04/敏捷软件开发原则与模式及实践/index.html">
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：  纪律和反馈的时间  保持软件灵活、可维护的设计原则  平衡这些原则的设计模式">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-06-13T15:15:38.315Z">
+<meta property="og:image" content="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=bc5f38dbd343ad4bb2234e92e36b31ca/359b033b5bb5c9ea70a2c69dd739b6003af3b37f.jpg">
+<meta property="og:updated_time" content="2018-07-16T16:55:22.589Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="敏捷软件开发原则与模式及实践">
 <meta name="twitter:description" content="敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：  纪律和反馈的时间  保持软件灵活、可维护的设计原则  平衡这些原则的设计模式">
+<meta name="twitter:image" content="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=bc5f38dbd343ad4bb2234e92e36b31ca/359b033b5bb5c9ea70a2c69dd739b6003af3b37f.jpg">
 
 
 
@@ -229,7 +239,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">14</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">21</span></a>
   </li>
         
         
@@ -237,7 +247,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">4</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">7</span></a>
   </li>
         
         
@@ -245,7 +255,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">17</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">22</span></a>
   </li>
 
       
@@ -289,6 +299,8 @@
   
   
 
+  
+    <div class="reading-progress-bar"></div>
   
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
@@ -355,11 +367,29 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-06-13 23:15:38" itemprop="dateModified" datetime="2018-06-13T23:15:38+08:00">2018-06-13</time>
+                <time title="Modified: 2018-07-17 00:55:22" itemprop="dateModified" datetime="2018-07-17T00:55:22+08:00">2018-07-17</time>
               
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bookmarks/" itemprop="url" rel="index"><span itemprop="name">bookmarks</span></a></span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -388,15 +418,16 @@
       
 
       
-        <p>敏捷开发(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：</p>
-<ul>
+        <p><a href="https://baike.baidu.com/item/%E6%95%8F%E6%8D%B7%E8%BD%AF%E4%BB%B6%E5%BC%80%E5%8F%91/7108658?fr=aladdin" target="_blank" rel="external">敏捷开发</a>(Agile Development) 是一种面临迅速变化的需求快速开发软件的能力。我们需要：</p>
+<ol>
 <li><p>纪律和反馈的时间</p>
 </li>
 <li><p>保持软件灵活、可维护的设计原则</p>
 </li>
 <li><p>平衡这些原则的<strong>设计模式</strong></p>
 </li>
-</ul>
+</ol>
+<p><img src="https://gss1.bdstatic.com/-vo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=bc5f38dbd343ad4bb2234e92e36b31ca/359b033b5bb5c9ea70a2c69dd739b6003af3b37f.jpg" alt=""></p>
 <a id="more"></a>
 <h2 id="1-敏捷开发"><a href="#1-敏捷开发" class="headerlink" title="1. 敏捷开发"></a>1. 敏捷开发</h2><blockquote>
 <p>人与人之间的交互是复杂的，并且其效果从来都难以预期，但确实工作中最为重要的方面。 –《人件》</p>
@@ -406,9 +437,9 @@
 <h3 id="1-1-敏捷实践"><a href="#1-1-敏捷实践" class="headerlink" title="1.1. 敏捷实践"></a>1.1. 敏捷实践</h3><p>缺乏有效的实践会导致不可预测、重复的错误。</p>
 <h4 id="1-1-1-敏捷联盟"><a href="#1-1-1-敏捷联盟" class="headerlink" title="1.1.1. 敏捷联盟"></a>1.1.1. 敏捷联盟</h4><p>以下观点不是认为后面的不重要，而是前者重要性更高。</p>
 <p><strong>个体和交互     &gt;  过程和工具</strong> （先构建团队，再让团队基于需求配置环境。）</p>
-<p><strong>可工作的软件 &gt;  面面俱到的文档</strong></p>
-<p><strong>客户合作       &gt;  合同谈判</strong></p>
-<p><strong>响应变化       &gt;  遵循计划</strong></p>
+<p><strong>可工作的软件   &gt;  面面俱到的文档</strong></p>
+<p><strong>客户合作      &gt;  合同谈判</strong></p>
+<p><strong>响应变化      &gt;  遵循计划</strong></p>
 <p>当我们构建计划时，应该确保计划是灵活的并且易于适应商务和技术方面的变化。<br>较好的策略：为下两周做详细的计划，为下三个月做粗率的计划，再以后就做极为粗糙的计划。</p>
 <h4 id="1-1-2-原则"><a href="#1-1-2-原则" class="headerlink" title="1.1.2. 原则"></a>1.1.2. 原则</h4><ul>
 <li>围绕被激励起来的人构建项目，提供需要的环境和支持</li>
@@ -424,16 +455,21 @@
 <h3 id="1-2-极限编程概述"><a href="#1-2-极限编程概述" class="headerlink" title="1.2. 极限编程概述"></a>1.2. 极限编程概述</h3><p>极限编程（eXtreme Programming, 简称XP）</p>
 <h4 id="1-2-1-客户成为团队成员"><a href="#1-2-1-客户成为团队成员" class="headerlink" title="1.2.1. 客户成为团队成员"></a>1.2.1. 客户成为团队成员</h4><p>以便知晓对方面临的问题，并共同去解决这些问题。</p>
 <h4 id="1-2-2-用户素材"><a href="#1-2-2-用户素材" class="headerlink" title="1.2.2. 用户素材"></a>1.2.2. 用户素材</h4><p>做计划只需要了解到能估算它的程度就可以了，需求的特定细节会随时间而改变，在新版本之后是关注新需求的好时机。<br>在XP 中，重要的是对需求细节的理解，而不是捕获细节。</p>
-<h4 id="1-2-3-短交互周期"><a href="#1-2-3-短交互周期" class="headerlink" title="1.2.3. 短交互周期"></a>1.2.3. 短交互周期</h4><p><strong> 用户素材 </strong><br>用户会一直编写新的真正重要的用户元素到项目中</p>
-<p><strong> 迭代计划 </strong></p>
+<h4 id="1-2-3-短交互周期"><a href="#1-2-3-短交互周期" class="headerlink" title="1.2.3. 短交互周期"></a>1.2.3. 短交互周期</h4><p><strong>用户素材</strong><br>用户会一直编写新的真正重要的用户元素到项目中</p>
+<p><strong>迭代计划</strong></p>
 <p><code>客户</code>：选择不超过开发人员本次迭代周期的用户素材，并在迭代开始后，不在修改当次迭代用户素材的定义和优先级别。</p>
 <p><code>开发人员</code>：根据之前的迭代工作量预算本次迭代，在迭代期间自由分解用户素材为任务，并根据最具技术和商务意义的顺序开发任务。</p>
-<p><strong> 发布计划 </strong><br>XP 团队通常会创建一个计划来规划随后大约6次迭代的内容。</p>
-<p><strong> 验收测试 </strong><br>验收测试使用能够让他们自动并且反复运行的某种脚本语言编写，这些测试共同来验证系统是否按照用户指定行为运行。</p>
-<p><strong> 集体所有权 </strong><br>如果你是专业领域有关GUI的，那么你最有可能去从事GUI 方面的任务，但是你将会被邀请去和别人结对从事有关中间件和数据库方面的任务。如果你决定学习另一们专业知识，你可以承担相关任务，并和能传授你这方面知识的专家一起工作，不会被限制在自己的专业领域。（个人认为有点偏重于理想化。）</p>
-<p><strong> 持续集成 </strong><br>每个模块都可以在完成单元测试之后，合并到主线中。因而，XP 团队每天会进行多次系统构建。</p>
-<p><strong> 可持续的开发速度 </strong><br>软件项目是马拉松长跑，而不是全速的短跑。团队必须要以一种可持续的速度前进，有意识的保持稳定、始终的速度。<br>团队位于开放的空间，充满交谈的环境下。每个人都可以获知Partner 遇到的麻烦，工作状态。</p>
-<p><strong> 简单的设计 </strong></p>
+<p><strong>发布计划</strong></p>
+<p>XP 团队通常会创建一个计划来规划随后大约6次迭代的内容。</p>
+<p><strong>验收测试</strong></p>
+<p>验收测试使用能够让他们自动并且反复运行的某种脚本语言编写，这些测试共同来验证系统是否按照用户指定行为运行。</p>
+<p><strong>集体所有权</strong></p>
+<p>如果你是专业领域有关GUI的，那么你最有可能去从事GUI 方面的任务，但是你将会被邀请去和别人结对从事有关中间件和数据库方面的任务。如果你决定学习另一们专业知识，你可以承担相关任务，并和能传授你这方面知识的专家一起工作，不会被限制在自己的专业领域。（个人认为有点偏重于理想化。）</p>
+<p><strong>持续集成</strong></p>
+<p>每个模块都可以在完成单元测试之后，合并到主线中。因而，XP 团队每天会进行多次系统构建。</p>
+<p><strong>可持续的开发速度</strong></p>
+<p>软件项目是马拉松长跑，而不是全速的短跑。团队必须要以一种可持续的速度前进，有意识的保持稳定、始终的速度。<br>团队位于开放的空间，充满交谈的环境下。每个人都可以获知Partner 遇到的麻烦，工作状态。</p>
+<p><strong>简单的设计</strong></p>
 <ul>
 <li><p>考虑能够工作的最简单的事情（如选择平面文件而不是数据库，选择简单的socket 而不是ORB（对象请求代理），RMI（远程方法调用）），只有在有证据情况下，才去引入这些。</p>
 </li>
@@ -468,10 +504,10 @@
 <li>“对于更改是封闭的（Closed for modification)”： 对模块行为扩张时，不必改动模块的源代码，模块的二进制执行版本（库、DLL，.jar文件）都无需改变。</li>
 </ol>
 <p>这两点看似是矛盾的，请看如下解释。</p>
-<p><strong> 抽象 </strong></p>
+<p><strong>抽象</strong></p>
 <p>模块依赖于某一抽象体，所以对它的更改是关闭的，通过这个抽象体的派生，扩展此模块的行为。</p>
 <p>遵循OCP 代价是昂贵的，增加设计的复杂性，开发人员处理抽象数量有限。我们希望OCP 的应用限定在可能发生变化的上。</p>
-<p><strong> 吊钩 </strong></p>
+<p><strong>吊钩(hook)</strong></p>
 <p>在认为可能发生变化的地方放置吊钩（hook），会使软件更灵活些。</p>
 <p>OCP 主要机制是抽象（abstraction） 和多态 (polymorphism)。</p>
 <h3 id="2-4-Liskov-替换原则-LSP"><a href="#2-4-Liskov-替换原则-LSP" class="headerlink" title="2.4. Liskov 替换原则(LSP)"></a>2.4. Liskov 替换原则(LSP)</h3><p>LSP 提供了继承层次保持OCP 的指导， 只有保持了OCP 才会保证我们软件的灵活性，可重用性。</p>
@@ -507,6 +543,12 @@
     
 
     <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/bookmarks/" rel="tag"># bookmarks</a>
+          
+        </div>
       
 
       
@@ -607,7 +649,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -628,7 +670,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">7</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -669,7 +717,21 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -719,7 +781,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-敏捷开发"><span class="nav-number">1.</span> <span class="nav-text">1. 敏捷开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-敏捷实践"><span class="nav-number">1.1.</span> <span class="nav-text">1.1. 敏捷实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-敏捷联盟"><span class="nav-number">1.1.1.</span> <span class="nav-text">1.1.1. 敏捷联盟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-原则"><span class="nav-number">1.1.2.</span> <span class="nav-text">1.1.2. 原则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-极限编程概述"><span class="nav-number">1.2.</span> <span class="nav-text">1.2. 极限编程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-客户成为团队成员"><span class="nav-number">1.2.1.</span> <span class="nav-text">1.2.1. 客户成为团队成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-用户素材"><span class="nav-number">1.2.2.</span> <span class="nav-text">1.2.2. 用户素材</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-短交互周期"><span class="nav-number">1.2.3.</span> <span class="nav-text">1.2.3. 短交互周期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-敏捷设计"><span class="nav-number">2.</span> <span class="nav-text">2. 敏捷设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-什么是敏捷设计"><span class="nav-number">2.1.</span> <span class="nav-text">2.1. 什么是敏捷设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-单一职责原则（SRP）"><span class="nav-number">2.2.</span> <span class="nav-text">2.2. 单一职责原则（SRP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-开放-封闭原则（OCP）"><span class="nav-number">2.3.</span> <span class="nav-text">2.3. 开放-封闭原则（OCP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Liskov-替换原则-LSP"><span class="nav-number">2.4.</span> <span class="nav-text">2.4. Liskov 替换原则(LSP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-依赖倒置原则-DIP"><span class="nav-number">2.5.</span> <span class="nav-text">2.5. 依赖倒置原则 (DIP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-接口隔离原则（ISP）"><span class="nav-number">2.6.</span> <span class="nav-text">2.6. 接口隔离原则（ISP）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-敏捷开发"><span class="nav-text">1. 敏捷开发</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-敏捷实践"><span class="nav-text">1.1. 敏捷实践</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-敏捷联盟"><span class="nav-text">1.1.1. 敏捷联盟</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-原则"><span class="nav-text">1.1.2. 原则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#1-2-极限编程概述"><span class="nav-text">1.2. 极限编程概述</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-1-客户成为团队成员"><span class="nav-text">1.2.1. 客户成为团队成员</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-2-用户素材"><span class="nav-text">1.2.2. 用户素材</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-3-短交互周期"><span class="nav-text">1.2.3. 短交互周期</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-敏捷设计"><span class="nav-text">2. 敏捷设计</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-什么是敏捷设计"><span class="nav-text">2.1. 什么是敏捷设计</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-单一职责原则（SRP）"><span class="nav-text">2.2. 单一职责原则（SRP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-开放-封闭原则（OCP）"><span class="nav-text">2.3. 开放-封闭原则（OCP）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-4-Liskov-替换原则-LSP"><span class="nav-text">2.4. Liskov 替换原则(LSP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-5-依赖倒置原则-DIP"><span class="nav-text">2.5. 依赖倒置原则 (DIP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-6-接口隔离原则（ISP）"><span class="nav-text">2.6. 接口隔离原则（ISP）</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -783,6 +845,8 @@
       <div class="back-to-top">
         <i class="fa fa-arrow-up"></i>
         
+          <span id="scrollpercent"><span>0</span>%</span>
+        
       </div>
     
 
@@ -811,6 +875,14 @@
 
 
 
+  
+
+
+
+
+
+  
+  
 
 
 
@@ -818,8 +890,7 @@
 
 
 
-
-
+  
 
 
 
@@ -836,6 +907,26 @@
   
   
     <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/canvas_lines.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/reading_progress/reading_progress.js"></script>
   
 
 
