@@ -126,7 +126,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/webRTC/RelayNetworkSelection/WebRTC_Best_Relay_Network_Sort_Itself.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/webRTC/RelayNetworkSelection/WebRTC_Best_Relay_Network_Get_Candidate.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/webRTC/RelayNetworkSelection/WebRTC_Best_Relay_Network_Get_Ping_Response.png">
-<meta property="og:updated_time" content="2018-08-22T14:05:38.006Z">
+<meta property="og:updated_time" content="2018-06-26T12:26:25.305Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="WebRTC_Best_Relay_Network_Selection">
 <meta name="twitter:description" content="1. Prepare">
@@ -369,7 +369,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-08-22 22:05:38" itemprop="dateModified" datetime="2018-08-22T22:05:38+08:00">2018-08-22</time>
+                <time title="Modified: 2018-06-26 20:26:25" itemprop="dateModified" datetime="2018-06-26T20:26:25+08:00">2018-06-26</time>
               
             
           </span>
@@ -423,7 +423,7 @@
         <h2 id="1-Prepare"><a href="#1-Prepare" class="headerlink" title="1. Prepare"></a>1. Prepare</h2><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/webRTC/RelayNetworkSelection/WebRTC_Best_Relay_Network_Sort_Itself.png" alt=""></p>
 <a id="more"></a>
 <p>Local 端与remote 连接前，local 端会收取本地的SDP、Candidate。Candidate 其包含了一些网络信息，类似于</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">   <span class="attr">"candidate"</span> : <span class="string">"candidate:3724402988 1 udp 41885695 172.28.28.24 51570 typ relay raddr 101.206.166.96 rport 23166 generation 0 ufrag 8B5q network-id 3 network-cost 50"</span>,</div><div class="line">   <span class="attr">"id"</span> : <span class="string">"sdparta_0"</span>,</div><div class="line">   <span class="attr">"label"</span> : <span class="number">0</span>,</div><div class="line">   <span class="attr">"type"</span> : <span class="string">"candidate"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">   <span class="attr">"candidate"</span> : <span class="string">"candidate:3724402988 1 udp 41885695 172.28.28.24 51570 typ relay raddr 101.206.166.96 rport 23166 generation 0 ufrag 8B5q network-id 3 network-cost 50"</span>,</span><br><span class="line">   <span class="attr">"id"</span> : <span class="string">"sdparta_0"</span>,</span><br><span class="line">   <span class="attr">"label"</span> : <span class="number">0</span>,</span><br><span class="line">   <span class="attr">"type"</span> : <span class="string">"candidate"</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>收集到的Candidates，会依据：</p>
 <ul>
 <li><p>IPv6 &gt; IPv4</p>
@@ -757,7 +757,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
