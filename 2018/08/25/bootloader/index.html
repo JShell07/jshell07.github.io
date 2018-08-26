@@ -135,7 +135,7 @@
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/46708a8f56a386f94f4f7c5a12606913?fid=889753022-250528-952131477838922&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-LuuotVJQC0veQPnLkJIDUqTYXCk%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514221256511756842&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/23689e765f0a3f1baadfcf3dbc5e7321?fid=889753022-250528-720197262741068&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-yGwXrpCVYPjWXTucaMpmOtdvJHg%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514233255734750780&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/19923c008966fe37dcf8f13f0723cc80?fid=889753022-250528-120766014243171&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-A%2FIibEgVdUX5IbIDz%2Bg09wrFOSE%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514253595195416566&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
-<meta property="og:updated_time" content="2018-08-26T15:54:32.422Z">
+<meta property="og:updated_time" content="2018-08-26T15:56:51.680Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bootloader">
 <meta name="twitter:description" content="1. BootLoader The computer first executes a relatively small program stored in read-only memory (ROM) along with a small amount of needed data, to access the nonvolatile device or devices from which t">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-08-26 23:54:32" itemprop="dateModified" datetime="2018-08-26T23:54:32+08:00">2018-08-26</time>
+                <time title="Modified: 2018-08-26 23:56:51" itemprop="dateModified" datetime="2018-08-26T23:56:51+08:00">2018-08-26</time>
               
             
           </span>
@@ -551,7 +551,7 @@
 <p>注：<strong>必须以ATAG_CORE, ATAG_NONE开头与结尾，Kernel启动时会依据此检测参数的有效性。</strong></p>
 <h3 id="2-5-Bootup-OS"><a href="#2-5-Bootup-OS" class="headerlink" title="2.5. Bootup OS"></a>2.5. Bootup OS</h3><p>以ARM 体系启动Kernel需满足以下几点：</p>
 <ul>
-<li>R0=0， R1=&lt;机器码&gt;, R2=<kernel启动参数起始地址></kernel启动参数起始地址></li>
+<li>R0=0， R1=[机器码], R2=[Kernel启动参数起始地址]</li>
 <li>Disable I/D Cache</li>
 <li>Disable IRQ，FIQ</li>
 <li>CPU in SVC 模式</li>
