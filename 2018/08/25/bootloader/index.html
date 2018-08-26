@@ -135,7 +135,7 @@
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/46708a8f56a386f94f4f7c5a12606913?fid=889753022-250528-952131477838922&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-LuuotVJQC0veQPnLkJIDUqTYXCk%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514221256511756842&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/23689e765f0a3f1baadfcf3dbc5e7321?fid=889753022-250528-720197262741068&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-yGwXrpCVYPjWXTucaMpmOtdvJHg%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514233255734750780&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
 <meta property="og:image" content="https://thumbnail0.baidupcs.com/thumbnail/19923c008966fe37dcf8f13f0723cc80?fid=889753022-250528-120766014243171&time=1535277600&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-A%2FIibEgVdUX5IbIDz%2Bg09wrFOSE%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=5514253595195416566&dp-callid=0&size=c710_u400&quality=100&vuk=-&ft=video">
-<meta property="og:updated_time" content="2018-08-26T15:56:51.680Z">
+<meta property="og:updated_time" content="2018-08-26T16:00:20.765Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="bootloader">
 <meta name="twitter:description" content="1. BootLoader The computer first executes a relatively small program stored in read-only memory (ROM) along with a small amount of needed data, to access the nonvolatile device or devices from which t">
@@ -378,7 +378,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-08-26 23:56:51" itemprop="dateModified" datetime="2018-08-26T23:56:51+08:00">2018-08-26</time>
+                <time title="Modified: 2018-08-27 00:00:20" itemprop="dateModified" datetime="2018-08-27T00:00:20+08:00">2018-08-27</time>
               
             
           </span>
@@ -533,9 +533,37 @@
 <td style="text-align:left">bootargs</td>
 <td style="text-align:left">noinitrd root=/dev/mtdblock4 init=/linuxrc</td>
 </tr>
+<tr>
+<td style="text-align:left">console=ttySAC0,115200</td>
+<td style="text-align:left">U-Boot 在启动内核之前的等待时间，单位：秒</td>
+</tr>
+<tr>
+<td style="text-align:left">bootdelay</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">与处理器相关</td>
+</tr>
+<tr>
+<td style="text-align:left">ethaddr</td>
+<td style="text-align:left">00:40:5C:26:0A:5B</td>
+<td style="text-align:left">网卡的MAC 地址</td>
+</tr>
+<tr>
+<td style="text-align:left">ipaddr</td>
+<td style="text-align:left">172.20.223.235</td>
+<td style="text-align:left">U-Boot 使用的IP 地址</td>
+</tr>
+<tr>
+<td style="text-align:left">loadaddr</td>
+<td style="text-align:left">0x40000000</td>
+<td style="text-align:left">下载二进制文件时的默认地址</td>
+</tr>
+<tr>
+<td style="text-align:left">bootcmd</td>
+<td style="text-align:left">nand read C0008000 600000 500000; bootm C0008000</td>
+<td style="text-align:left">当使用boot 命令启动系统时所执行的脚本</td>
+</tr>
 </tbody>
 </table>
-<p>console=ttySAC0,115200 | U-Boot 在启动内核之前的等待时间，单位：秒 |<br>| bootdelay | 1 | 与处理器相关 |<br>| ethaddr | 00:40:5C:26:0A:5B | 网卡的MAC 地址 |<br>| ipaddr | 172.20.223.235 | U-Boot 使用的IP 地址 |<br>| loadaddr | 0x40000000 | 下载二进制文件时的默认地址 |<br>| bootcmd | nand read C0008000 600000 500000; bootm C0008000 | 当使用boot 命令启动系统时所执行的脚本 |</p>
 <p><strong>Parameters Store</strong></p>
 <p>globa data的RAM地址一般是存放在ARM 的<code>R8</code> 通用寄存器中。定义见<code>include/asm-generial/global_data.h</code>。</p>
 <p>注：<strong>具体的位置可能因为U-Boot 代码的维护更新在变动，具体请参考实际的GitHub 版本</strong></p>
