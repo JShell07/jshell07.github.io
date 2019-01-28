@@ -128,7 +128,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/StructuralPattern.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/BehavioralPatternpng.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/J2EEPattern.png">
-<meta property="og:updated_time" content="2018-07-17T12:25:29.586Z">
+<meta property="og:updated_time" content="2019-01-28T11:21:56.808Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design_Pattern">
 <meta name="twitter:description" content="背景设计模式(design pattern)， 是在这1994年，由 Erich Gamma、Richard Helm、Ralph Johnson 和 John Vlissides 四人合著出版了一本名为 Design Patterns - Elements of Reusable Object-Oriented Software（中文译名：设计模式 - 可复用的面向对象软件元素） 的书提出。主要">
@@ -259,7 +259,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">28</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">31</span></a>
   </li>
 
       
@@ -372,7 +372,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-07-17 20:25:29" itemprop="dateModified" datetime="2018-07-17T20:25:29+08:00">2018-07-17</time>
+                <time title="Modified: 2019-01-28 19:21:56" itemprop="dateModified" datetime="2019-01-28T19:21:56+08:00">2019-01-28</time>
               
             
           </span>
@@ -428,6 +428,7 @@
 <li>对接口编程而不是对实现编程</li>
 <li>优先使用对象组合而不是继承</li>
 </ul>
+<p>面向对象系统的分析和设计实际上追求的就是两点,一是高内聚(Cohesion),而是低耦合(Coupling)。</p>
 <a id="more"></a>
 <h2 id="1-设计模式鸟览"><a href="#1-设计模式鸟览" class="headerlink" title="1. 设计模式鸟览"></a>1. 设计模式鸟览</h2><p>常见设计模式有23种。大体可以分为三大类：</p>
 <ul>
@@ -470,9 +471,6 @@
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/BehavioralPatternpng.png" alt="Behavioral Patterns"></p>
 <p><strong>J2EE设计模式</strong></p>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/J2EEPattern.png" alt="J2EE设计模式"></p>
-<h2 id="2-创建模式（Creational-Patterns）"><a href="#2-创建模式（Creational-Patterns）" class="headerlink" title="2. 创建模式（Creational Patterns）"></a>2. 创建模式（Creational Patterns）</h2><h3 id="2-1-工厂模式（Factory-Pattern"><a href="#2-1-工厂模式（Factory-Pattern" class="headerlink" title="2.1. 工厂模式（Factory Pattern)"></a>2.1. 工厂模式（Factory Pattern)</h3><p><strong>目的</strong>：定义一个创建对象的接口，让其子类自己决定实例化哪一个工厂类，工厂模式使其创建过程延迟到子类进行。</p>
-<p><strong>优点</strong>: 扩展性高，并且屏蔽具体的实现。<br><strong>缺点</strong>: 每增加一个产品时，都需要实现具体类和对象实现工厂。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Shape</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123;&#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Circle</span>:</span> <span class="keyword">public</span> Shape</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123; <span class="comment">/* ... */</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Square</span>:</span> <span class="keyword">public</span> Shape</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">draw</span><span class="params">()</span> </span>&#123; <span class="comment">/* ... */</span> &#125;;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">    <span class="function">class Shape * <span class="title">GetShape</span><span class="params">(<span class="built_in">string</span> type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(type.compare(<span class="string">"CIRCLE"</span>) == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Circle();</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span>(type.compare(<span class="string">"SQUARE"</span>) == <span class="number">0</span>)</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> Square();</span><br><span class="line">        <span class="keyword">else</span> </span><br><span class="line">            <span class="keyword">return</span> null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">ShapeFactory</span> <span class="title">shapeFactory</span> = <span class="title">new</span> <span class="title">ShapeFactory</span>();</span></span><br><span class="line"></span><br><span class="line">    <span class="class"><span class="keyword">class</span> <span class="title">Shape</span> *<span class="title">shape1</span>, <span class="title">shape2</span>;</span></span><br><span class="line">    </span><br><span class="line">    shape1 = shapeFactory.GetShape(<span class="string">"CIRCLE"</span>);</span><br><span class="line">    shape1-&gt;draw();</span><br><span class="line"></span><br><span class="line">    shape2 = shapeFactory.GetShape(<span class="string">"SQUARE"</span>);</span><br><span class="line">    shape2-&gt;draw();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> shape1;</span><br><span class="line">    <span class="keyword">delete</span> shape2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h2 id="Ref"><a href="#Ref" class="headerlink" title="Ref."></a>Ref.</h2><p><a href="http://www.runoob.com/design-pattern/design-pattern-tutorial.html" target="_blank" rel="noopener">http://www.runoob.com/design-pattern/design-pattern-tutorial.html</a></p>
 
       
@@ -599,7 +597,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">28</span>
+                    <span class="site-state-item-count">31</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -739,7 +737,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-设计模式鸟览"><span class="nav-text">1. 设计模式鸟览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-创建模式（Creational-Patterns）"><span class="nav-text">2. 创建模式（Creational Patterns）</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-工厂模式（Factory-Pattern"><span class="nav-text">2.1. 工厂模式（Factory Pattern)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-text">Ref.</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-设计模式鸟览"><span class="nav-text">1. 设计模式鸟览</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ref"><span class="nav-text">Ref.</span></a></li></ol></div>
             
 
           </div>
@@ -759,7 +757,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; 2017 &mdash; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
