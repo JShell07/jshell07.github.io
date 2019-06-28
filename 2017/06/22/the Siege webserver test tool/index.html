@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/siege/siege_test_url.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/siege/siege_run.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/siege/siege_result.png">
-<meta property="og:updated_time" content="2019-04-28T15:36:08.267Z">
+<meta property="og:updated_time" content="2019-04-24T04:24:42.987Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="the Siege webserver performance test tool">
 <meta name="twitter:description" content="1. Backgroud Siege is an open source regression test and benchmark utility. It can stress test a single URL with a user defined number of simulated users, or it can read many URLs into memory and stre">
@@ -242,7 +242,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">25</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">28</span></a>
   </li>
         
         
@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">12</span></a>
   </li>
         
         
@@ -258,7 +258,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">36</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">41</span></a>
   </li>
 
       
@@ -371,7 +371,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-28 23:36:08" itemprop="dateModified" datetime="2019-04-28T23:36:08+08:00">2019-04-28</time>
+                <time title="Modified: 2019-04-24 12:24:42" itemprop="dateModified" datetime="2019-04-24T12:24:42+08:00">2019-04-24</time>
               
             
           </span>
@@ -425,9 +425,9 @@
         <h1 id="1-Backgroud"><a href="#1-Backgroud" class="headerlink" title="1. Backgroud"></a>1. Backgroud</h1><blockquote>
 <p>Siege is an open source regression test and benchmark utility. It can stress test a single URL with a user defined number of simulated users, or it can read many URLs into memory and stress them simultaneously. The program reports the total number of hits recorded, bytes transferred, response time, concurrency, and return status. Siege supports HTTP/1.0 and 1.1 protocols, the GET and POST directives, cookies, transaction logging, and basic authentication. Its features are configurable on a per user basis.</p>
 </blockquote>
-<p>Detail see  <a href="https://github.com/JoeDog/siege" target="_blank" rel="external">https://github.com/JoeDog/siege</a></p>
-<h1 id="2-Compile"><a href="#2-Compile" class="headerlink" title="2. Compile"></a>2. Compile</h1><p>Decompressing Siege source code archive, and run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">./utils/bootstrap</div><div class="line">./configure</div><div class="line">make &amp;&amp; make install</div></pre></td></tr></table></figure></p>
-<p><strong>Note:</strong>  If we have ssl or zlib support, please point out when we make the configuration.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">--with-ssl=$(SSL_include_dir) \</div><div class="line">--with-zlib=$(ZLIB_include_dir)</div></pre></td></tr></table></figure></p>
+<p>Detail see  <a href="https://github.com/JoeDog/siege" target="_blank" rel="noopener">https://github.com/JoeDog/siege</a></p>
+<h1 id="2-Compile"><a href="#2-Compile" class="headerlink" title="2. Compile"></a>2. Compile</h1><p>Decompressing Siege source code archive, and run<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">./utils/bootstrap</span><br><span class="line">./configure</span><br><span class="line">make &amp;&amp; make install</span><br></pre></td></tr></table></figure></p>
+<p><strong>Note:</strong>  If we have ssl or zlib support, please point out when we make the configuration.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--with-ssl=$(SSL_include_dir) \</span><br><span class="line">--with-zlib=$(ZLIB_include_dir)</span><br></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <h1 id="3-Run"><a href="#3-Run" class="headerlink" title="3. Run"></a>3. Run</h1><p>Use “siege -C ‘ command to see current configuration.<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/siege/siege_config.png" alt=""></p>
 <p>Modify /etc/url.txt file to test accessing url.<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/siege/siege_test_url.png" alt=""></p>
@@ -558,7 +558,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -591,7 +591,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -654,7 +658,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -738,7 +748,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

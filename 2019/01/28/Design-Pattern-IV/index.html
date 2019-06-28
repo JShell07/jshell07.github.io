@@ -132,7 +132,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/BehavioralPattern/Visitor_Pattern.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/BehavioralPattern/Chain_of_Responsibility_Pattern.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/DesignPattern/BehavioralPattern/Interpreter_Pattern.png">
-<meta property="og:updated_time" content="2019-04-28T15:36:08.125Z">
+<meta property="og:updated_time" content="2019-04-24T04:24:43.081Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Design_Pattern_IV">
 <meta name="twitter:description" content="1. 行为模式1.1. 模板模式（Template）在模板模式（Template Pattern）中，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。将通用算法（逻辑）封装起来，而将算法细节让子类实现（多态）。 12345678910111213141516171819202122232425262728293031323334353">
@@ -247,7 +247,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">25</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">28</span></a>
   </li>
         
         
@@ -255,7 +255,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">10</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">12</span></a>
   </li>
         
         
@@ -263,7 +263,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">36</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">41</span></a>
   </li>
 
       
@@ -376,7 +376,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-04-28 23:36:08" itemprop="dateModified" datetime="2019-04-28T23:36:08+08:00">2019-04-28</time>
+                <time title="Modified: 2019-04-24 12:24:43" itemprop="dateModified" datetime="2019-04-24T12:24:43+08:00">2019-04-24</time>
               
             
           </span>
@@ -428,7 +428,7 @@
 
       
         <h2 id="1-行为模式"><a href="#1-行为模式" class="headerlink" title="1. 行为模式"></a>1. 行为模式</h2><h3 id="1-1-模板模式（Template）"><a href="#1-1-模板模式（Template）" class="headerlink" title="1.1. 模板模式（Template）"></a>1.1. 模板模式（Template）</h3><p>在模板模式（Template Pattern）中，一个抽象类公开定义了执行它的方法的方式/模板。它的子类可以按需要重写方法实现，但调用将以抽象类中定义的方式进行。<br><strong>将通用算法（逻辑）封装起来，而将算法细节让子类实现（多态）</strong>。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span></span></div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        <span class="keyword">virtual</span> ~AbstractClass();</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">TemplatMethod</span><span class="params">()</span></span>;</div><div class="line">    <span class="keyword">protected</span>:</div><div class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span> </span>= <span class="number">0</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass1</span>:</span> <span class="keyword">public</span> AbstractClass</div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        ConcreteClass1();</div><div class="line">        ~ConcreteClass1();</div><div class="line">    <span class="keyword">protected</span>:</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass1 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass1 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass2</span>:</span> <span class="keyword">public</span> AbstractClass</div><div class="line">&#123;</div><div class="line">    <span class="keyword">public</span>:</div><div class="line">        ConcreteClass2();</div><div class="line">        ~ConcreteClass2();</div><div class="line">    <span class="keyword">protected</span>:</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass2 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass2 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></div><div class="line">&#123;</div><div class="line">    AbstractClass * c1 = <span class="keyword">new</span> ConcreteClass1();</div><div class="line">    AbstractClass * c2 = <span class="keyword">new</span> ConcreteClass2();</div><div class="line"></div><div class="line">    c1-&gt;TemplateMethod();</div><div class="line">    c2-&gt;TemplateMethod();</div><div class="line"></div><div class="line">    <span class="keyword">delete</span> c1;</div><div class="line">    <span class="keyword">delete</span> c2;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AbstractClass</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        <span class="keyword">virtual</span> ~AbstractClass();</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">TemplatMethod</span><span class="params">()</span></span>;</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">        <span class="function"><span class="keyword">virtual</span> <span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass1</span>:</span> <span class="keyword">public</span> AbstractClass</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        ConcreteClass1();</span><br><span class="line">        ~ConcreteClass1();</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass1 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass1 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">ConcreteClass2</span>:</span> <span class="keyword">public</span> AbstractClass</span><br><span class="line">&#123;</span><br><span class="line">    <span class="keyword">public</span>:</span><br><span class="line">        ConcreteClass2();</span><br><span class="line">        ~ConcreteClass2();</span><br><span class="line">    <span class="keyword">protected</span>:</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation1</span><span class="params">()</span> </span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass2 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">        <span class="function"><span class="keyword">void</span> <span class="title">Operation2</span><span class="params">()</span></span>&#123;<span class="built_in">cout</span>&lt;&lt;<span class="string">"ConcreteClass2 Operation1"</span>&lt;&lt;<span class="built_in">endl</span>;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    AbstractClass * c1 = <span class="keyword">new</span> ConcreteClass1();</span><br><span class="line">    AbstractClass * c2 = <span class="keyword">new</span> ConcreteClass2();</span><br><span class="line"></span><br><span class="line">    c1-&gt;TemplateMethod();</span><br><span class="line">    c2-&gt;TemplateMethod();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> c1;</span><br><span class="line">    <span class="keyword">delete</span> c2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <a id="more"></a>
 <h3 id="1-2-策略模式（Strategy"><a href="#1-2-策略模式（Strategy" class="headerlink" title="1.2.策略模式（Strategy)"></a>1.2.策略模式（Strategy)</h3><p>在策略模式（Strategy Pattern）中，一个类的行为或其算法可以在运行时更改。</p>
 <p>Strategy 与Template 模式类似，但是Strategy 是将逻辑（算法）封装到一个类中，并采取组合的方式解决。</p>
@@ -610,7 +610,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -643,7 +643,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">10</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">11</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -706,7 +710,13 @@
                     
                       
                     
-                    <span class="site-state-item-count">25</span>
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">28</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -790,7 +800,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
