@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/waterfall.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/grid.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/console%20view.png">
-<meta property="og:updated_time" content="2019-07-02T16:02:46.714Z">
+<meta property="og:updated_time" content="2019-07-02T03:29:13.675Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="buildbot">
 <meta name="twitter:description" content="在openwrt 官网上看到buildbot， 他以此来完成在pull 代码之后，自动编译的工作并产出报告或者邮件通知等。buildbot官网 持续集成（Continuous Integration，CI）的主要优势是，能够通过软件的自动化构建以及测试和软件度量标准（可选）精简品质保证周期。每次更改源代码并为项目生命期提供即时反馈和报告。">
@@ -354,24 +354,12 @@
                 
               
 
-              <time title="Created: 2019-07-02 10:25:56" itemprop="dateCreated datePublished" datetime="2019-07-02T10:25:56+08:00">2019-07-02</time>
+              <time title="Created: 2019-07-02 10:25:56 / Modified: 11:29:13" itemprop="dateCreated datePublished" datetime="2019-07-02T10:25:56+08:00">2019-07-02</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-03 00:02:46" itemprop="dateModified" datetime="2019-07-03T00:02:46+08:00">2019-07-03</time>
               
             
           </span>
@@ -422,7 +410,7 @@
       
 
       
-        <p>在openwrt 官网上看到buildbot， 他以此来完成在pull 代码之后，自动编译的工作并产出报告或者邮件通知等。<br><a href="http://buildbot.net/" target="_blank" rel="external">buildbot官网</a></p>
+        <p>在openwrt 官网上看到buildbot， 他以此来完成在pull 代码之后，自动编译的工作并产出报告或者邮件通知等。<br><a href="http://buildbot.net/" target="_blank" rel="noopener">buildbot官网</a></p>
 <p>持续集成（Continuous Integration，CI）的主要优势是，能够通过软件的自动化构建以及测试和软件度量标准（可选）精简品质保证周期。每次更改源代码并为项目生命期提供即时反馈和报告。</p>
 <a id="more"></a>
 <h3 id="1-buildbot-简介"><a href="#1-buildbot-简介" class="headerlink" title="1. buildbot 简介"></a>1. buildbot 简介</h3><p>BuildBot是一个开源的基于python的持续集成系统，BuildBot用python写的，该python程序只依赖python环境和Twisted（一个python网络框架），可以在很多平台运行。 自动化构建一般包括自动下载源码，编译，测试，打包。他的工作原理可以参见下图:<br><img src="http://buildbot.net/img/overview.png" alt=""></p>
@@ -434,27 +422,27 @@
 </ul>
 <h3 id="2-Openwrt-buildbot"><a href="#2-Openwrt-buildbot" class="headerlink" title="2. Openwrt buildbot"></a>2. Openwrt buildbot</h3><p>我们可以访问如下链接， 可以看到openwrt 的buildbot 的情况。</p>
 <ul>
-<li>Phase 1: <a href="https://phase1.builds.lede-project.org/builders" target="_blank" rel="external">target/subtargets</a>  </li>
-<li>Phase 2: <a href="https://phase2.builds.lede-project.org/builders" target="_blank" rel="external">packages</a>  </li>
+<li>Phase 1: <a href="https://phase1.builds.lede-project.org/builders" target="_blank" rel="noopener">target/subtargets</a>  </li>
+<li>Phase 2: <a href="https://phase2.builds.lede-project.org/builders" target="_blank" rel="noopener">packages</a>  </li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/waterfall.png" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/grid.png" alt=""></p>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/buildbot/console%20view.png" alt=""></p>
 <h3 id="3-其他常见持续集成工具"><a href="#3-其他常见持续集成工具" class="headerlink" title="3. 其他常见持续集成工具"></a>3. 其他常见持续集成工具</h3><p>常见的持续集成工具有：  </p>
 <ul>
-<li><a href="https://jenkins.io/zh/" target="_blank" rel="external">Jenkins</a> （java 方向）  </li>
-<li><a href="http://hudson-ci.org/" target="_blank" rel="external">Hudson</a> (java 方向，jenkins 的前身)  </li>
-<li><a href="http://stridercd.com/" target="_blank" rel="external">strider</a>  </li>
-<li><a href="https://travis-ci.com/" target="_blank" rel="external">travis</a> （对开源项目免费）  </li>
-<li><a href="https://codeship.com/" target="_blank" rel="external">codeship</a>（对开源项目免费）  </li>
+<li><a href="https://jenkins.io/zh/" target="_blank" rel="noopener">Jenkins</a> （java 方向）  </li>
+<li><a href="http://hudson-ci.org/" target="_blank" rel="noopener">Hudson</a> (java 方向，jenkins 的前身)  </li>
+<li><a href="http://stridercd.com/" target="_blank" rel="noopener">strider</a>  </li>
+<li><a href="https://travis-ci.com/" target="_blank" rel="noopener">travis</a> （对开源项目免费）  </li>
+<li><a href="https://codeship.com/" target="_blank" rel="noopener">codeship</a>（对开源项目免费）  </li>
 </ul>
 <p>部署工具(将这个版本的所有文件打包（ tar filename.tar * ）存档，发到生产服务器)  </p>
 <ul>
-<li><a href="https://www.ansible.com/" target="_blank" rel="external">ansible</a>  </li>
-<li><a href="https://www.chef.io/products/chef-infra/" target="_blank" rel="external">chef</a>  </li>
-<li><a href="https://puppet.com/" target="_blank" rel="external">puppet</a>  </li>
+<li><a href="https://www.ansible.com/" target="_blank" rel="noopener">ansible</a>  </li>
+<li><a href="https://www.chef.io/products/chef-infra/" target="_blank" rel="noopener">chef</a>  </li>
+<li><a href="https://puppet.com/" target="_blank" rel="noopener">puppet</a>  </li>
 </ul>
-<h3 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h3><p><a href="https://docs.buildbot.net/current/tutorial/" target="_blank" rel="external">Buildbot Tutorial</a><br><a href="https://www.cnblogs.com/lkiversonlk/p/4878129.html" target="_blank" rel="external">Buildbot初探</a><br><a href="https://www.ibm.com/developerworks/cn/linux/l-buildbot/index.html" target="_blank" rel="external">使用 Buildot 实现持续集成</a><br><a href="https://blog.csdn.net/LSMEGR/article/details/53618045" target="_blank" rel="external">buildbot自动化测试工具安装及快速入门</a><br><a href="https://www.cnblogs.com/xing901022/p/4414263.html" target="_blank" rel="external">持续集成的魅力：工具推荐</a><br><a href="http://cloud.51cto.com/art/201508/487605.htm" target="_blank" rel="external">六款不容错过的开源持续集成工具</a><br><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="external">持续集成是什么？</a>  </p>
+<h3 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h3><p><a href="https://docs.buildbot.net/current/tutorial/" target="_blank" rel="noopener">Buildbot Tutorial</a><br><a href="https://www.cnblogs.com/lkiversonlk/p/4878129.html" target="_blank" rel="noopener">Buildbot初探</a><br><a href="https://www.ibm.com/developerworks/cn/linux/l-buildbot/index.html" target="_blank" rel="noopener">使用 Buildot 实现持续集成</a><br><a href="https://blog.csdn.net/LSMEGR/article/details/53618045" target="_blank" rel="noopener">buildbot自动化测试工具安装及快速入门</a><br><a href="https://www.cnblogs.com/xing901022/p/4414263.html" target="_blank" rel="noopener">持续集成的魅力：工具推荐</a><br><a href="http://cloud.51cto.com/art/201508/487605.htm" target="_blank" rel="noopener">六款不容错过的开源持续集成工具</a><br><a href="http://www.ruanyifeng.com/blog/2015/09/continuous-integration.html" target="_blank" rel="noopener">持续集成是什么？</a>  </p>
 
       
     </div>
@@ -774,7 +762,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

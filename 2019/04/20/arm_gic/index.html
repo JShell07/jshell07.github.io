@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="GICv2">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-02T16:02:46.669Z">
+<meta property="og:updated_time" content="2019-06-28T09:43:59.079Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arm gicv2">
 <meta name="twitter:description" content="GICv2">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-03 00:02:46" itemprop="dateModified" datetime="2019-07-03T00:02:46+08:00">2019-07-03</time>
+                <time title="Modified: 2019-06-28 17:43:59" itemprop="dateModified" datetime="2019-06-28T17:43:59+08:00">2019-06-28</time>
               
             
           </span>
@@ -422,7 +422,7 @@
 <p>The architecture describes a GIC designed for use with one or more processors that comply with the ARM A and R<br>architecture profiles.</p>
 <p>The GIC is a centralized resource for supporting and managing interrupts in a system that includes at least one<br>processor. It provides:<br>• registers for managing interrupt sources, interrupt behavior, and interrupt routing to one or more processors<br>• support for:<br>    — the ARM architecture Security Extensions<br>    — the ARM architecture Virtualization Extensions<br>    — enabling, disabling, and generating processor interrupts from hardware (peripheral) interrupt sources<br>    — Software-generated Interrupts (SGIs)<br>    — interrupt masking and prioritization<br>    — uniprocessor and multiprocessor environments<br>    — wakeup events in power-management environments.</p>
 <p>The GIC includes interrupt grouping functionality that supports:<br>• configuring each interrupt as either Group 0 or Group 1<br>• signaling Group 0 interrupts to the target processor using either the IRQ or the FIQ exception request<br>• signaling Group 1 interrupts to the target processor using the IRQ exception request only<br>• a unified scheme for handling the priority of Group 0 and Group 1 interrupts<br>• optional lockdown of the configuration of some Group 0 interrupts.</p>
-<p>fiq 优先级比 irq 高<br>fiq 模式下寄存器 比 irq 模式多（R8 ~ R12）<br><a href="http://blog.chinaunix.net/attachment/201302/21/28458801_1361445566H9Z3.png" target="_blank" rel="external">http://blog.chinaunix.net/attachment/201302/21/28458801_1361445566H9Z3.png</a></p>
+<p>fiq 优先级比 irq 高<br>fiq 模式下寄存器 比 irq 模式多（R8 ~ R12）<br><a href="http://blog.chinaunix.net/attachment/201302/21/28458801_1361445566H9Z3.png" target="_blank" rel="noopener">http://blog.chinaunix.net/attachment/201302/21/28458801_1361445566H9Z3.png</a></p>
 <h3 id="1-2-Security-Extensions-support"><a href="#1-2-Security-Extensions-support" class="headerlink" title="1.2. Security Extensions support"></a>1.2. Security Extensions support</h3><p>The ARM processor Security Extensions are an optional extension to the ARMv7-A architecture profile.</p>
 <p>ARM Security Extensions facilitate the development of secure applications by:<br>• integrating hardware security features into the architecture<br>• providing Secure virtual memory space that is accessed by memory accesses in the Secure state<br>• providing Non-secure virtual memory space that is accessed by memory accesses in the Non-secure state.</p>
 <p>When a GIC that implements the GIC Security Extensions is connected to a processor that implements the ARM<br>Security Extensions:<br>• Group 0(IRQ/FIQ) interrupts are Secure interrupts, and Group 1(IRQ) interrupts are Non-secure interrupts.</p>
@@ -729,7 +729,7 @@ where GICC_CTLR.AckCtl is set to 0, see [3.4.3 The effect of interrupt grouping 
 <p>A Guest OS handles a virtual interrupt exactly as it would handle the corresponding physical interrupt. <strong>The Guest OS cannot detect that it is handling a virtual interrupt rather than a physical interrupt.</strong></p>
 <p>Guest OS 并不知道处理的是虚拟中断。</p>
 <h3 id="4-Programmers’-Model"><a href="#4-Programmers’-Model" class="headerlink" title="4. Programmers’ Model"></a>4. Programmers’ Model</h3><h4 id="4-1-1-GIC-register-names"><a href="#4-1-1-GIC-register-names" class="headerlink" title="4.1.1 GIC register names"></a>4.1.1 GIC register names</h4><p>All of the GIC registers have names that provide a short mnemonic for the function of the register. In these names:<br>• the first three letters are GIC, indicating a GIC register<br>• the fourth letter is one of:<br>    — D, indicating a Distributor register<br>    — C, indicating a CPU interface register<br>    — H, indicating a virtual interface control register, typically accessed by a hypervisor<br>    — V, indicating a virtual CPU interface register.</p>
-<p>Note：<br>Chapter 5 GIC Support for Virtualization describes the GICH<em>* and GICV</em>* registers.</p>
+<p>Note：<br>Chapter 5 GIC Support for Virtualization describes the GICH_<em> and GICV_</em> registers.</p>
 <h4 id="4-1-2-Distributor-register-map"><a href="#4-1-2-Distributor-register-map" class="headerlink" title="4.1.2 Distributor register map"></a>4.1.2 Distributor register map</h4><p>Fixme [Table 4-1 Distributor register map] page74</p>
 <h4 id="4-1-3-CPU-interface-register-map"><a href="#4-1-3-CPU-interface-register-map" class="headerlink" title="4.1.3 CPU interface register map"></a>4.1.3 CPU interface register map</h4><p>For a multiprocessor implementation, the GIC implements a set of CPU interface registers for each CPU interface.<br><strong>ARM strongly recommends that each processor has the same CPU interface base address for the CPU interface that connects it to the GIC. This is the private CPU interface base address for that processor.</strong></p>
 <p>Fixme [Table 4-2 CPU interface register map] page76</p>
@@ -1401,7 +1401,7 @@ page 4-77 for more information about the effects of setting this bit.
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

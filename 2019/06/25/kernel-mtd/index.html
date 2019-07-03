@@ -126,7 +126,10 @@
 <meta property="og:image" content="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=47c8a31259ee3d6d36cb8f99227f0647/e1fe9925bc315c60225ddb5a8db1cb13485477be.jpg">
 <meta property="og:image" content="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=226f2bbbb13533faf5b6942890d2fdca/d53f8794a4c27d1ee9ac99711bd5ad6edcc438f8.jpg">
 <meta property="og:image" content="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=61b517595866d0166a14967af642bf62/cefc1e178a82b90112fe57a7798da9773812efd7.jpg">
-<meta property="og:updated_time" content="2019-07-02T16:02:46.846Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_source_code_tree.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_source_code_structure.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_structure.png">
+<meta property="og:updated_time" content="2019-07-03T03:49:05.400Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel_mtd">
 <meta name="twitter:description" content="1. Flash 大致分类 Nor Flash (intel 开发) Nand Flash (Toshiba 开发) OneNand Flash(Samsung 开发)">
@@ -370,7 +373,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-03 00:02:46" itemprop="dateModified" datetime="2019-07-03T00:02:46+08:00">2019-07-03</time>
+                <time title="Modified: 2019-07-03 11:49:05" itemprop="dateModified" datetime="2019-07-03T11:49:05+08:00">2019-07-03</time>
               
             
           </span>
@@ -480,12 +483,71 @@
 </tr>
 </tbody>
 </table>
+<h3 id="1-1-总线接口"><a href="#1-1-总线接口" class="headerlink" title="1.1. 总线接口"></a>1.1. 总线接口</h3><h4 id="1-1-1-Nand-Flash"><a href="#1-1-1-Nand-Flash" class="headerlink" title="1.1.1. Nand Flash"></a>1.1.1. Nand Flash</h4><p>Nand Flash 常见有：</p>
+<ul>
+<li>总线接口Flash    </li>
+<li>SPI Flash<br>总线flash需要你的MCU上有外部总线接口，SPI flash就是通过SPI口对flash进行读写。<br>速度上，总线flash比SPI的快，但是SPI的便宜。</li>
+</ul>
+<h4 id="1-1-2-Nor-Flash"><a href="#1-1-2-Nor-Flash" class="headerlink" title="1.1.2. Nor Flash"></a>1.1.2. Nor Flash</h4><p>在通信方式上Nor Flash 分为两种类型：CFI Flash和 SPI Flash。<br><em>CFI Flash</em><br>英文全称是common flash interface,也就是公共闪存接口，是由存储芯片工业界定义的一种获取闪存芯片物理参数和结构参数的操作规程和标准。CFI有许多关于闪存芯片的规定，有利于嵌入式对FLASH的编程。现在的很多NOR FLASH 都支持CFI，但并不是所有的都支持。  </p>
+<p>CFI接口，相对于串口的SPI来说，也被称为parallel接口，并行接口；另外，CFI接口是JEDEC定义的，所以，有的又成CFI接口为JEDEC接口。所以，可以简单理解为：对于Nor Flash来说，CFI接口＝JEDEC接口＝Parallel接口 = 并行接口</p>
+<p><em>SPI Flash</em><br>serial peripheral interface串行外围设备接口,是一种常见的时钟同步串行通信接口。</p>
+<p><em>两者不同处</em><br>CFI接口的的Nor Flash的针脚较多，芯片较大。之所有会有SPI接口, 可以减少针脚数目，减少芯片封装大小，采用了SPI后的Nor Flash，针脚只有8个。SPI容量都不是很大，读写速度慢，但是价格便宜，操作简单。而parallel接口速度快，容量上市场上已经有1Gmbit的容量，价格昂贵。</p>
 <h2 id="2-延伸扩展"><a href="#2-延伸扩展" class="headerlink" title="2. 延伸扩展"></a>2. 延伸扩展</h2><p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike92%2C5%2C5%2C92%2C30/sign=47c8a31259ee3d6d36cb8f99227f0647/e1fe9925bc315c60225ddb5a8db1cb13485477be.jpg" alt=""></p>
-<h3 id="2-1-SSD-SATA-接口-（串行口）"><a href="#2-1-SSD-SATA-接口-（串行口）" class="headerlink" title="2.1. SSD SATA 接口 （串行口）"></a>2.1. SSD <a href="https://baike.baidu.com/item/SATA" target="_blank" rel="external">SATA</a> 接口 （串行口）</h3><p><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=226f2bbbb13533faf5b6942890d2fdca/d53f8794a4c27d1ee9ac99711bd5ad6edcc438f8.jpg" alt=""></p>
-<h3 id="2-2-SSD-NVME-接口-（PCIe-口）"><a href="#2-2-SSD-NVME-接口-（PCIe-口）" class="headerlink" title="2.2. SSD NVME 接口 （PCIe 口）"></a>2.2. SSD <a href="https://baike.baidu.com/item/NVMe/20293531" target="_blank" rel="external">NVME</a> 接口 （PCIe 口）</h3><p><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=61b517595866d0166a14967af642bf62/cefc1e178a82b90112fe57a7798da9773812efd7.jpg" alt=""></p>
-<p><a href="http://www.chinastor.com/baike/ssd/04103A942017.html" target="_blank" rel="external">SSD技术扫盲之：什么是NVMe？ NVMe SSD有什么特点？</a></p>
-<p>参看资源：<br><a href="https://blog.csdn.net/programxiao/article/details/6214607" target="_blank" rel="external">OneNAND</a></p>
-<p><a href="https://www.chinaflashmarket.com/Instructor/102570" target="_blank" rel="external">三星OneNAND技术</a></p>
+<h3 id="2-1-SSD-SATA-接口-（串行口）"><a href="#2-1-SSD-SATA-接口-（串行口）" class="headerlink" title="2.1. SSD SATA 接口 （串行口）"></a>2.1. SSD <a href="https://baike.baidu.com/item/SATA" target="_blank" rel="noopener">SATA</a> 接口 （串行口）</h3><p><img src="https://gss3.bdstatic.com/-Po3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=226f2bbbb13533faf5b6942890d2fdca/d53f8794a4c27d1ee9ac99711bd5ad6edcc438f8.jpg" alt=""></p>
+<h3 id="2-2-SSD-NVME-接口-（PCIe-口）"><a href="#2-2-SSD-NVME-接口-（PCIe-口）" class="headerlink" title="2.2. SSD NVME 接口 （PCIe 口）"></a>2.2. SSD <a href="https://baike.baidu.com/item/NVMe/20293531" target="_blank" rel="noopener">NVME</a> 接口 （PCIe 口）</h3><p><img src="https://gss0.bdstatic.com/94o3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike150%2C5%2C5%2C150%2C50/sign=61b517595866d0166a14967af642bf62/cefc1e178a82b90112fe57a7798da9773812efd7.jpg" alt=""></p>
+<p><a href="http://www.chinastor.com/baike/ssd/04103A942017.html" target="_blank" rel="noopener">SSD技术扫盲之：什么是NVMe？ NVMe SSD有什么特点？</a></p>
+<h2 id="3-Kernel-MTD-Source-code"><a href="#3-Kernel-MTD-Source-code" class="headerlink" title="3. Kernel MTD Source code"></a>3. Kernel MTD Source code</h2><p>Kernel 中MTD 的源码如下图所示：<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_source_code_tree.png" alt=""></p>
+<p>MTD 组成的源代码框架如下：<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_source_code_structure.png" alt=""></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">项目</th>
+<th style="text-align:left">说明 </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FTL</td>
+<td style="text-align:left">Flash Translation Layer, 需要PCMCIA 硬件授权专利</td>
+</tr>
+<tr>
+<td style="text-align:center">NFTL</td>
+<td style="text-align:left">Nand flash translation layer, 需要DiskOnChip 硬件授权专利</td>
+</tr>
+<tr>
+<td style="text-align:center">INFTL</td>
+<td style="text-align:left">Inverse Nand flash translation layer, 需要DiskOnChip 硬件授权专利</td>
+</tr>
+<tr>
+<td style="text-align:center">spi-nor</td>
+<td style="text-align:left">spi nor flash source code</td>
+</tr>
+<tr>
+<td style="text-align:center">chips, maps</td>
+<td style="text-align:left">CFI Nor Flash</td>
+</tr>
+<tr>
+<td style="text-align:center">nand</td>
+<td style="text-align:left">nand flash</td>
+</tr>
+<tr>
+<td style="text-align:center">ubi</td>
+<td style="text-align:left">unsorted block images, 基于raw flash 的卷管理系统</td>
+</tr>
+</tbody>
+</table>
+<p>在mtd 目录下还有一些有意思的code, 他们分别是：</p>
+<ul>
+<li>mtdconcat.c 将多个MTD 设备组成一个MTD， 功能类似于rapid 磁盘阵列  </li>
+<li>cmdlinepart.c 提供解析启动参数中的MTD 信息  </li>
+<li>mtdswap.c  交换分区，用于wear leveling 记录erase counter， 但UBI 已经具备此功能</li>
+<li>mtdsuper.c  用于向fs/jffs2, fs/romfs 提供挂载接口</li>
+</ul>
+<h2 id="4-源代码框架"><a href="#4-源代码框架" class="headerlink" title="4. 源代码框架"></a>4. 源代码框架</h2><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mtd/mtd_structure.png" alt=""></p>
+<h2 id="参看资源："><a href="#参看资源：" class="headerlink" title="参看资源："></a>参看资源：</h2><p><a href="https://blog.csdn.net/programxiao/article/details/6214607" target="_blank" rel="noopener">OneNAND</a></p>
+<p><a href="https://www.chinaflashmarket.com/Instructor/102570" target="_blank" rel="noopener">三星OneNAND技术</a></p>
+<p><a href="https://www.cnblogs.com/zhangj95/p/5649518.html" target="_blank" rel="noopener">Nand Flash，Nor Flash，CFI Flash，SPI Flash 之间的关系</a> </p>
+<p><a href="https://blog.csdn.net/pine222/article/details/47090041" target="_blank" rel="noopener">CFI与SPI flash区别</a></p>
 
       
     </div>
@@ -773,7 +835,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Flash-大致分类"><span class="nav-text">1. Flash 大致分类</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-延伸扩展"><span class="nav-text">2. 延伸扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-SSD-SATA-接口-（串行口）"><span class="nav-text">2.1. SSD SATA 接口 （串行口）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-SSD-NVME-接口-（PCIe-口）"><span class="nav-text">2.2. SSD NVME 接口 （PCIe 口）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Flash-大致分类"><span class="nav-text">1. Flash 大致分类</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-1-总线接口"><span class="nav-text">1.1. 总线接口</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-1-Nand-Flash"><span class="nav-text">1.1.1. Nand Flash</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-2-Nor-Flash"><span class="nav-text">1.1.2. Nor Flash</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-延伸扩展"><span class="nav-text">2. 延伸扩展</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-SSD-SATA-接口-（串行口）"><span class="nav-text">2.1. SSD SATA 接口 （串行口）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-SSD-NVME-接口-（PCIe-口）"><span class="nav-text">2.2. SSD NVME 接口 （PCIe 口）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Kernel-MTD-Source-code"><span class="nav-text">3. Kernel MTD Source code</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-源代码框架"><span class="nav-text">4. 源代码框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参看资源："><span class="nav-text">参看资源：</span></a></li></ol></div>
             
 
           </div>
@@ -807,7 +869,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

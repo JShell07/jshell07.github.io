@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc key 复制到服务端。">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-02T16:02:46.897Z">
+<meta property="og:updated_time" content="2019-06-28T09:33:09.266Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh_of_openwrt">
 <meta name="twitter:description" content="openwrt 一般采用dropbear 作为ssh 客户端/服务端。 客户端使用如下命令，生成public keys1dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key 将图中pulibc key 复制到服务端。">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-03 00:02:46" itemprop="dateModified" datetime="2019-07-03T00:02:46+08:00">2019-07-03</time>
+                <time title="Modified: 2019-06-28 17:33:09" itemprop="dateModified" datetime="2019-06-28T17:33:09+08:00">2019-06-28</time>
               
             
           </span>
@@ -418,15 +418,15 @@
 
       
         <p>openwrt 一般采用dropbear 作为ssh 客户端/服务端。</p>
-<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</div></pre></td></tr></table></figure></p>
+<h1 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h1><p>使用如下命令，生成public keys<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">dropbearkey  -y -f /etc/dropbear/dropbear_rsa_host_key</span><br></pre></td></tr></table></figure></p>
 <p>将图中pulibc key 复制到服务端。<br><a id="more"></a></p>
 <h1 id="服务端"><a href="#服务端" class="headerlink" title="服务端"></a>服务端</h1><p>dropbear 与openssh 有点区别在于，<strong>authorized_keys 文件并不在~/.ssh/authorized_keys 文件中</strong>，如下图：</p>
 <p>之后重启服务端dropbear service</p>
 <p>dropbear 的配置如下：</p>
-<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</div></pre></td></tr></table></figure></p>
+<h1 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h1><p>在客服端使用如下命令登陆服务端<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -i /etc/dropbear/dropbear_rsa_host_key root@172.28.52.151 -p 6350</span><br></pre></td></tr></table></figure></p>
 <p>需要使用 “-i”选项指明identify 文件， “-p 6350” 是指明端口号</p>
-<p>或者可以不指明-i  文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cp /etc/dropbear/dropbear_rsa_host_key ~/.ssh/id_dropbear</div></pre></td></tr></table></figure></p>
-<p>之后使用如下命令直接登陆：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">ssh 172.28.52.151 -l root -p 6350</div></pre></td></tr></table></figure></p>
+<p>或者可以不指明-i  文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cp /etc/dropbear/dropbear_rsa_host_key ~/.ssh/id_dropbear</span><br></pre></td></tr></table></figure></p>
+<p>之后使用如下命令直接登陆：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh 172.28.52.151 -l root -p 6350</span><br></pre></td></tr></table></figure></p>
 
       
     </div>
@@ -746,7 +746,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 

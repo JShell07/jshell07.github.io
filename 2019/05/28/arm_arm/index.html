@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="Part A. Application Level Architecture A1. Introduction to the ARM Architecture">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-07-02T16:02:46.656Z">
+<meta property="og:updated_time" content="2019-06-28T09:43:42.461Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arm arm">
 <meta name="twitter:description" content="Part A. Application Level Architecture A1. Introduction to the ARM Architecture">
@@ -366,7 +366,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-07-03 00:02:46" itemprop="dateModified" datetime="2019-07-03T00:02:46+08:00">2019-07-03</time>
+                <time title="Modified: 2019-06-28 17:43:42" itemprop="dateModified" datetime="2019-06-28T17:43:42+08:00">2019-06-28</time>
               
             
           </span>
@@ -500,7 +500,7 @@
 <h5 id="A3-4-6-Semaphores"><a href="#A3-4-6-Semaphores" class="headerlink" title="A3.4.6 Semaphores"></a>A3.4.6 Semaphores</h5><p>The Swap (SWP) and Swap Byte (SWPB) instructions must be used with care to ensure that expected behavior is<br>observed.</p>
 <p>Note<br>From ARMv6, ARM deprecates use of the Swap and Swap Byte instructions, and strongly recommends that all new<br>software uses the Load-Exclusive and Store-Exclusive synchronization primitives</p>
 <h5 id="A3-4-7-Synchronization-primitives-and-the-memory-order-model"><a href="#A3-4-7-Synchronization-primitives-and-the-memory-order-model" class="headerlink" title="A3.4.7 Synchronization primitives and the memory order model"></a>A3.4.7 Synchronization primitives and the memory order model</h5><p>The synchronization primitives follow the memory order model of the memory type accessed by the instructions.<br>For this reason:<br>• Portable software for claiming a spin-lock must include a Data Memory Barrier (DMB) operation, performed<br>by a DMB instruction, between claiming the spin-lock and making any access that makes use of the spin-lock.<br>• Portable software for releasing a spin-lock must include a DMB instruction before writing to clear the spin-lock.<br>This requirement applies to software using:<br>• the Load-Exclusive/Store-Exclusive instruction pairs, for example LDREX/STREX<br>• the deprecated synchronization primitives, SWP/SWPB.</p>
-<p><a href="https://blog.csdn.net/wangbinyantai/article/details/78986974" target="_blank" rel="external">ISB &gt; DSB &gt; DMB</a></p>
+<p><a href="https://blog.csdn.net/wangbinyantai/article/details/78986974" target="_blank" rel="noopener">ISB &gt; DSB &gt; DMB</a></p>
 <h5 id="A3-4-8-Use-of-WFE-and-SEV-instructions-by-spin-locks"><a href="#A3-4-8-Use-of-WFE-and-SEV-instructions-by-spin-locks" class="headerlink" title="A3.4.8 Use of WFE and SEV instructions by spin-locks"></a>A3.4.8 Use of WFE and SEV instructions by spin-locks</h5><p>ARMv7 and ARMv6K provide Wait For Event and Send Event instructions, WFE and SEV, that can assist with<br>reducing power consumption and bus contention caused by processors repeatedly attempting to obtain a spin-lock.<br>These instructions can be used at the application level, but a complete understanding of what they do depends on<br>system level understanding of exceptions.</p>
 <h4 id="A3-5-Memory-types-and-attributes-and-the-memory-order-model"><a href="#A3-5-Memory-types-and-attributes-and-the-memory-order-model" class="headerlink" title="A3.5 Memory types and attributes and the memory order model"></a>A3.5 Memory types and attributes and the memory order model</h4><h5 id="A3-5-1-Memory-types"><a href="#A3-5-1-Memory-types" class="headerlink" title="A3.5.1 Memory types"></a>A3.5.1 Memory types</h5><p>exclusive memory types:<br>• Normal<br>• Device<br>• Strongly-ordered.</p>
 <h5 id="A3-5-2-Summary-of-ARMv7-memory-attributes"><a href="#A3-5-2-Summary-of-ARMv7-memory-attributes" class="headerlink" title="A3.5.2 Summary of ARMv7 memory attributes"></a>A3.5.2 Summary of ARMv7 memory attributes</h5><p><strong>Shareability</strong><br>Applies only to Normal memory, and <strong>to Device memory in an implementation that does not include the Large Physical Address Extension.</strong> In an implementation that includes the Large Physical<br>Address Extension, Device memory is always Outer Shareable,<br>When it is possible to assign a shareability attribute to Device memory, ARM deprecates assigning<br>any attribute other than Shareable or Outer Shareable, see Shareable attribute for Device memory<br>regions on page A3-137<br>Whether an ARMv7 implementation distinguishes between Inner Shareable and Outer Shareable<br>memory is IMPLEMENTATION DEFINED.</p>
@@ -956,7 +956,7 @@
 
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.3.8</div>
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
