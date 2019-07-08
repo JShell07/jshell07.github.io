@@ -5,7 +5,7 @@
     <url>%2F2019%2F07%2F05%2Fkernel-ubi%2F</url>
     <content type="text"><![CDATA[1. 背景引入UBI (Unsorted Block Images)Flash 设备存在如下缺点 [FixMe] Add something here !!! 参看资料Linux UBI子系统设计初探 ubi 官方文档 elinux/ubifs]]></content>
       <categories>
-        <category>ubifs</category>
+        <category>driver</category>
       </categories>
       <tags>
         <tag>mtd</tag>
@@ -64,11 +64,11 @@
     <url>%2F2019%2F06%2F25%2Fkernel-mtd%2F</url>
     <content type="text"><![CDATA[1. Flash 大致分类 Nor Flash (intel 开发) Nand Flash (Toshiba 开发) OneNand Flash(Samsung 开发) NAND Flash在容量、功耗、使用寿命、写速度快、芯片面积小、单元密度高、擦除速度快、成本低等方面的优势使其成为高数据存储密度的理想解决方案。NOR Flash的传输效率很高，但写入和擦除速度较低； OneNAND结合了NAND存储密度高、写入速度快和NOR读取速度快的优点，整体性能完全超越常规的NAND和NOR。OneNAND采用NAND逻辑结构的存储内核和NOR的控制接口，并直接在系统内整合一定容量SRAM静态随即存储器作为高速缓冲区。 当OneNAND执行程序时，代码必须从OneNAND存储核心载入到SRAM，然后在SRAM上执行。由于SRAM的速度优势，数据载入动作几乎可以在瞬间完成，用户感觉不到迟滞现象，加上SRAM被直接封装在OneNAND芯片内部，外界看起来就好像是OneNAND也具备程序的本地执行功能。 Flash 读 写 擦除 坏块 XIP(eXecute In Place) 容量 寿命 成本 Nor Flash 100MBps 0.5MBps 0.3MBps - YES 常见&lt;= 32M 10几万 较高 Nand Flash 15MBps 7MBps 64MBps 有 - 大容量 100万 低 OneNand Flash 100MBps 10MBps 64MBps 有 YES 较大容量 100万 较低 1.1. 总线接口1.1.1. Nand FlashNand Flash 常见有： 总线接口Flash SPI Flash总线flash需要你的MCU上有外部总线接口，SPI flash就是通过SPI口对flash进行读写。速度上，总线flash比SPI的快，但是SPI的便宜。 如果Nand Flash 使用总线接口，一般pin 如下： Pins Function I/O 0-7(15) Data input or output(16 bit buswidth chips are supported in kernel) /CE Chip Enable /CLE Command Latch Enable ALE Address Latch Enable /RE Read Enable /WE Write Enable /WP Write Protect /SE Spare area Enable ( link to GND) R/B Ready / Busy Output At the moment there are only a few filesystems which support NAND: JFFS2 and YAFFS for bare NAND Flash and SmartMediaCards NTFL for DiskOnChip devices TRUEFFS from M-Systems for DiskOnChip devices SmartMedia DOS-FAT as defined by the SSFDC Forum UBIFS for bare NAND flash 1.1.2. Nor Flash在通信方式上Nor Flash 分为两种类型：CFI Flash和 SPI Flash。CFI Flash英文全称是common flash interface,也就是公共闪存接口，是由存储芯片工业界定义的一种获取闪存芯片物理参数和结构参数的操作规程和标准。CFI有许多关于闪存芯片的规定，有利于嵌入式对FLASH的编程。现在的很多NOR FLASH 都支持CFI，但并不是所有的都支持。 CFI接口，相对于串口的SPI来说，也被称为parallel接口，并行接口；另外，CFI接口是JEDEC定义的，所以，有的又成CFI接口为JEDEC接口。所以，可以简单理解为：对于Nor Flash来说，CFI接口＝JEDEC接口＝Parallel接口 = 并行接口 SPI Flashserial peripheral interface串行外围设备接口,是一种常见的时钟同步串行通信接口。 两者不同处CFI接口的的Nor Flash的针脚较多，芯片较大。之所有会有SPI接口, 可以减少针脚数目，减少芯片封装大小，采用了SPI后的Nor Flash，针脚只有8个。SPI容量都不是很大，读写速度慢，但是价格便宜，操作简单。而parallel接口速度快，容量上市场上已经有1Gmbit的容量，价格昂贵。 2. 延伸扩展 2.1. SSD SATA 接口 （串行口） 2.2. SSD NVME 接口 （PCIe 口） SSD技术扫盲之：什么是NVMe？ NVMe SSD有什么特点？ 3. Kernel MTD Source codeKernel 中MTD 的源码如下图所示： MTD 组成的源代码框架如下： 项目 说明 FTL Flash Translation Layer, 需要PCMCIA 硬件授权专利 NFTL Nand flash translation layer, 需要DiskOnChip 硬件授权专利 INFTL Inverse Nand flash translation layer, 需要DiskOnChip 硬件授权专利 spi-nor spi nor flash source code chips, maps CFI Nor Flash nand nand flash ubi unsorted block images, 基于raw flash 的卷管理系统 在mtd 目录下还有一些有意思的code, 他们分别是： mtdconcat.c 将多个MTD 设备组成一个MTD， 功能类似于rapid 磁盘阵列 cmdlinepart.c 提供解析启动参数中的MTD 信息 mtdswap.c 交换分区，用于wear leveling 记录erase counter， 但UBI 已经具备此功能 mtdsuper.c 用于向fs/jffs2, fs/romfs 提供挂载接口 4. 源代码框架 mtdchar.c 向flash tools 或者用户层提供IOCTL 操作。mtdblock.c 向kernel 提供block read/write sector访问。 他们两者的动态加载是通过mtdcore.c 中的add_mtd_device()函数。 例如在mtdblock.c 中：12345678910static struct mtd_notifier blktrans_notifier = &#123; .add = blktrans_notify_add, .remove = blktrans_notify_remove,&#125;;int register_mtd_blktrans(struct mtd_blktrans_ops *tr)&#123; ... register_mtd_user(&amp;blktrans_notifier);&#125; 在mtdcore.c 中12345678910111213141516int add_mtd_device(struct mtd_info *mtd)&#123; /* register char dev node */ mtd-&gt;dev.type = &amp;mtd_devtype; mtd-&gt;dev.class = &amp;mtd_class; mtd-&gt;dev.devt = MTD_DEVT(i); dev_set_name(&amp;mtd-&gt;dev, "mtd%d", i); dev_set_drvdata(&amp;mtd-&gt;dev, mtd); if (device_register(&amp;mtd-&gt;dev) != 0) goto fail_added; /* call mtd_notifiers, so it will call mtdblock.c blktrans_notify_add() */ list_for_each_entry(not, &amp;mtd_notifiers, list) not-&gt;add(mtd);&#125; 大致流程如下图所示： 注册相关数据结构：1234567891011121314struct mtd_part &#123; struct mtd_info mtd; struct mtd_info *master; uint64_t offset; struct list_head list;&#125;;struct mtd_partition &#123; const char *name; /* identifier string */ uint64_t size; /* partition size */ uint64_t offset; /* offset within the master MTD space */ uint32_t mask_flags; /* master MTD flags to mask out for this partition */ struct nand_ecclayout *ecclayout; /* out of band layout for this partition (NAND only) */&#125;; 参看资源：OneNAND 三星OneNAND技术 Nand Flash，Nor Flash，CFI Flash，SPI Flash 之间的关系 CFI与SPI flash区别 MTD 官网]]></content>
       <categories>
-        <category>Driver</category>
+        <category>driver</category>
       </categories>
       <tags>
-        <tag>Driver</tag>
         <tag>kernel</tag>
+        <tag>driver</tag>
       </tags>
   </entry>
   <entry>
@@ -257,12 +257,12 @@
     <url>%2F2018%2F08%2F22%2FLinux-Flash%2F</url>
     <content type="text"><![CDATA[1. Flash闪存（Flash Memory）是非易失性长寿命存储器，是电子可擦除只读存储器（EEPROM）的变种，而闪存的大部分芯片需要块擦除。 注： N型半导体即自由电子浓度远大于空穴浓度的杂质半导体。(对于锗、硅类半导体材料，掺杂Ⅴ族元素(磷、砷等)P型半导体即空穴浓度远大于自由电子浓度的杂质半导体。在纯净的硅晶体中掺入三价元素（如硼） 常见的Flash有 NOR Flash NAND Flash NOR Flash NAND Flash 读速度 快 较快 单字节编程时间 快 慢 多字节编程时间 慢 快 寿命 十万次 百万次 I/O 端口 SRAM 接口，有足够地址引脚寻址 8个复用PIN 脚传送控制、地址、数据 功耗 高 低，需要额外RAM 应用市场 1~16MB 大容量 特点 程序可在芯片内运行 成本低，高存储密度，较快的写入和擦除速度 注：Spare Area 常常可以存储一些BBT信息。 Nand Flash 硬件特性： R/W 最小单位，Page 擦除最小单位，Block 擦除的含义是将整块都擦除为0xFF 写操作前，必须先擦除，然后再写 2. Linux MTD 常见MTD 分区为： 3. R/W FlowMTD Read Flow MTD Read Flow 4. Bad BlockNand Flash 工艺不能保证Memory Cell在其生命周期中保持性能的可靠性，使用寿命一般100万次。 坏块一般分为： 固有坏块：生产中就有（芯片原厂将每个坏块第一个Page的spare area某个字节标记为非0xFF） 使用坏块：存储寿命（program/erase 错误，将block标记为坏块） 当然，也有伪坏块。芯片在才做过程中可能由于电压不稳定等因素导致Program、Erase错误，标记的坏块也可能是好的。解决办法是，retry 一次，然后查看状态。 坏块的特性 Page Program与Block Erase操作失败，会反映到Status Register。 避免坏块策略 Wear-Leveling(损益均衡)技术 Buffer Cache类似于UBIFS 都会带有buffer cache，以及压缩，以此来尽量降低对I/O的操作。 应对坏块 为了保证数据正确性的R/W，我们使用BBT（Bad Block Table）。]]></content>
       <categories>
-        <category>Driver</category>
+        <category>driver</category>
       </categories>
       <tags>
-        <tag>Driver</tag>
-        <tag>Flash</tag>
         <tag>kernel</tag>
+        <tag>driver</tag>
+        <tag>flash</tag>
       </tags>
   </entry>
   <entry>
@@ -424,10 +424,10 @@
     <url>%2F2017%2F12%2F14%2FC-UML%2F</url>
     <content type="text"><![CDATA[C++ UML1. Basic1.1. VisibilityThe C++ class has three visibility. public, using “+” private, using “-“ protected, using ‘#’ See the base class examole: 1.2. Class members static members, using underline, like static int member virtual functions, using Italic font, like virtual void functions() 2. Class RelationshipThe C++ has these relationship: Assocation Dependency Aggregation Composition Inheritance Class template 2.1. AssocationSee the up picture, Class B has Class A’s pointer or quote.123456789class B&#123;public: B()&#123;&#125; void setA(A *A) &#123; ptrA_ = A;&#125;private/public: A* ptrA_; &#125; 2.2. DependencyClass B and Class A is indepent. And Class A is local variable or a function parameter in CLass B.1234class B &#123; public: void display(class A* A) &#123;A-&gt;display();&#125;&#125; 2.3. AggregationClass B is the container to Class A. But Class A and Class B have diffrent lift, which like car and tire. The car maybe detoried, and tire can be still exist.12345class B &#123; public: private: vector&lt;class A*&gt; ptrclassA;&#125; 2.4. CompositionCompostion is stricter than Aggregation. They have the same life.1234class B &#123; private: class A a;&#125; 2.5. Inheritance1234567class A &#123; //.. &#125;;class B: public A &#123; //..&#125; 2.6. Class template123456789101112template&lt;class T&gt;class A &#123; //... private: T var;&#125;;class B &#123; //..&#125;;A&lt;B&gt; a;]]></content>
       <categories>
-        <category>C++</category>
+        <category>c++</category>
       </categories>
       <tags>
-        <tag>C++</tag>
+        <tag>c++</tag>
       </tags>
   </entry>
   <entry>
