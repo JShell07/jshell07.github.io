@@ -134,7 +134,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_crypto/menconfig_core.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_crypto/menconfig_associated_data.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_crypto/menuconfig_cipher.png">
-<meta property="og:updated_time" content="2019-08-06T12:01:34.434Z">
+<meta property="og:updated_time" content="2019-08-07T06:53:04.614Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel_crypto_I">
 <meta name="twitter:description" content="1. 基础SE(Securty Engine) 提供encryption/decryption。SE 常见使用如下形式加解密：  cipher engine(密码引擎)   short messages（short message 指front message 的长度小于block cipher length）   residue（残余） technology (residue 指当我们最后的数据">
@@ -249,7 +249,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">36</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">35</span></a>
   </li>
         
         
@@ -265,7 +265,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">48</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">51</span></a>
   </li>
 
       
@@ -392,12 +392,24 @@
                 
               
 
-              <time title="Created: 2019-08-06 19:37:35 / Modified: 20:01:34" itemprop="dateCreated datePublished" datetime="2019-08-06T19:37:35+08:00">2019-08-06</time>
+              <time title="Created: 2019-08-06 19:37:35" itemprop="dateCreated datePublished" datetime="2019-08-06T19:37:35+08:00">2019-08-06</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-08-07 14:53:04" itemprop="dateModified" datetime="2019-08-07T14:53:04+08:00">2019-08-07</time>
               
             
           </span>
@@ -414,7 +426,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/driver/" itemprop="url" rel="index"><span itemprop="name">driver</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/drivers/" itemprop="url" rel="index"><span itemprop="name">drivers</span></a></span>
 
                 
                 
@@ -691,7 +703,7 @@
 <p><strong>PIO Mode</strong><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_crypto/pio_encrypttion_flow.png" alt="pio encrypto flow"></p>
 <h3 id="2-Kernel-Crypto"><a href="#2-Kernel-Crypto" class="headerlink" title="2. Kernel Crypto"></a>2. Kernel Crypto</h3><p>crypto 在kernel 中可以分为如下几类（）：</p>
 <ol>
-<li>cipher (AES, DES, TDES等)</li>
+<li>cipher (AES, DES, TDES等)<br>1.1. Symmetric cipher(ablkcipher, blkcipher, cipher)<br>1.2. aead cipher(Authenticated Encryption with Associated Data )  </li>
 <li>compress(zlib, lzo 等)  </li>
 <li>digest  (摘要算法例如crc32, sha1, md5等)</li>
 <li>random （软件层随机数）</li>
@@ -719,6 +731,8 @@
 <h3 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h3><p><a href="https://blog.csdn.net/youyu_torch/article/details/78117530" target="_blank" rel="noopener">常用加解密算法总结1-DES、TDES、3DES</a></p>
 <p><a href="https://www.cnblogs.com/hoys/archive/2013/03/25/2981612.html" target="_blank" rel="noopener">Linux加密框架设计与实现(转)</a></p>
 <p><a href="https://blog.csdn.net/dog250/article/details/5561075" target="_blank" rel="noopener">linux内核cryto接口的实现以及与openssl的比较</a></p>
+<p><a href="https://01.org/linuxgraphics/gfx-docs/drm/crypto/" target="_blank" rel="noopener">Linux Kernel Crypto API</a></p>
+<p><a href="https://zhuanlan.zhihu.com/p/28566058" target="_blank" rel="noopener">什么是AEAD加密</a></p>
 
       
     </div>
@@ -761,6 +775,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/08/06/kernel-crypto-II/" rel="prev" title="kernel_crypto_II">
+                kernel_crypto_II <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -838,7 +856,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">51</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -962,9 +980,7 @@
                     
                       
                     
-                      
-                    
-                    <span class="site-state-item-count">36</span>
+                    <span class="site-state-item-count">35</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
