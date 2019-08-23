@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[kernel_source_code_online]]></title>
+    <url>%2F2019%2F08%2F23%2Fkernel-source-code-online%2F</url>
+    <content type="text"><![CDATA[今天看到有几个非常优秀的在线浏览kernel source code 的网站。 kernel github kernel.org bootlin woboq 从功能上讲woboq 是最强的， bootlin 次之，但是胜在支持的kernel source 的版本比价多。 1. woboq这是官方给出的亮点, woboq benefit 我觉得比较有用的有： 类型，定义处，引用处表明 函数列表 宏展开 搜索功能 预处理 显示主题切换 行号显示toggle 1.1. functions list 1.2. defines and uses link 1.3. macro expansions 1.4. search 1.5. file in path and some code in which function 1.6. themes switch 1.7. line number toggle 2. bootlin 3. kernel.org 4. github repository]]></content>
+      <categories>
+        <category>kernel</category>
+      </categories>
+      <tags>
+        <tag>kernel</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[kernel-zero-copy]]></title>
     <url>%2F2019%2F08%2F21%2Fkernel-zero-copy%2F</url>
     <content type="text"><![CDATA[在看openssl 1.1.1c 版本源码时，看到有一个zero copy 的字样。这里zero copy(零拷贝)主要指Kernel space 与user space 之间的拷贝过程。 1.Normal R/W1234567#include &lt;unistd.h&gt;ssize_t read(int fd, void *buf, size_t count);ssize_t write(int fd, const void *buf, size_t count);#include &lt;sys/mman.h&gt;void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset);int munmap(void *addr, size_t length); 在read/write 时，需要将userspace 的数据copy 到kernel space。kerne 中用到的函数就有： copy_from_user()copy_to_user() mmap() 能减少read 的copy 动作，直接映射kernel空间到用户空间，但是在write时， 还是需要将write_data_buffer 拷贝到kernel space. 在拷贝文件时，我们可以这样减少copy 的次数。1234size_t filesize = stat_buf.st_size;source = mmap(0, filesize, PROT_READ, MAP_SHARED, f_in, 0);target = mmap(0, filesize, PROT_WRITE, MAP_SHARED, f_out, 0);memcpy(target, source, filesize); 2.zero copy常见的zero copy 涉及到的函数有： sendfile vmsplice, splice tee 除vmsplice（） 是映射函数外，其他借助管道实现，而管道有众所周知的空间限制问题，超过了限制就会hang住，所以每次写入管道的数据量好严格控制，保守的建议值是一个内存页大小，即PAGE_SIZE, 常见为4k。 splice用于在两个文件间移动数据，而无需内核态和用户态的内存拷贝，但需要借助管道（pipe）实现。大概原理就是通过pipe buffer实现一组内核内存页（pages of kernel memory）的引用计数指针（reference-counted pointers），数据拷贝过程中并不真正拷贝数据，而是创建一个新的指向内存页的指针。也就是说拷贝过程实质是指针的拷贝. 123456789101112131415#include &lt;sys/sendfile.h&gt;ssize_t sendfile(int out_fd, int in_fd, off_t *offset, size_t count);#include &lt;fcntl.h&gt;#include &lt;sys/uio.h&gt;ssize_t vmsplice(int fd, const struct iovec *iov,unsigned long nr_segs, unsigned int flags);#include &lt;fcntl.h&gt;ssize_t splice(int fd_in, loff_t *off_in, int fd_out,loff_t *off_out, size_t len, unsigned int flags);#include &lt;fcntl.h&gt;ssize_t tee(int fd_in, int fd_out, size_t len, unsigned int flags); system api remarks sendfile() sendfile的in_fd必须指向支持mmap的文件，也就是真实存在的文件，而不能是socket、管道等文件 splice() splice()函数可以在两个文件描述符之间移动数据，且 其中一个描述符必须是管道描述符 tee() 仅支持在两个管道描述符之间复制数据 splice() 通过pipe 零拷贝文件的用例。 file_in -&gt; pipe[1] (write end) -&gt; pipe0 -&gt; file_out 123456789101112131415int pipefd[2], off_in = 0, off_out = 0;int file_in, file_out, size, flags;file_in = open("input_file", O_RDONLY);file_out = open("output_file", O_RDWR);pipe(pipefd);splice(file_in, &amp;off_in, pipefd[1], NULL, size, flags);splice(pipefd[0], NULL, file_out, &amp;off_out, size, flags);close(file_in);close(file_out);close(pipefd[0]);close(pipefd[1]); 参看资料零复制(zero copy)技术 linux网络编程：splice函数和tee( )函数高效的零拷贝 Linux 中的零拷贝技术 splice Linux下提高性能的系统调用sendfile，splice和tee splice and pipes]]></content>
@@ -26,7 +37,7 @@
   <entry>
     <title><![CDATA[kernel_crypto_II]]></title>
     <url>%2F2019%2F08%2F06%2Fkernel-crypto-II%2F</url>
-    <content type="text"><![CDATA[1. cipher 基础在Kernel crytographic 的cipher 还有如下几类： ablkcipher_tfm(asynchronous multi-block cipher transform) blkcipher_tfm(synchronous multi-block cipher transform) cipher_tfm(Single block cipher transform) 在kernel中cipher 都为skcipher(Symmetric Key cipher, 对称性加密算法) 后面我们会着重介绍ablkcipher 与blkcipher 这种multi-block 类型的加密算法。 2. cipher data structure3. cipher flowregister &amp; unregister12345int crypto_register_alg(struct crypto_alg *alg);int crypto_register_algs(struct crypto_alg *algs, int count);int crypto_unregister_alg(struct crypto_alg *alg);int crypto_unregister_algs(struct crypto_alg *algs, int count); 参看资料]]></content>
+    <content type="text"><![CDATA[1. cipher 基础在Kernel crytographic 的cipher 还有如下几类： ablkcipher_tfm(asynchronous multi-block cipher transform) blkcipher_tfm(synchronous multi-block cipher transform) cipher_tfm(Single block cipher transform) 在kernel中cipher 都为skcipher(Symmetric Key cipher, 对称性加密算法) 后面我们会着重介绍ablkcipher 与blkcipher 这种multi-block 类型的加密算法。 后面我们以kernel/drivers/crypto/atmel-aes.c 进行分析ablkcipher 的驱动。 2. cipher data structure3. cipher flowregister &amp; unregister12345int crypto_register_alg(struct crypto_alg *alg);int crypto_register_algs(struct crypto_alg *algs, int count);int crypto_unregister_alg(struct crypto_alg *alg);int crypto_unregister_algs(struct crypto_alg *algs, int count); 参看资料3.18.11/drivers/crypto/atmel-aes.c]]></content>
       <categories>
         <category>drivers</category>
       </categories>

@@ -123,7 +123,7 @@
 <meta property="og:site_name" content="JShell07&#39;s Blog">
 <meta property="og:description" content="1. cipher 基础在Kernel crytographic 的cipher 还有如下几类：  ablkcipher_tfm(asynchronous multi-block cipher transform)   blkcipher_tfm(synchronous multi-block cipher transform)    cipher_tfm(Single block cipher">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-08-07T03:20:33.049Z">
+<meta property="og:updated_time" content="2019-08-23T02:48:03.226Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel_crypto_II">
 <meta name="twitter:description" content="1. cipher 基础在Kernel crytographic 的cipher 还有如下几类：  ablkcipher_tfm(asynchronous multi-block cipher transform)   blkcipher_tfm(synchronous multi-block cipher transform)    cipher_tfm(Single block cipher">
@@ -245,7 +245,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">14</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">15</span></a>
   </li>
         
         
@@ -253,7 +253,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">51</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">52</span></a>
   </li>
 
       
@@ -397,7 +397,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-07 11:20:33" itemprop="dateModified" datetime="2019-08-07T11:20:33+08:00">2019-08-07</time>
+                <time title="Modified: 2019-08-23 10:48:03" itemprop="dateModified" datetime="2019-08-23T10:48:03+08:00">2019-08-23</time>
               
             
           </span>
@@ -456,8 +456,10 @@
 </ul>
 <p>在kernel中cipher 都为skcipher(Symmetric Key cipher, 对称性加密算法)<br><a id="more"></a></p>
 <p>后面我们会着重介绍ablkcipher 与blkcipher 这种multi-block 类型的加密算法。</p>
+<p>后面我们以kernel/drivers/crypto/atmel-aes.c 进行分析ablkcipher 的驱动。</p>
 <h3 id="2-cipher-data-structure"><a href="#2-cipher-data-structure" class="headerlink" title="2. cipher data structure"></a>2. cipher data structure</h3><h3 id="3-cipher-flow"><a href="#3-cipher-flow" class="headerlink" title="3. cipher flow"></a>3. cipher flow</h3><p><strong>register &amp; unregister</strong><br><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">crypto_register_alg</span><span class="params">(struct crypto_alg *alg)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">crypto_register_algs</span><span class="params">(struct crypto_alg *algs, <span class="keyword">int</span> count)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">crypto_unregister_alg</span><span class="params">(struct crypto_alg *alg)</span></span>;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">crypto_unregister_algs</span><span class="params">(struct crypto_alg *algs, <span class="keyword">int</span> count)</span></span>;</span><br></pre></td></tr></table></figure></p>
-<h3 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h3>
+<h3 id="参看资料"><a href="#参看资料" class="headerlink" title="参看资料"></a>参看资料</h3><p><a href="https://elixir.bootlin.com/linux/v3.18.11/source/drivers/crypto/atmel-aes.c" target="_blank" rel="noopener">3.18.11/drivers/crypto/atmel-aes.c</a></p>
+
       
     </div>
 
@@ -580,7 +582,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">51</span>
+                    <span class="site-state-item-count">52</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -621,7 +623,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">14</span>
+                      
+                    
+                    <span class="site-state-item-count">15</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
