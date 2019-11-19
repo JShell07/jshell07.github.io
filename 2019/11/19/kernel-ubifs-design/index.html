@@ -132,7 +132,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_ubifs_design/journal_tree_in_ram.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_ubifs_design/journal_tree_read_flow.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_ubifs_design/superblock%20management%20scheme.png">
-<meta property="og:updated_time" content="2019-11-19T07:47:11.526Z">
+<meta property="og:updated_time" content="2019-11-19T08:46:56.930Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel-ubifs-design">
 <meta name="twitter:description" content="ubifs(Unsorted block images file system)之前本设计为jffs3，后改名为ubifs。">
@@ -263,7 +263,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">58</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">57</span></a>
   </li>
 
       
@@ -390,7 +390,7 @@
                 
               
 
-              <time title="Created: 2019-11-19 15:27:46 / Modified: 15:47:11" itemprop="dateCreated datePublished" datetime="2019-11-19T15:27:46+08:00">2019-11-19</time>
+              <time title="Created: 2019-11-19 15:27:46 / Modified: 16:46:56" itemprop="dateCreated datePublished" datetime="2019-11-19T15:27:46+08:00">2019-11-19</time>
             
 
             
@@ -517,7 +517,7 @@
 <li>superblock, 包含动态数据，时常被更改，使用wear-leveling 算法挑选。</li>
 </ul>
 <p>ubifs 前3个good eraseblock 如下安排：</p>
-<p>.—————————————————————.<br>| static superblock(1 eraseblock) | anchor area (2 eraseblocks) |<br>`—————————————————————‘</p>
+<p>.———————————————————————————–.<br>| static superblock(1 eraseblock) | anchor area (2 eraseblocks) |<br>`———————————————————————————–.</p>
 <p>2 eraseblocks anchor area 是为了确保数据的安全性在unclean reboots时。</p>
 <p>anchor area 与 dynamic superblock 结构如下：</p>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_ubifs_design/superblock%20management%20scheme.png" alt="superblock management scheme"></p>
@@ -529,7 +529,7 @@
 </ol>
 <p>super eraseblock sector -&gt; chain eraseblock2 sector -&gt; chain eraseblock1 sector -&gt; anchor area sector</p>
 <p>Search 则是存储的相反顺序了。</p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.linux-mtd.infradead.org/doc/ubifs.pdf" target="_blank" rel="noopener">ubifs</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://www.linux-mtd.infradead.org/doc/ubifs.pdf" target="_blank" rel="noopener">ubifs</a></p>
 <p><a href="http://www.linux-mtd.infradead.org/doc/ubifs_whitepaper.pdf" target="_blank" rel="noopener">ubifs_whitepaper</a></p>
 <p><a href="http://www.linux-mtd.infradead.org/doc/JFFS3design.pdf" target="_blank" rel="noopener">jffs3 design</a></p>
 <p><a href="https://www.cnblogs.com/vianzhang/p/7922426.html" target="_blank" rel="noopener">B tree, B+ tree</a></p>
@@ -570,8 +570,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/11/19/ubifs-design/" rel="next" title="ubifs_design">
-                <i class="fa fa-chevron-left"></i> ubifs_design
+              <a href="/2019/09/05/人性的弱点/" rel="next" title="人性的弱点">
+                <i class="fa fa-chevron-left"></i> 人性的弱点
               </a>
             
           </div>
@@ -656,7 +656,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">57</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -836,7 +836,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-index-problem"><span class="nav-text">1. index problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-wandering-tree"><span class="nav-text">1.2. wandering tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-B-tree"><span class="nav-text">1.3. B+ tree</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-indexing-in-ubifs"><span class="nav-text">2. indexing in ubifs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-the-journal"><span class="nav-text">3. the journal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-the-superblock"><span class="nav-text">4. the superblock</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-index-problem"><span class="nav-text">1. index problem</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-wandering-tree"><span class="nav-text">1.2. wandering tree</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-3-B-tree"><span class="nav-text">1.3. B+ tree</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-indexing-in-ubifs"><span class="nav-text">2. indexing in ubifs</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-the-journal"><span class="nav-text">3. the journal</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-the-superblock"><span class="nav-text">4. the superblock</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
