@@ -127,7 +127,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/arm-generic-timer/generic_timer.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/arm-generic-timer/timer_registers_summary.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/arm-generic-timer/generic_timer_registers.png">
-<meta property="og:updated_time" content="2019-11-27T11:57:01.450Z">
+<meta property="og:updated_time" content="2019-11-29T02:33:32.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="arm_generic_timer">
 <meta name="twitter:description" content="通用定时器是基于累加计数硬件，可以用作schedule events或trigger interrupts. It provides:  Generation of timer events as interrupt outputs.   Generation of event streams.   Support for Virtualization Extensions">
@@ -242,7 +242,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">36</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">37</span></a>
   </li>
         
         
@@ -250,7 +250,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">16</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">17</span></a>
   </li>
         
         
@@ -258,7 +258,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">58</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">59</span></a>
   </li>
 
       
@@ -385,12 +385,24 @@
                 
               
 
-              <time title="Created: 2019-11-27 13:59:41 / Modified: 19:57:01" itemprop="dateCreated datePublished" datetime="2019-11-27T13:59:41+08:00">2019-11-27</time>
+              <time title="Created: 2019-11-27 13:59:41" itemprop="dateCreated datePublished" datetime="2019-11-27T13:59:41+08:00">2019-11-27</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2019-11-29 10:33:32" itemprop="dateModified" datetime="2019-11-29T10:33:32+08:00">2019-11-29</time>
               
             
           </span>
@@ -461,33 +473,33 @@
 <thead>
 <tr>
 <th style="text-align:center">子项</th>
-<th style="text-align:left">需求  </th>
+<th style="text-align:left">需求</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">Width</td>
-<td style="text-align:left">至少56bits 宽度，返回64-bit 是以0 进行扩展得到  </td>
+<td style="text-align:left">至少56bits 宽度，返回64-bit 是以0 进行扩展得到</td>
 </tr>
 <tr>
 <td style="text-align:center">Frequency</td>
-<td style="text-align:left">典型范围 1-50MHz. 在power-saving 时可以更低，例如500-20KHz  </td>
+<td style="text-align:left">典型范围 1-50MHz. 在power-saving 时可以更低，例如500-20KHz</td>
 </tr>
 <tr>
 <td style="text-align:center">Roll-over</td>
-<td style="text-align:left">不少于40年  </td>
+<td style="text-align:left">不少于40年</td>
 </tr>
 <tr>
 <td style="text-align:center">Accuracy（精度）</td>
-<td style="text-align:left">24Hours 误差不超过1s  </td>
+<td style="text-align:left">24Hours 误差不超过1s</td>
 </tr>
 <tr>
 <td style="text-align:center">Start-up</td>
-<td style="text-align:left">从0 开始累计  </td>
+<td style="text-align:left">从0 开始累计</td>
 </tr>
 </tbody>
 </table>
-<p>可以通过CNTFRQ 设置/读取 frenquency. </p>
+<p>可以通过CNTFRQ 设置/读取 frequency. </p>
 <h2 id="3-physical-counter"><a href="#3-physical-counter" class="headerlink" title="3. physical counter"></a>3. physical counter</h2><p>CNTPCT（64-bit） 寄存器存储了physical counter</p>
 <p>访问权限：</p>
 <ul>
@@ -497,7 +509,7 @@
 <h2 id="4-virtual-counter"><a href="#4-virtual-counter" class="headerlink" title="4. virtual counter"></a>4. virtual counter</h2><p>在分两种情况：</p>
 <ul>
 <li>没有virtualization Extension时，virtual time 与physical time相同</li>
-<li>具备virtualization Extension，virtual counter里面的值等于physical counter减去 64-bit virtual offset.(<font color="green">virutal_counter = physical_counter - virtual_offset</font>)</li>
+<li>具备virtualization Extension，virtual counter里面的值等于physical counter减去 64-bit virtual offset.(<font color="green">virtual_counter = physical_counter - virtual_offset</font>)</li>
 </ul>
 <p>CNTVCT 寄存器包含了virtual counter。 在Secure PL1 mode, Non-secure PL1, PL2 mode 下能访问。</p>
 <p>CNTVOFF 寄存器包含了virtual offset, 只有Hyp mode或在SCR.NS=1时，Monitor mode下访问。</p>
@@ -520,7 +532,7 @@
 <p>Each timer is implemented as three registers:</p>
 <ul>
 <li>A 64-bit <strong>CompareValue register</strong>, that provides a 64-bit unsigned upcounter.  </li>
-<li>A 32-bit <strong>TimerValue register</strong>, that provides a 32-bit signed downcounter.  </li>
+<li>A 32-bit <strong>TimerValue register</strong>, that provides a 32-bit signed down counter.  </li>
 <li>A 32-bit <strong>Control register</strong>.</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/arm-generic-timer/timer_registers_summary.png" alt="timer registers summary"></p>
@@ -529,21 +541,21 @@
 <thead>
 <tr>
 <th style="text-align:center">timer</th>
-<th style="text-align:left">remarks  </th>
+<th style="text-align:left">remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">PL1 physical timer</td>
-<td style="text-align:left">- secure mode<br>- Non-secure Hyp mode<br>- CNTHCTL.PL1PCEN=1, Non-secure PL1 mode<br> - CNTKCTL.PL0PTEN=1, PL0 mode  </td>
+<td style="text-align:left">- secure mode<br>- Non-secure Hyp mode<br>- CNTHCTL.PL1PCEN=1, Non-secure PL1 mode<br> - CNTKCTL.PL0PTEN=1, PL0 mode</td>
 </tr>
 <tr>
 <td style="text-align:center">virtual timer</td>
-<td style="text-align:left">secure, Non-secure PL1 mode, Hyp mode  </td>
+<td style="text-align:left">secure, Non-secure PL1 mode, Hyp mode</td>
 </tr>
 <tr>
-<td style="text-align:center">PL2 pyhsical timer</td>
-<td style="text-align:left">Non-secure Hyp mode, 或SCR.NS=1时 Secure Monitor  </td>
+<td style="text-align:center">PL2 physical timer</td>
+<td style="text-align:left">Non-secure Hyp mode, 或SCR.NS=1时 Secure Monitor</td>
 </tr>
 </tbody>
 </table>
@@ -552,29 +564,29 @@
 <thead>
 <tr>
 <th style="text-align:center">IRQ NUM</th>
-<th style="text-align:left">Remarks  </th>
+<th style="text-align:left">Remarks</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:center">29</td>
-<td style="text-align:left">physical timer in secure PL1 mode  </td>
+<td style="text-align:left">physical timer in secure PL1 mode</td>
 </tr>
 <tr>
 <td style="text-align:center">30</td>
-<td style="text-align:left">physical timer in Non-secure PL1 mode  </td>
+<td style="text-align:left">physical timer in Non-secure PL1 mode</td>
 </tr>
 <tr>
 <td style="text-align:center">27</td>
-<td style="text-align:left">virtual timer in Non-secure PL1 mode  </td>
+<td style="text-align:left">virtual timer in Non-secure PL1 mode</td>
 </tr>
 <tr>
 <td style="text-align:center">26</td>
-<td style="text-align:left">physical timer in hyp mode  </td>
+<td style="text-align:left">physical timer in hyp mode</td>
 </tr>
 </tbody>
 </table>
-<h3 id="6-1-CompareValue"><a href="#6-1-CompareValue" class="headerlink" title="6.1. CompareValue"></a>6.1. CompareValue</h3><p>CompareValue 的操作可以看作是unsigned 64-bit upcounter.</p>
+<h3 id="6-1-CompareValue"><a href="#6-1-CompareValue" class="headerlink" title="6.1. CompareValue"></a>6.1. CompareValue</h3><p>CompareValue 的操作可以看作是unsigned 64-bit up counter.</p>
 <font color="red">Eventtriggered = (Counter[63:0] - Offset[63:0]) - CompareValue[63:0] &gt;= 0 </font>
 
 <table>
@@ -587,7 +599,7 @@
 <tbody>
 <tr>
 <td style="text-align:center">Counter</td>
-<td style="text-align:left">physical counter, 读取CNTPCT，CNTVCT 寄存器  </td>
+<td style="text-align:left">physical counter, 读取CNTPCT，CNTVCT 寄存器</td>
 </tr>
 <tr>
 <td style="text-align:center">Offset</td>
@@ -599,12 +611,13 @@
 </tr>
 </tbody>
 </table>
-<h3 id="6-2-TimerValue"><a href="#6-2-TimerValue" class="headerlink" title="6.2. TimerValue"></a>6.2. TimerValue</h3><p>TimerValue 的操作可以看作是signed 32-bit downcounter.</p>
+<h3 id="6-2-TimerValue"><a href="#6-2-TimerValue" class="headerlink" title="6.2. TimerValue"></a>6.2. TimerValue</h3><p>TimerValue 的操作可以看作是signed 32-bit down counter.</p>
 <font color="red">Eventtriggered = (TimerValue &lt;= 0) </font>
 
 <p>TimerValue 值来源于CNTP_TVAL, CNTHP_TVAL, or CNTV_TVAL.</p>
 <h2 id="7-Generic-Timer-registers"><a href="#7-Generic-Timer-registers" class="headerlink" title="7. Generic Timer registers"></a>7. Generic Timer registers</h2><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/arm-generic-timer/generic_timer_registers.png" alt="generic timer registers"></p>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>cortex_a7_mpcore_r0p5_trm(arm_trm).pdf<br>arm_architecture_reference_manual(arm_arm).pdf</p>
+<p><a href="http://www.wowotech.net/timer_subsystem/armgeneraltimer.html" target="_blank" rel="noopener">Linux时间子系统之（十七）：ARM generic timer 驱动分析</a></p>
 
       
     </div>
@@ -647,6 +660,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/28/kernel-timer-system/" rel="prev" title="kernel-timer-system">
+                kernel-timer-system <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -724,7 +741,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">58</span>
+                    <span class="site-state-item-count">59</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -769,7 +786,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">16</span>
+                      
+                    
+                    <span class="site-state-item-count">17</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -854,7 +873,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">36</span>
+                      
+                    
+                    <span class="site-state-item-count">37</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
