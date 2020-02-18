@@ -14,7 +14,7 @@
   <entry>
     <title><![CDATA[study contents]]></title>
     <url>%2F2019%2F12%2F03%2Fstudy_contents%2F</url>
-    <content type="text"><![CDATA[整理学习笔记汇总链接。 bootloaderbootloader kernelArchARMarm-generic-timer DriversMTDLinux-Flashkernel_mtd kernel_ubi Cryptokernel-crypto-Ikernel-crypto-IIkernel-crypto-III Clock sourcekernel-timer-system mmkernel-zero-copykernel_virtual_addr_mapkernel_dma_mem filesystemubifskernel-ubifs-design networkipv6 toolskernel_source_code_online buildbot 类似的编译tool 还有出现在yocto 上的toaster。JAVA 应用方向上的maven。(JAVA集成工具发展ant -&gt; maven -&gt; gradle(新的发展趋势)) 设计模式Design_Pattern Design_Pattern_II Design_Pattern_III 敏捷开发敏捷软件开发原则与模式及实践 UMLC++_UML DockerDocker 简单介绍]]></content>
+    <content type="text"><![CDATA[整理学习笔记汇总链接。 1. bootloaderbootloader 2. kernel2.1. ArchARMarm-generic-timer 2.2. Drivers2.2.1. MTDLinux-Flashkernel_mtd kernel_ubi 2.2.2. Cryptokernel-crypto-Ikernel-crypto-IIkernel-crypto-III 2.2.2. Clock sourcekernel-timer-system 2.3. mmkernel-zero-copykernel_virtual_addr_mapkernel_dma_mem 2.4. filesystem2.4.1. ubifskernel-ubifs-design 2.5. networkipv6 2.6. toolskernel_source_code_online buildbot 类似的编译tool 还有出现在yocto 上的toaster。JAVA 应用方向上的maven。(JAVA集成工具发展ant -&gt; maven -&gt; gradle(新的发展趋势)) 3. 设计模式Design_Pattern Design_Pattern_II Design_Pattern_III 4. 敏捷开发敏捷软件开发原则与模式及实践 5. UMLC++_UML 6. DockerDocker 简单介绍]]></content>
       <categories>
         <category>kernel</category>
       </categories>
@@ -81,7 +81,7 @@
   <entry>
     <title><![CDATA[穷查理宝典]]></title>
     <url>%2F2019%2F08%2F27%2F%E7%A9%B7%E6%9F%A5%E7%90%86%E5%AE%9D%E5%85%B8%2F</url>
-    <content type="text"><![CDATA[查理·芒格， 沃伦·巴菲特的黄金搭档，伯克希尔·哈撒韦公司的副主席，同时也是被号称为移动的书屋。 无论在顺境，逆境，都保持客观积极的心态。 1. 核心原则在最开始当律师时，查理并没有顽疾祖父教导的铁律：专注于当前的任务，控制支出。 耐心是最伟大的美德。– 马尔库斯，罗马政治家 对付失望，那就是幽默。 2.芒格的生活、学习和决策方法凡事往简单处想，往认真处行。（笨人做加法，聪明人做减法，智者做除法） 以跨学科的方式思考 在头脑中拥有一些思维模型，并且愿意甚至渴望去证实和承认自己的错误，并从中吸取教训。否则手里只拿着铁锤的人看来，每个问题都像是钉子。 记住浅显的，而不是掌握深奥的。我们从来不去试图成为非常聪明的人，而是持续地试图别变成蠢货，久而久子，我们这种人便能获得非常大的优势。 3. 投资评估过程先弄清应该别做什么事情，然后才会考虑接下来采取的行动。 我只想知道我将来会是在什么地方，这样我就可以永远不去那里啦。 花在学习和思考上的时间，比花在行动上的时间要多。 查理在意的并不是他本人能否赢牌，而是是否能把手上的牌打好。 你要有浓厚的兴趣去弄明白正在发生的事情背后的原因。如果你能长期保持这种心态，你关注现实的能力将会逐渐得到提高。 弄清自己的优势在哪里，必须在自己的能力圈之内竞争。 一个人可以从书籍上或者人们身上培养眼光。 聪明人在发现机会之后就会狠狠下注，碰到好机会就下重注，其他时间则按兵不动。 投资清单： 随大流只会让你望平均值靠近，只能获得中等业绩 官方的阅读把自己培养成一个终生自学者，培养好奇心，每天努力让自己更聪明一点点 比求胜的意愿更重要的是做好准备的意愿 记住浅显的好过掌握深奥的 享受结果，也享受过程，因为你活在过程当中 认识和适应你身边的世界的真实本质，别指望它来适应你 最根本的人生哲学：准备、纪律、耐心、决心。]]></content>
+    <content type="text"><![CDATA[查理·芒格， 沃伦·巴菲特的黄金搭档，伯克希尔·哈撒韦公司的副主席，同时也是被号称为移动的书屋。 无论在顺境，逆境，都保持客观积极的心态。 1. 核心原则在最开始当律师时，查理并没有忘记祖父教导的铁律：专注于当前的任务，控制支出。 耐心是最伟大的美德。– 马尔库斯，罗马政治家 对付失望，那就是幽默。 2.芒格的生活、学习和决策方法凡事往简单处想，往认真处行。（笨人做加法，聪明人做减法，智者做除法） 以跨学科的方式思考 在头脑中拥有一些思维模型，并且愿意甚至渴望去证实和承认自己的错误，并从中吸取教训。否则手里只拿着铁锤的人看来，每个问题都像是钉子。 记住浅显的，而不是掌握深奥的。我们从来不去试图成为非常聪明的人，而是持续地试图别变成蠢货，久而久子，我们这种人便能获得非常大的优势。 3. 投资评估过程先弄清应该别做什么事情，然后才会考虑接下来采取的行动。 我只想知道我将来会是在什么地方，这样我就可以永远不去那里啦。 花在学习和思考上的时间，比花在行动上的时间要多。 查理在意的并不是他本人能否赢牌，而是是否能把手上的牌打好。 你要有浓厚的兴趣去弄明白正在发生的事情背后的原因。如果你能长期保持这种心态，你关注现实的能力将会逐渐得到提高。 弄清自己的优势在哪里，必须在自己的能力圈之内竞争。 一个人可以从书籍上或者人们身上培养眼光。 聪明人在发现机会之后就会狠狠下注，碰到好机会就下重注，其他时间则按兵不动。 投资清单： 随大流只会让你望平均值靠近，只能获得中等业绩 广泛的阅读把自己培养成一个终生自学者，培养好奇心，每天努力让自己更聪明一点点 比求胜的意愿更重要的是做好准备的意愿 记住浅显的好过掌握深奥的 享受结果，也享受过程，因为你活在过程当中 认识和适应你身边的世界的真实本质，别指望它来适应你 最根本的人生哲学：准备、纪律、耐心、决心。]]></content>
       <categories>
         <category>bookmarks</category>
       </categories>
