@@ -233,7 +233,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">38</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">40</span></a>
   </li>
         
         
@@ -249,7 +249,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">62</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">64</span></a>
   </li>
 
       
@@ -531,12 +531,24 @@
                 
               
 
-              <time title="Created: 2020-02-20 18:17:47 / Modified: 18:36:11" itemprop="dateCreated datePublished" datetime="2020-02-20T18:17:47+08:00">2020-02-20</time>
+              <time title="Created: 2020-02-20 18:17:47" itemprop="dateCreated datePublished" datetime="2020-02-20T18:17:47+08:00">2020-02-20</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-02-21 09:49:35" itemprop="dateModified" datetime="2020-02-21T09:49:35+08:00">2020-02-21</time>
               
             
           </span>
@@ -755,6 +767,339 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/01/Better-Man/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/kernel-mm-cache/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JShell07">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JShell07's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/kernel-mm-cache/" itemprop="url">
+                  kernel_mm_cache
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-04 17:15:28 / Modified: 17:20:56" itemprop="dateCreated datePublished" datetime="2020-03-04T17:15:28+08:00">2020-03-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/memory/" itemprop="url" rel="index"><span itemprop="name">memory</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/arm_cortex-a7_mpcore_cpu_structure.png" alt="arm_cortex-a7_mpcore_cpu_structure"></p>
+<p>从ARM Cortex-a7 mpcore（armv7）的架构图上可以看出, cortex-a7 每个核独享各自L1 cache， 共享L2 cache（使用snoop control unit， soc 保证per core 数据的一致性）。</p>
+<p>cache 分为:  </p>
+<ul>
+<li>Data Cache</li>
+<li>Instruction Cache</li>
+</ul>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/04/kernel-mm-cache/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/kernel-mm-base/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JShell07">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JShell07's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/03/04/kernel-mm-base/" itemprop="url">
+                  kernel_mm_base
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-03-04 17:05:37 / Modified: 17:14:22" itemprop="dateCreated datePublished" datetime="2020-03-04T17:05:37+08:00">2020-03-04</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/memory/" itemprop="url" rel="index"><span itemprop="name">memory</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <h2 id="1-术语"><a href="#1-术语" class="headerlink" title="1. 术语"></a>1. 术语</h2><p><strong>UMA（Uniform memory access）</strong><br>系统中的所有的processor共享一个统一的，一致的物理内存空间。无论从哪一个processor发起访问，对内存地址的访问时间都是一样的。</p>
+<p><strong>NUMA（Non-uniform memory access）</strong><br>对某个内存地址的访问是和该memory与processor之间的相对位置有关的。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/03/04/kernel-mm-base/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1677,359 +2022,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/28/李开复自传/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JShell07">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JShell07's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/28/李开复自传/" itemprop="url">
-                  李开复自传
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-	  
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-28 19:51:20" itemprop="dateCreated datePublished" datetime="2019-08-28T19:51:20+08:00">2019-08-28</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-08-30 11:30:20" itemprop="dateModified" datetime="2019-08-30T11:30:20+08:00">2019-08-30</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bookmarks/" itemprop="url" rel="index"><span itemprop="name">bookmarks</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://gss2.bdstatic.com/-fo3dSag_xI4khGkpoWK1HF6hhy/baike/w%3D268/sign=65c6a093b74543a9f51bfdca26168a7b/4d086e061d950a7bd4d730a30ad162d9f3d3c9f3.jpg" alt=""></p>
-<p>抓住一切去探寻生命的意义，总有一天，世界将因你不同。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/28/李开复自传/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/08/27/穷查理宝典/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JShell07">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JShell07's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/08/27/穷查理宝典/" itemprop="url">
-                  穷查理宝典
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-	  
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2019-08-27 19:52:50" itemprop="dateCreated datePublished" datetime="2019-08-27T19:52:50+08:00">2019-08-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-02-18 15:41:04" itemprop="dateModified" datetime="2020-02-18T15:41:04+08:00">2020-02-18</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bookmarks/" itemprop="url" rel="index"><span itemprop="name">bookmarks</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><a href="https://baike.baidu.com/item/%E6%9F%A5%E7%90%86%C2%B7%E8%8A%92%E6%A0%BC" target="_blank" rel="noopener">查理·芒格</a>， 沃伦·巴菲特的黄金搭档，伯克希尔·哈撒韦公司的副主席，同时也是被号称为移动的书屋。</p>
-<p><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/s%3D220/sign=b5421fb0e7fe9925cf0c6e5204a95ee4/cc11728b4710b9124797f18bc4fdfc0392452274.jpg" alt=""></p>
-<p>无论在顺境，逆境，都保持客观积极的心态。</p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2019/08/27/穷查理宝典/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2081,7 +2073,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">62</span>
+                    <span class="site-state-item-count">64</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -2217,7 +2209,11 @@
                     
                       
                     
-                    <span class="site-state-item-count">38</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">40</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
