@@ -134,7 +134,7 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/write_back.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/MESI.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/MOESI.png">
-<meta property="og:updated_time" content="2020-03-04T09:20:56.243Z">
+<meta property="og:updated_time" content="2020-03-09T09:40:35.782Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel_mm_cache">
 <meta name="twitter:description" content="从ARM Cortex-a7 mpcore（armv7）的架构图上可以看出, cortex-a7 每个核独享各自L1 cache， 共享L2 cache（使用snoop control unit， soc 保证per core 数据的一致性）。 cache 分为:    Data Cache Instruction Cache">
@@ -392,12 +392,24 @@
                 
               
 
-              <time title="Created: 2020-03-04 17:15:28 / Modified: 17:20:56" itemprop="dateCreated datePublished" datetime="2020-03-04T17:15:28+08:00">2020-03-04</time>
+              <time title="Created: 2020-03-04 17:15:28" itemprop="dateCreated datePublished" datetime="2020-03-04T17:15:28+08:00">2020-03-04</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2020-03-09 17:40:35" itemprop="dateModified" datetime="2020-03-09T17:40:35+08:00">2020-03-09</time>
               
             
           </span>
@@ -470,7 +482,21 @@
 </ul>
 <h3 id="2-1-直接映射缓存（Direct-mapped-cache）"><a href="#2-1-直接映射缓存（Direct-mapped-cache）" class="headerlink" title="2.1. 直接映射缓存（Direct mapped cache）"></a>2.1. 直接映射缓存（Direct mapped cache）</h3><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/direct_map_cache.png" alt="direct mapped cache"><br>如果依次访问0x00, 0x40, 0x80 三者index 都相同，访问0x40 时, tag match失败，cache miss 重新加载数据，这种现象称为<strong>cache颠簸(cache thrashing)</strong>。 访问0x80， tag不同cache miss，重新加载数据。这种情况，cache的引入并没有性能有所提升，因此，引入了组相连映射。</p>
 <h3 id="2-2-多路组相连缓存（multiple-ways-set-associative-cache）"><a href="#2-2-多路组相连缓存（multiple-ways-set-associative-cache）" class="headerlink" title="2.2. 多路组相连缓存（multiple ways set associative cache）"></a>2.2. 多路组相连缓存（multiple ways set associative cache）</h3><p>平均将cache 分成多份，每一份就是一路(way)。在每一路中index 相同的cache lines称为组(set)。直接映射也可以称之为单路组相连。</p>
-<p>多路组相连与直接映射对比：<br>优势 | 劣势<br>:- | :-<br>在相同的index 情况下， 如果一路(way) 中miss, 可以继续在另一路中寻找相同index 的cache line | 硬件成本更高，每次比较tag 需要比较多个cache line</p>
+<p>多路组相连与直接映射对比：  </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">优势</th>
+<th style="text-align:left">劣势</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">在相同的index 情况下， 如果一路(way) 中miss, 可以继续在另一路中寻找相同index 的cache line</td>
+<td style="text-align:left">硬件成本更高，每次比较tag 需要比较多个cache line</td>
+</tr>
+</tbody>
+</table>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/2_way_set_associative_cache.png" alt="2-way set associative cache"></p>
 <p>example： 32KB cache, 32 Bytes cache line, 4 ways, address bus 48-bit<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/4_way_set_associative_cache.png" alt="4-way set associative cache"></p>
 <h3 id="2-3-全相连缓存（Full-associative-cache）"><a href="#2-3-全相连缓存（Full-associative-cache）" class="headerlink" title="2.3. 全相连缓存（Full associative cache）"></a>2.3. 全相连缓存（Full associative cache）</h3><p>所有cache line 都在一个组内，因此，不需要index。任意地址的数据都可以缓存在任意cache line。但伴随硬件的成本，设计复杂度也会增加。</p>
@@ -573,7 +599,33 @@
 </table>
 <p>Fixme<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/MOESI.png" alt="MOESI"></p>
 <h3 id="4-3-automic-operating"><a href="#4-3-automic-operating" class="headerlink" title="4.3. automic operating"></a>4.3. automic operating</h3><p>ARM 提供了原子操作的指令,ldrex, strex, clrex系列指令。这能保证在多核之间对数据进行唯一性的访问。</p>
-<p>配对使用的指令：<br>load instruction | store instruction | remarks<br>:- | :- | :-<br>ldrexb | strexb | byte access<br>ldrexh | strexh | half world access<br>ldrexd | strexd | double world access</p>
+<p>配对使用的指令：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">load instruction</th>
+<th style="text-align:left">store instruction</th>
+<th style="text-align:left">remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">ldrexb</td>
+<td style="text-align:left">strexb</td>
+<td style="text-align:left">byte access</td>
+</tr>
+<tr>
+<td style="text-align:left">ldrexh</td>
+<td style="text-align:left">strexh</td>
+<td style="text-align:left">half world access</td>
+</tr>
+<tr>
+<td style="text-align:left">ldrexd</td>
+<td style="text-align:left">strexd</td>
+<td style="text-align:left">double world access</td>
+</tr>
+</tbody>
+</table>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># load Ry 地址中的数据到Rx，并标记对该段内存独占访问</span></span><br><span class="line"># 如果已经标记过，不影响操作</span><br><span class="line">ldrex Rx, [Ry]</span><br><span class="line"></span><br><span class="line"># 如果Rz 已经被标记为独占访问，store Ry 到Rz 地址内存，清除独占标记并<span class="built_in">set</span> Rx-&gt;<span class="number">0</span></span><br><span class="line"># 如果Rz 没有设定为独占访问，不更新内存，并<span class="built_in">set</span> Rx-&gt;<span class="number">1</span> 表明失败</span><br><span class="line">strex Rx, Ry, [Rz]</span><br></pre></td></tr></table></figure>
 <h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.wowotech.net/memory_management/458.html" target="_blank" rel="noopener">浅谈Cache Memory</a><br><a href="https://blog.csdn.net/loongshawn/article/details/83083346" target="_blank" rel="noopener">缓存一致性协议MESI和MOESI</a><br><a href="http://www.360doc.com/content/19/0410/14/496343_827699509.shtml" target="_blank" rel="noopener">MESI &amp; MOESI 协议</a><br><a href="https://blog.csdn.net/shenhuxi_yu/article/details/90617675" target="_blank" rel="noopener">arm64 memory 属性 Device-nGnRnE</a><br><a href="https://blog.csdn.net/roland_sun/article/details/47670099" target="_blank" rel="noopener">ARM平台下独占访问指令LDREX和STREX的原理与使用详解</a>  </p>
 
