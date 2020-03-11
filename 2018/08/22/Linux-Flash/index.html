@@ -128,10 +128,15 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/Linux_MTD_Structure.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Common_Partitions.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Read_Flow.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_to_cache.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache_x4.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache_quad_io.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Write_Flow.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/giga_spi_nand_block.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/Wear_Leveling.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/BBT.png">
-<meta property="og:updated_time" content="2019-08-06T12:13:45.206Z">
+<meta property="og:updated_time" content="2020-03-11T06:41:45.025Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux_Flash">
 <meta name="twitter:description" content="1. Flash闪存（Flash Memory）是非易失性长寿命存储器，是电子可擦除只读存储器（EEPROM）的变种，而闪存的大部分芯片需要块擦除。">
@@ -406,7 +411,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2019-08-06 20:13:45" itemprop="dateModified" datetime="2019-08-06T20:13:45+08:00">2019-08-06</time>
+                <time title="Modified: 2020-03-11 14:41:45" itemprop="dateModified" datetime="2020-03-11T14:41:45+08:00">2020-03-11</time>
               
             
           </span>
@@ -464,7 +469,7 @@
 <blockquote>
 <p>N型半导体即自由电子浓度远大于空穴浓度的杂质半导体。(对于锗、硅类半导体材料，掺杂Ⅴ族元素(磷、砷等)<br>P型半导体即空穴浓度远大于自由电子浓度的杂质半导体。在纯净的硅晶体中掺入三价元素（如硼）</p>
 </blockquote>
-<p>常见的Flash有</p>
+<p>常见的Flash有:  </p>
 <ul>
 <li>NOR Flash</li>
 <li>NAND Flash</li>
@@ -520,8 +525,9 @@
 </tr>
 </tbody>
 </table>
-<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/Large_Page_Nand.png" alt="Large Page Nand"></p>
-<p>注：Spare Area 常常可以存储一些BBT信息。</p>
+<p>两者更详细的比较可以通过Flash 厂商的datasheet 查看。</p>
+<p><code>Large Page Nand Flash</code><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/Large_Page_Nand.png" alt="Large Page Nand"></p>
+<p>注：Spare Area 常常可以存储BBT(Bad Block Table), ECC, 逻辑映射表等信息。</p>
 <p>Nand Flash 硬件特性：</p>
 <ul>
 <li>R/W 最小单位，Page</li>
@@ -532,9 +538,67 @@
 <h2 id="2-Linux-MTD"><a href="#2-Linux-MTD" class="headerlink" title="2. Linux MTD"></a>2. Linux MTD</h2><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/Linux_MTD_Structure.png" alt="MTD Structure"></p>
 <p>常见MTD 分区为：</p>
 <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Common_Partitions.png" alt=""></p>
-<h2 id="3-R-W-Flow"><a href="#3-R-W-Flow" class="headerlink" title="3. R/W Flow"></a>3. R/W Flow</h2><p><code>MTD Read Flow</code><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Read_Flow.png" alt="MTD_Read_Flow"></p>
-<p><br></p>
-<p><code>MTD Read Flow</code><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Write_Flow.png" alt="MTD_Write_Flow"></p>
+<h2 id="3-Operation"><a href="#3-Operation" class="headerlink" title="3. Operation"></a>3. Operation</h2><p>Flash 常见的操作有Read, Erase, Write, WP(Write Protect)</p>
+<p><code>MTD Read Flow</code><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Read_Flow.png" alt="MTD_Read_Flow"></p>
+<p>使用多并口时， SPI 会用到WP#， HOLD# 等管脚。<br>Standard SPI: SCLK, CS#, SI, SO<br>Dual SPI: SCLK, CS#, IO0(SI), IO1(SO)<br>Quad SPI: SCLK, CS#, IO0(SI), IO1(SO), IO2(WP#), IO3(HOLD#)</p>
+<p>在SPI 接口上可能会有如下形式的Read：</p>
+<ul>
+<li>Page Read</li>
+<li>Page Read to cache</li>
+<li>page from cache</li>
+<li>fast read from cache</li>
+<li>read from cache X2</li>
+<li>read from cache X4</li>
+<li>read from cache dual IO</li>
+<li>read from cache quad IO</li>
+</ul>
+<p>SPI Nand Read 时序一般为：</p>
+<ol>
+<li>13H(page read to cache)</li>
+<li>0FH(get features coomand to read the status)</li>
+<li>03H/OBH (read from cache), 3BH/6BH(read from cache x2/x4), BBH/EBH(Read from cache dual/quad IO)</li>
+</ol>
+<p>spi_nand_read_from_cache<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache.png" alt="spi_nand_read_from_cache"></p>
+<p>spi_nand_read_to_cache<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_to_cache.png" alt="spi_nand_read_to_cache"></p>
+<p>spi_nand_read_from_cache_x4<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache_x4.png" alt="spi_nand_read_from_cache_x4"></p>
+<p>spi_nand_read_from_cache_quad_io<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/spi_nand_read_from_cache_quad_io.png" alt="spi_nand_read_from_cache_quad_io"><br><br></p>
+<p><code>MTD Write Flow</code><br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/MTD_Write_Flow.png" alt="MTD_Write_Flow"></p>
+<p>在SPI Nand Flash 上的时序图流程一般为：</p>
+<ol>
+<li>02H (PROGRAM LOAD)/32H (PROGRAM LOAD x4)</li>
+<li>06H (WRITE ENABLE)</li>
+<li>10H (PROGRAM EXECUTE)</li>
+<li>0FH (GET FEATURE command to read the status)</li>
+</ol>
+<p>program load 是设定addr， 并将write data 加载到cache register（一般超过PAGE SIZE 如2K+oob 的数据会被ignore），打开WE#，在program execute 命令才执行。</p>
+<p><code>WP(Write Protect)</code><br>一般Flash 还具备block 相关指令。</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">指令</th>
+<th style="text-align:left">说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">block</td>
+<td style="text-align:left">对某一区域Flash 进行写保护，不能写入</td>
+</tr>
+<tr>
+<td style="text-align:center">un-block</td>
+<td style="text-align:left">解除block 限制</td>
+</tr>
+<tr>
+<td style="text-align:center">block down</td>
+</tr>
+<tr>
+<td style="text-align:center">lock status</td>
+<td style="text-align:left">查看状态</td>
+</tr>
+</tbody>
+</table>
+<p>可能每个Flash 芯片厂商有所不同, 例如Giga SPI Nand Flash block, 通过SET Features，来控制block<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/giga_spi_nand_block.png" alt="giga_spi_nand_block"></p>
+<p><code>Erase</code><br>Nand Flash 的erase 只能是Block(常见为64/128K) Erase。而Nor Flash 可以是Sector（一般4K） 或Block（32/64K） Erase。</p>
 <h2 id="4-Bad-Block"><a href="#4-Bad-Block" class="headerlink" title="4. Bad Block"></a>4. Bad Block</h2><p>Nand Flash 工艺不能保证Memory Cell在其生命周期中保持性能的可靠性，使用寿命一般100万次。</p>
 <p>坏块一般分为：</p>
 <ul>
@@ -549,6 +613,7 @@
 <p><strong>Buffer Cache</strong><br>类似于UBIFS 都会带有buffer cache，以及压缩，以此来尽量降低对I/O的操作。</p>
 <p><code>应对坏块</code></p>
 <p>为了保证数据正确性的R/W，我们使用BBT（Bad Block Table）。<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/Linux_Flash/BBT.png" alt=""></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://www.gigadevice.com/datasheet/gd5f1gq4xfxxh/" target="_blank" rel="noopener">gd5f1gq4xfxxh_v1.2_20190510</a><br><a href="https://www.gigadevice.com/datasheet/gd25b127d/" target="_blank" rel="noopener">gd25b127d_v1.4_20180725</a></p>
 
       
     </div>
@@ -721,7 +786,7 @@
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-count">16</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -864,7 +929,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Flash"><span class="nav-text">1. Flash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Linux-MTD"><span class="nav-text">2. Linux MTD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-R-W-Flow"><span class="nav-text">3. R/W Flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Bad-Block"><span class="nav-text">4. Bad Block</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Flash"><span class="nav-text">1. Flash</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Linux-MTD"><span class="nav-text">2. Linux MTD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Operation"><span class="nav-text">3. Operation</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Bad-Block"><span class="nav-text">4. Bad Block</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
