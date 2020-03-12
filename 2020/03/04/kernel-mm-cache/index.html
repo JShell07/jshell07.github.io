@@ -134,7 +134,11 @@
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/write_back.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/MESI.png">
 <meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/MOESI.png">
-<meta property="og:updated_time" content="2020-03-09T09:41:40.216Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/cache_maintenance_operations.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POU.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POC.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POU%26POC.png">
+<meta property="og:updated_time" content="2020-03-12T08:44:38.792Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="kernel_mm_cache">
 <meta name="twitter:description" content="从ARM Cortex-a7 mpcore（armv7）的架构图上可以看出, cortex-a7 每个核独享各自L1 cache， 共享L2 cache（使用snoop control unit， soc 保证per core 数据的一致性）。 cache 分为:    Data Cache Instruction Cache">
@@ -249,7 +253,7 @@
           
           <li class="menu-item menu-item-tags">
     <a href="/tags/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">40</span></a>
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags<span class="badge">41</span></a>
   </li>
         
         
@@ -257,7 +261,7 @@
           
           <li class="menu-item menu-item-categories">
     <a href="/categories/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">17</span></a>
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories<span class="badge">16</span></a>
   </li>
         
         
@@ -265,7 +269,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">64</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">65</span></a>
   </li>
 
       
@@ -409,7 +413,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-09 17:41:40" itemprop="dateModified" datetime="2020-03-09T17:41:40+08:00">2020-03-09</time>
+                <time title="Modified: 2020-03-12 16:44:38" itemprop="dateModified" datetime="2020-03-12T16:44:38+08:00">2020-03-12</time>
               
             
           </span>
@@ -627,7 +631,13 @@
 </tbody>
 </table>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta"># load Ry 地址中的数据到Rx，并标记对该段内存独占访问</span></span><br><span class="line"># 如果已经标记过，不影响操作</span><br><span class="line">ldrex Rx, [Ry]</span><br><span class="line"></span><br><span class="line"># 如果Rz 已经被标记为独占访问，store Ry 到Rz 地址内存，清除独占标记并<span class="built_in">set</span> Rx-&gt;<span class="number">0</span></span><br><span class="line"># 如果Rz 没有设定为独占访问，不更新内存，并<span class="built_in">set</span> Rx-&gt;<span class="number">1</span> 表明失败</span><br><span class="line">strex Rx, Ry, [Rz]</span><br></pre></td></tr></table></figure>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.wowotech.net/memory_management/458.html" target="_blank" rel="noopener">浅谈Cache Memory</a><br><a href="https://blog.csdn.net/loongshawn/article/details/83083346" target="_blank" rel="noopener">缓存一致性协议MESI和MOESI</a><br><a href="http://www.360doc.com/content/19/0410/14/496343_827699509.shtml" target="_blank" rel="noopener">MESI &amp; MOESI 协议</a><br><a href="https://blog.csdn.net/shenhuxi_yu/article/details/90617675" target="_blank" rel="noopener">arm64 memory 属性 Device-nGnRnE</a><br><a href="https://blog.csdn.net/roland_sun/article/details/47670099" target="_blank" rel="noopener">ARM平台下独占访问指令LDREX和STREX的原理与使用详解</a>  </p>
+<h2 id="5-Cache-Maintenance-Operations"><a href="#5-Cache-Maintenance-Operations" class="headerlink" title="5. Cache Maintenance Operations"></a>5. Cache Maintenance Operations</h2><p>armv7 下cache 可以依据MVA(modified virtual address)，set/way或全部内容进行维护更新,可参看如下图：<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/cache_maintenance_operations.png" alt="cache_maintenance_operations"></p>
+<p>POU - to point of unification<br>POC - to point of coherence</p>
+<p>POU 主要指Instruction, data, TLB 看到的为同一份mem<br>POC 主要指各个Core 之间看到的为同一份mem。</p>
+<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POU.png" alt="POU"></p>
+<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POC.png" alt="POC"></p>
+<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/cache/POU%26POC.png" alt="POU&amp;POC"></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.wowotech.net/memory_management/458.html" target="_blank" rel="noopener">浅谈Cache Memory</a><br><a href="https://blog.csdn.net/loongshawn/article/details/83083346" target="_blank" rel="noopener">缓存一致性协议MESI和MOESI</a><br><a href="http://www.360doc.com/content/19/0410/14/496343_827699509.shtml" target="_blank" rel="noopener">MESI &amp; MOESI 协议</a><br><a href="https://blog.csdn.net/shenhuxi_yu/article/details/90617675" target="_blank" rel="noopener">arm64 memory 属性 Device-nGnRnE</a><br><a href="https://blog.csdn.net/roland_sun/article/details/47670099" target="_blank" rel="noopener">ARM平台下独占访问指令LDREX和STREX的原理与使用详解</a><br><a href="https://community.arm.com/cn/f/discussions/3437/pou-poc/9674" target="_blank" rel="noopener">什么是PoU和PoC？</a></p>
 
       
     </div>
@@ -670,6 +680,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/03/12/kernel-tlb/" rel="prev" title="kernel_tlb">
+                kernel_tlb <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -747,7 +761,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">64</span>
+                    <span class="site-state-item-count">65</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -759,8 +773,6 @@
                 <div class="site-state-item site-state-categories">
                   <a href="/categories/index.html">
                     
-                    
-                      
                     
                       
                     
@@ -887,7 +899,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">40</span>
+                      
+                    
+                    <span class="site-state-item-count">41</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -937,7 +951,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Base"><span class="nav-text">1. Base</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-映射方式"><span class="nav-text">2. 映射方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-直接映射缓存（Direct-mapped-cache）"><span class="nav-text">2.1. 直接映射缓存（Direct mapped cache）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-多路组相连缓存（multiple-ways-set-associative-cache）"><span class="nav-text">2.2. 多路组相连缓存（multiple ways set associative cache）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-全相连缓存（Full-associative-cache）"><span class="nav-text">2.3. 全相连缓存（Full associative cache）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-更新策略"><span class="nav-text">3. 更新策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-写直通-write-through"><span class="nav-text">3.1. 写直通(write through)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-写回-write-back"><span class="nav-text">3.2. 写回(write back)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-coherent"><span class="nav-text">4. coherent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-memory-attribute"><span class="nav-text">4.1. memory attribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-cache-一致性协议"><span class="nav-text">4.2. cache 一致性协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MESI"><span class="nav-text">MESI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MOESI"><span class="nav-text">MOESI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-automic-operating"><span class="nav-text">4.3. automic operating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Base"><span class="nav-text">1. Base</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-映射方式"><span class="nav-text">2. 映射方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-直接映射缓存（Direct-mapped-cache）"><span class="nav-text">2.1. 直接映射缓存（Direct mapped cache）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-多路组相连缓存（multiple-ways-set-associative-cache）"><span class="nav-text">2.2. 多路组相连缓存（multiple ways set associative cache）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-3-全相连缓存（Full-associative-cache）"><span class="nav-text">2.3. 全相连缓存（Full associative cache）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-更新策略"><span class="nav-text">3. 更新策略</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-写直通-write-through"><span class="nav-text">3.1. 写直通(write through)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-写回-write-back"><span class="nav-text">3.2. 写回(write back)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-coherent"><span class="nav-text">4. coherent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-memory-attribute"><span class="nav-text">4.1. memory attribute</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-cache-一致性协议"><span class="nav-text">4.2. cache 一致性协议</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#MESI"><span class="nav-text">MESI</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MOESI"><span class="nav-text">MOESI</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-3-automic-operating"><span class="nav-text">4.3. automic operating</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Cache-Maintenance-Operations"><span class="nav-text">5. Cache Maintenance Operations</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

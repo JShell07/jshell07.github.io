@@ -115,27 +115,40 @@
 
 
 
-  <meta name="description" content="褚时健（1928年1月23日-2019年3月5日），云南红塔集团有限公司和玉溪红塔烟草（集团）有限责任公司原董事长，褚橙创始人，先后经历两次成功的创业人生，被誉为中国烟草大王、中国橙王。">
-<meta name="keywords" content="bookmarks">
+  <meta name="description" content="TLB(Translation lookaside buffer) 本质上也是一种cache， 物理特性与D/I Cache 类似（SDRAM）。D/I Cache 中cache 的是数据或者指令，而TLB帮助cpu 取指或执行访问mem指令时将VA（Virtual Address）转换成PA（Physical Address）, 减少HW translation table walk 访问mai">
+<meta name="keywords" content="tlb">
 <meta property="og:type" content="article">
-<meta property="og:title" content="褚时健传">
-<meta property="og:url" content="http://yoursite.com/2019/04/15/褚时健传/index.html">
+<meta property="og:title" content="kernel_tlb">
+<meta property="og:url" content="http://yoursite.com/2020/03/12/kernel-tlb/index.html">
 <meta property="og:site_name" content="JShell07&#39;s Blog">
-<meta property="og:description" content="褚时健（1928年1月23日-2019年3月5日），云南红塔集团有限公司和玉溪红塔烟草（集团）有限责任公司原董事长，褚橙创始人，先后经历两次成功的创业人生，被誉为中国烟草大王、中国橙王。">
+<meta property="og:description" content="TLB(Translation lookaside buffer) 本质上也是一种cache， 物理特性与D/I Cache 类似（SDRAM）。D/I Cache 中cache 的是数据或者指令，而TLB帮助cpu 取指或执行访问mem指令时将VA（Virtual Address）转换成PA（Physical Address）, 减少HW translation table walk 访问mai">
 <meta property="og:locale" content="en">
-<meta property="og:image" content="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=633443a63ea85edfee81f671283d6246/f703738da97739126c1eaf97f2198618367ae208.jpg">
-<meta property="og:updated_time" content="2019-07-08T06:16:07.584Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/arm_cortex-a7_mpcore_cpu_structure.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/tlb_work_flow.gif">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_using_short_descriptor.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/short_descriptor_first_level.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/short_descriptor_2nd_level.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR%20format%20when%20using%20short%20descriptor%20with%20security%20extension.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR.N%20effect%20on%20address%20translation%2C%20short%20descriptor%20format.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/example%20TTBCR.N%20effect%20on%20address%20translation%2C%20short%20descriptor%20format.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_stage1_using_long_descriptor.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_stage2_using_long_descriptor.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/long_descriptor_1st_2nd_level.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/long_descriptor_3nd_level.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR%20format%20when%20using%20long%20descriptor.png">
+<meta property="og:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/tlb_maintenance_operations.png">
+<meta property="og:updated_time" content="2020-03-12T08:56:22.775Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="褚时健传">
-<meta name="twitter:description" content="褚时健（1928年1月23日-2019年3月5日），云南红塔集团有限公司和玉溪红塔烟草（集团）有限责任公司原董事长，褚橙创始人，先后经历两次成功的创业人生，被誉为中国烟草大王、中国橙王。">
-<meta name="twitter:image" content="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=633443a63ea85edfee81f671283d6246/f703738da97739126c1eaf97f2198618367ae208.jpg">
+<meta name="twitter:title" content="kernel_tlb">
+<meta name="twitter:description" content="TLB(Translation lookaside buffer) 本质上也是一种cache， 物理特性与D/I Cache 类似（SDRAM）。D/I Cache 中cache 的是数据或者指令，而TLB帮助cpu 取指或执行访问mem指令时将VA（Virtual Address）转换成PA（Physical Address）, 减少HW translation table walk 访问mai">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/arm_cortex-a7_mpcore_cpu_structure.png">
 
 
 
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2019/04/15/褚时健传/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/03/12/kernel-tlb/"/>
 
 
 
@@ -145,7 +158,7 @@
   };
 </script>
 
-  <title>褚时健传 | JShell07's Blog</title>
+  <title>kernel_tlb | JShell07's Blog</title>
   
 
 
@@ -339,7 +352,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/15/褚时健传/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/12/kernel-tlb/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="JShell07">
@@ -356,7 +369,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">褚时健传
+          <h1 class="post-title" itemprop="name headline">kernel_tlb
               
             
           </h1>
@@ -382,24 +395,12 @@
                 
               
 
-              <time title="Created: 2019-04-15 22:25:02" itemprop="dateCreated datePublished" datetime="2019-04-15T22:25:02+08:00">2019-04-15</time>
+              <time title="Created: 2020-03-12 10:48:52 / Modified: 16:56:22" itemprop="dateCreated datePublished" datetime="2020-03-12T10:48:52+08:00">2020-03-12</time>
             
 
             
               
 
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2019-07-08 14:16:07" itemprop="dateModified" datetime="2019-07-08T14:16:07+08:00">2019-07-08</time>
               
             
           </span>
@@ -416,7 +417,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/bookmarks/" itemprop="url" rel="index"><span itemprop="name">bookmarks</span></a></span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/memory/" itemprop="url" rel="index"><span itemprop="name">memory</span></a></span>
 
                 
                 
@@ -450,31 +451,155 @@
       
 
       
-        <p><img src="https://gss3.bdstatic.com/7Po3dSag_xI4khGkpoWK1HF6hhy/baike/c0%3Dbaike80%2C5%2C5%2C80%2C26/sign=633443a63ea85edfee81f671283d6246/f703738da97739126c1eaf97f2198618367ae208.jpg" alt=""></p>
-<p><a href="https://baike.baidu.com/item/%E8%A4%9A%E6%97%B6%E5%81%A5/6173821?fr=aladdin" target="_blank" rel="noopener">褚时健</a>（1928年1月23日-2019年3月5日），云南红塔集团有限公司和玉溪红塔烟草（集团）有限责任公司原董事长，褚橙创始人，先后经历两次成功的创业人生，被誉为中国烟草大王、中国橙王。</p>
+        <p>TLB(Translation lookaside buffer) 本质上也是一种cache， 物理特性与D/I Cache 类似（SDRAM）。D/I Cache 中cache 的是数据或者指令，而TLB帮助cpu 取指或执行访问mem指令时将VA（Virtual Address）转换成PA（Physical Address）, 减少HW translation table walk 访问main mem 中的page tables，他在armv7 架构中的位置可以参看：</p>
 <a id="more"></a>
-<h2 id="序言"><a href="#序言" class="headerlink" title="序言"></a>序言</h2><p>褚时健自我评价:  </p>
-<blockquote>
-<p>我觉得我并没有做什么了不起的事情，我所做的，都是尊重规律，恪守本分。<strong>做事讲求踏实和认真。</strong> 我从来不认为自己是个天才。我一直是个实实在在做事的人，而且有认真的态度，做哪一行就尊重哪一行的规律。<strong>学习多，了解多，实践多，心里就有足够的底气。</strong></p>
-</blockquote>
-<p><strong>我自己做的最问心无愧的就是：没有庸庸碌碌地生活。</strong></p>
-<p>万科王石评价：<br>面对并不公平的命运，愤然一跃固然悲壮，有原则地隐忍更加可贵。</p>
-<p>作者评价：<br>褚时健理解自己的生活很轻，他拥有一颗赤子之心，也有足够的钝感力，同时他对生活有着细节的热情，这些都是他淡定、执着的原动力。</p>
-<h2 id="1-少年故事-1927-1948；矣-yi-则，昆明"><a href="#1-少年故事-1927-1948；矣-yi-则，昆明" class="headerlink" title="1.少年故事(1927-1948；矣[yi]则，昆明)"></a>1.少年故事(1927-1948；矣[yi]则，昆明)</h2><p>1942年的滇越铁路，日本人进行了轰炸，将褚开运炸成重伤，随后父亲的早逝，导致褚时健少年酿酒帮贴家用，做什么事都琢磨一下。</p>
-<p>做事，把事做好，就会快乐，就会有成就感。</p>
-<p>死真的会改变很多东西，以前我没有体会到，死以为着永远离开，意味着你本来正在做，应该做的事情再也办法去做了。</p>
-<p>活着每一天，把每件事情做好，就不白白过这一生。<strong>不要想太多死亡的事情，他来或不来，谁也控制不了。</strong></p>
-<p>做什么事都要学会观察，会总结，找到规律。在1955年部队评军衔的时候，怎么不给骡子评个军衔呢？打仗的时候骡子最辛苦了，井冈山的时候驮枪又驮炮，但它什么也评不到，为什么？它不进步嘛。</p>
-<p>“治大国如烹小鲜，小时料理地好，大事才有本事料理。”</p>
-<h2 id="2-生活的断层-1959-1979-元江，新平"><a href="#2-生活的断层-1959-1979-元江，新平" class="headerlink" title="2.生活的断层(1959-1979;元江，新平)"></a>2.生活的断层(1959-1979;元江，新平)</h2><blockquote>
-<p>一个人，别人把你打倒了不要紧，总有事情是自己控制不了的，但自己不要把自己打倒，不然就真的是测底倒了翻不了身。</p>
-</blockquote>
-<p>西南三大宝：云烟、贵酒、川妹子。</p>
-<h2 id="3-华彩人生-1979-1996；玉溪卷烟厂"><a href="#3-华彩人生-1979-1996；玉溪卷烟厂" class="headerlink" title="3. 华彩人生(1979-1996；玉溪卷烟厂)"></a>3. 华彩人生(1979-1996；玉溪卷烟厂)</h2><p>做过了你就知道原来可以，你不做就永远都不进步。（勇于尝试，努力试错！）</p>
-<p>你怎么知道我不是机会？你敲了三次门，机会只敲一次。</p>
-<p>烟叶的生长，你尊重他的生长规律，按规律办事，认真对待，一定会有好回报。</p>
-<p>做事抓重点，不然你做的多费力也白做。</p>
-<h2 id="4-种橙十年"><a href="#4-种橙十年" class="headerlink" title="4.种橙十年"></a>4.种橙十年</h2><p>哪一行都是一样，你要做管理工作，首先生产业务就要熟悉，不然话说出来都不对路。</p>
+<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/arm_cortex-a7_mpcore_cpu_structure.png" alt="arm cortex-a7 structure"></p>
+<p>TLB 一般还分为两大类：</p>
+<ul>
+<li>main tlb (常规的tlb)</li>
+<li>micro tlb (用于加速Data, Instructions的快速访问)</li>
+</ul>
+<h2 id="1-work-flow"><a href="#1-work-flow" class="headerlink" title="1. work flow"></a>1. work flow</h2><p>Armv7 ARM(architecture reference manual)中并没有规定TLB 具体的数据结构， 不过他主要包括：</p>
+<ul>
+<li>物理地址（更准确的说是physical page number）。这是地址翻译的结果</li>
+<li>虚拟地址（更准确的说是virtual page number）。用cache的术语来描述的话应该叫做Tag，进行匹配的时候就是对比Tag</li>
+<li>Memory attribute（例如：memory type，cache policies，access permissions）</li>
+<li>status bits（例如：Valid、dirty和reference bits</li>
+<li>其他相关信息。例如ASID、VMID</li>
+</ul>
+<p>当需要转换VA到PA的时候，首先在TLB中找是否有匹配的条目，如果有，那么TLB hit，这时候不需要再去访问页表来完成地址翻译。不过TLB始终是全部页表的一个子集，因此也有可能在TLB中找不到。如果没有在TLB中找到对应的item，那么称之TLB miss，那么就需要去访问memory中的page table来完成地址翻译，同时将翻译结果放入TLB。</p>
+<p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/tlb_work_flow.gif" alt="tlb work flow"></p>
+<h2 id="2-TLB-Match"><a href="#2-TLB-Match" class="headerlink" title="2. TLB Match"></a>2. TLB Match</h2><p>整个地址翻译过程并非简单的VA到PA的映射那么简单，系统中虚拟地址空间很多，每个地址空间都是独立的。可以考虑如下情况：</p>
+<ol>
+<li>userspace 的进程都是独立虚拟空间，各个进程不同的虚拟地址空间中，相同的VA需翻译成不同的PA</li>
+<li>若支持virtual extension。guest os 之间相同的VA 也要通过过VA-&gt;IPA-&gt;PA 形式转换成不同的PA</li>
+<li>secure, non-secure 虚拟的地址空间</li>
+<li>Global 地址如OS TEXT段与Non Global 地址</li>
+</ol>
+<p>因此，只有在满足一定的条件才能说TLB match：</p>
+<ol>
+<li>请求VA page number 与TLB TAG 中VA page number相等；</li>
+<li>请求VA 的memory space identifiler 与TLB entry中memory space identifiler 相同。space ID区分PL1,2 或secure, non-secure level；</li>
+<li>请求entry 为Non Global时，请求翻译的地址的ASID 与TLB 中相等。</li>
+<li>请求地址翻译的VMID 等于TLB entry 中VMID 相等。 </li>
+</ol>
+<h3 id="2-1-ASID-Address-Space-Identifier"><a href="#2-1-ASID-Address-Space-Identifier" class="headerlink" title="2.1. ASID(Address Space Identifier)"></a>2.1. ASID(Address Space Identifier)</h3><p>在进程切换的时候，将TLB中的所有内容全部flush掉（全部置为无效），这样的设计当然很清爽，但是性能会大打折扣。<br>一个比较好的方案是区分Global pages （内核地址空间）和Process-specific pages（参考页表描述符的nG的定义）。对于Global pages，地址翻译对所有操作系统中的进程都是一样的，因此，进程切换的时候，下一个进程仍然需要这些TLB entry，因而不需要flush掉。对于那些Process-specific pages对应的TLB entry，一旦发生切换，而TLB又不能识别的话，那么必须要flush掉上一个进程虚拟地址空间的TLB entry。如果支持了ASID，那么情况就不一样了：对于那些nG的地址映射，它会有一个ASID，对于TLB的entry而言，即便是保存多个相同虚拟地址到不同物理地址的映射也是OK的，只要他们有不同的ASID。 </p>
+<h3 id="2-2-VMID-Vitural-Machine-Identifier"><a href="#2-2-VMID-Vitural-Machine-Identifier" class="headerlink" title="2.2. VMID(Vitural Machine Identifier)"></a>2.2. VMID(Vitural Machine Identifier)</h3><p>与ASID 存在意义类似， 在切换虚拟机的时候具有加速作用。</p>
+<h2 id="3-translation-table"><a href="#3-translation-table" class="headerlink" title="3.translation table"></a>3.translation table</h2><p>VMSAv7 支持两种格式translation table<br><code>Short-descriptor format</code><br>This is the original format defined in issue A of this Architecture Reference Manual, and is the only<br>format supported on implementations that do not include the Large Physical Address Extension. </p>
+<ul>
+<li>Up to two levels of address lookup.</li>
+<li>32-bit input addresses.Output addresses of up to 40 bits.</li>
+<li>Support for PAs of more than 32 bits by use of supersections, with 16MB granularity.</li>
+<li>32-bit table entries.</li>
+</ul>
+<p><code>Long-descriptor format</code></p>
+<ul>
+<li>Up to three levels of address lookup.</li>
+<li>Input addresses of up to 40 bits, when used for stage 2 translations.</li>
+<li>Output addresses of up to 40 bits.</li>
+<li>4KB assignment granularity across the entire PA range.</li>
+<li>64-bit table entries.</li>
+</ul>
+<p>TTBCR.EAE 的配置决定采用何种格式转换表。</p>
+<p><code>Translation table base config</code></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Config Register</th>
+<th style="text-align:center">Control Register</th>
+<th style="text-align:left">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">HTTBR(Hypervisor Translation Tabel Base Register)</td>
+<td style="text-align:center">HTCR</td>
+<td style="text-align:left">Non-secure PL2 stage 1 translation</td>
+</tr>
+<tr>
+<td style="text-align:center">VTTBR(Virtualization Translation Table Base Register)</td>
+<td style="text-align:center">VTCR</td>
+<td style="text-align:left">Non-secure PL1&amp;0 stage 2 translation</td>
+</tr>
+<tr>
+<td style="text-align:center">TTBR0/1</td>
+<td style="text-align:center">TTBCR</td>
+<td style="text-align:left">secure/non-secure PL1&amp;0 stage 1 translation,  TTBR0, TTBR1, and TTBCR are Banked between Secure and Non-secure versions</td>
+</tr>
+</tbody>
+</table>
+<h3 id="3-1-short-descriptor-translation-table"><a href="#3-1-short-descriptor-translation-table" class="headerlink" title="3.1. short-descriptor translation table"></a>3.1. short-descriptor translation table</h3><p>支持四种section or pages：</p>
+<ul>
+<li>supersections, consist of 16MB blocks</li>
+<li>sections, consist of 1MB blocks</li>
+<li>large pages, consist of 64KB blocks</li>
+<li>small pages, consist of 4KB blocks</li>
+</ul>
+<p><code>First-level table</code><br>Holds first-level descriptors that contain the base address and<br>• translation properties for a Section and Supersection<br>• translation properties and pointers to a second-level table for a Large page or a Small page.</p>
+<p><code>Second-level tables</code><br>Hold second-level descriptors that contain the base address and translation properties for a Small<br>page or a Large page. With the Short-descriptor format, second-level tables can be referred to as<br>Page tables.<br>A second-level table requires 1KByte of memory.</p>
+<h4 id="3-1-1-general-view-of-address-translation-using-short-descriptor"><a href="#3-1-1-general-view-of-address-translation-using-short-descriptor" class="headerlink" title="3.1.1. general view of address translation using short-descriptor"></a>3.1.1. general view of address translation using short-descriptor</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_using_short_descriptor.png" alt="general view of address translation using short-descriptor"></p>
+<h4 id="3-1-2-short-descriptor-1st-level-format"><a href="#3-1-2-short-descriptor-1st-level-format" class="headerlink" title="3.1.2. short descriptor 1st level format"></a>3.1.2. short descriptor 1st level format</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/short_descriptor_first_level.png" alt="short descriptor 1st level format"></p>
+<h4 id="3-1-3-short-descriptor-2nd-level-format"><a href="#3-1-3-short-descriptor-2nd-level-format" class="headerlink" title="3.1.3. short descriptor 2nd level format"></a>3.1.3. short descriptor 2nd level format</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/short_descriptor_2nd_level.png" alt="short descriptor 2nd level format"></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Attribute</th>
+<th style="text-align:left">Remarks</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">TEX[2:0]，C, B</td>
+<td style="text-align:left">mem 属性，cache, share等， These bits are not present in a Page table entry</td>
+</tr>
+<tr>
+<td style="text-align:center">XN</td>
+<td style="text-align:left">execute-never bit，CPU 是否能执行此地址指令</td>
+</tr>
+<tr>
+<td style="text-align:center">NS</td>
+<td style="text-align:left">Non-secure bit</td>
+</tr>
+<tr>
+<td style="text-align:center">AP</td>
+<td style="text-align:left">Access permission， read/write 权限</td>
+</tr>
+<tr>
+<td style="text-align:center">S</td>
+<td style="text-align:left">shareable bit</td>
+</tr>
+<tr>
+<td style="text-align:center">nG</td>
+<td style="text-align:left">not Global bit</td>
+</tr>
+</tbody>
+</table>
+<h4 id="3-1-4-TTBR0-1-之间的选择"><a href="#3-1-4-TTBR0-1-之间的选择" class="headerlink" title="3.1.4. TTBR0,1 之间的选择"></a>3.1.4. TTBR0,1 之间的选择</h4><p>当TTBCR.EAE=0 选择short-descriptor format，TTBCR.N 决定了TTBR0, TTBR1 的选择情况。</p>
+<ul>
+<li>N=0, only using TTBR0</li>
+<li>N&gt;0, 若VA[31:32-N] bit 为0， 使用TTBR0, 其他使用TTBR1</li>
+</ul>
+<p>TTBCR format when using short descriptor with security extension-<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR%20format%20when%20using%20short%20descriptor%20with%20security%20extension.png" alt="TTBCR format when using short descriptor with security extension"></p>
+<p>TTBCR.N effect on address translation, short descriptor format<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR.N%20effect%20on%20address%20translation%2C%20short%20descriptor%20format.png" alt="TTBCR.N effect on address translation, short descriptor format"></p>
+<p>Example TTBCR.N effect on address translation, short descriptor format<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/example%20TTBCR.N%20effect%20on%20address%20translation%2C%20short%20descriptor%20format.png" alt="Example TTBCR.N effect on address translation, short descriptor format"></p>
+<h3 id="3-2-long-descriptor-translation-table"><a href="#3-2-long-descriptor-translation-table" class="headerlink" title="3.2. long-descriptor translation table"></a>3.2. long-descriptor translation table</h3><p>long-descriptor 在有virtualization extension的ARM 时，支持：</p>
+<ol>
+<li>the Non-secure PL2 stage 1 translation</li>
+<li>the Non-secure PL1&amp;0 stage 2 translation</li>
+<li>can be used for the Secure and Non-secure PL1&amp;0 stage 1 translations</li>
+</ol>
+<h4 id="3-2-1-general-view-of-stage-1-address-translation-using-long-descriptor"><a href="#3-2-1-general-view-of-stage-1-address-translation-using-long-descriptor" class="headerlink" title="3.2.1. general view of stage 1 address translation using long-descriptor"></a>3.2.1. general view of stage 1 address translation using long-descriptor</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_stage1_using_long_descriptor.png" alt="general view of stage 1 address translation using long-descriptor"></p>
+<h4 id="3-2-2-general-view-of-stage-2-address-translation-using-long-descriptor"><a href="#3-2-2-general-view-of-stage-2-address-translation-using-long-descriptor" class="headerlink" title="3.2.2. general view of stage 2 address translation using long-descriptor"></a>3.2.2. general view of stage 2 address translation using long-descriptor</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/general_view_stage2_using_long_descriptor.png" alt="general view of stage 2 address translation using long-descriptor"></p>
+<h4 id="3-2-3-long-descriptor-1st-2nd-level-format"><a href="#3-2-3-long-descriptor-1st-2nd-level-format" class="headerlink" title="3.2.3. long descriptor 1st, 2nd level format"></a>3.2.3. long descriptor 1st, 2nd level format</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/long_descriptor_1st_2nd_level.png" alt="long descriptor 1st level format"></p>
+<h4 id="3-2-4-long-descriptor-3rd-level-format"><a href="#3-2-4-long-descriptor-3rd-level-format" class="headerlink" title="3.2.4. long descriptor 3rd level format"></a>3.2.4. long descriptor 3rd level format</h4><p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/long_descriptor_3nd_level.png" alt="long descriptor 3rd level format"></p>
+<h4 id="3-2-5-TTBR0-1-之间的选择"><a href="#3-2-5-TTBR0-1-之间的选择" class="headerlink" title="3.2.5. TTBR0,1 之间的选择"></a>3.2.5. TTBR0,1 之间的选择</h4><p>与short descriptor 相似，但是查看TTBCR.T0SZ<br>TTBCR format when using long descriptor<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/TTBCR%20format%20when%20using%20long%20descriptor.png" alt="TTBCR format when using long descriptor"></p>
+<h2 id="4-TLB-Maintenance"><a href="#4-TLB-Maintenance" class="headerlink" title="4. TLB Maintenance"></a>4. TLB Maintenance</h2><p>TLB 相关的操作可以参看如下图， 可以依照MVA(modified virtual address) 也可以依照ASID(Application space identifiler) 去维护TLB。<br>tlb maintenance operations<br><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/tlb/tlb_maintenance_operations.png" alt="tlb maintenance operations"></p>
+<p>注：  </p>
+<ul>
+<li>MVA(modified virtual address)</li>
+<li>ASID (application space identifiler)</li>
+</ul>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="http://www.wowotech.net/memory_management/tlb-flush.html" target="_blank" rel="noopener">TLB flush操作</a><br>ARMv7 ARM - DDI0406C_C_arm_architecture_reference_manual</p>
 
       
     </div>
@@ -495,7 +620,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/bookmarks/" rel="tag"># bookmarks</a>
+            <a href="/tags/tlb/" rel="tag"># tlb</a>
           
         </div>
       
@@ -508,8 +633,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/04/15/快速阅读术/" rel="next" title="快速阅读术">
-                <i class="fa fa-chevron-left"></i> 快速阅读术
+              <a href="/2020/03/04/kernel-mm-cache/" rel="next" title="kernel_mm_cache">
+                <i class="fa fa-chevron-left"></i> kernel_mm_cache
               </a>
             
           </div>
@@ -517,10 +642,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/04/15/富甲美国：沃尔玛创始人山姆-沃尔顿自传/" rel="prev" title="富甲美国：沃尔玛创始人山姆.沃尔顿自传">
-                富甲美国：沃尔玛创始人山姆.沃尔顿自传 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -788,7 +909,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#序言"><span class="nav-text">序言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#1-少年故事-1927-1948；矣-yi-则，昆明"><span class="nav-text">1.少年故事(1927-1948；矣[yi]则，昆明)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-生活的断层-1959-1979-元江，新平"><span class="nav-text">2.生活的断层(1959-1979;元江，新平)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-华彩人生-1979-1996；玉溪卷烟厂"><span class="nav-text">3. 华彩人生(1979-1996；玉溪卷烟厂)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-种橙十年"><span class="nav-text">4.种橙十年</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-work-flow"><span class="nav-text">1. work flow</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-TLB-Match"><span class="nav-text">2. TLB Match</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-ASID-Address-Space-Identifier"><span class="nav-text">2.1. ASID(Address Space Identifier)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-VMID-Vitural-Machine-Identifier"><span class="nav-text">2.2. VMID(Vitural Machine Identifier)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-translation-table"><span class="nav-text">3.translation table</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-short-descriptor-translation-table"><span class="nav-text">3.1. short-descriptor translation table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-1-general-view-of-address-translation-using-short-descriptor"><span class="nav-text">3.1.1. general view of address translation using short-descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-2-short-descriptor-1st-level-format"><span class="nav-text">3.1.2. short descriptor 1st level format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-3-short-descriptor-2nd-level-format"><span class="nav-text">3.1.3. short descriptor 2nd level format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-4-TTBR0-1-之间的选择"><span class="nav-text">3.1.4. TTBR0,1 之间的选择</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-long-descriptor-translation-table"><span class="nav-text">3.2. long-descriptor translation table</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-general-view-of-stage-1-address-translation-using-long-descriptor"><span class="nav-text">3.2.1. general view of stage 1 address translation using long-descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-general-view-of-stage-2-address-translation-using-long-descriptor"><span class="nav-text">3.2.2. general view of stage 2 address translation using long-descriptor</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-3-long-descriptor-1st-2nd-level-format"><span class="nav-text">3.2.3. long descriptor 1st, 2nd level format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-4-long-descriptor-3rd-level-format"><span class="nav-text">3.2.4. long descriptor 3rd level format</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-5-TTBR0-1-之间的选择"><span class="nav-text">3.2.5. TTBR0,1 之间的选择</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-TLB-Maintenance"><span class="nav-text">4. TLB Maintenance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>
