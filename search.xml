@@ -91,7 +91,7 @@
   <entry>
     <title><![CDATA[学习索引]]></title>
     <url>%2F2020%2F02%2F20%2F%E5%AD%A6%E4%B9%A0%E7%B4%A2%E5%BC%95%2F</url>
-    <content type="text"><![CDATA[整理学习笔记链接 :-) 1. bootloaderbootloader 2. kernel2.1. ArchARMarm-generic-timer 2.2. DriversMTDLinux-Flashkernel_mtd kernel_ubi Cryptokernel-crypto-Ikernel-crypto-IIkernel-crypto-III Clock sourcekernel-timer-system 2.3. mmbasekernel_mem_base cachekernel_mem_cache TLB(Translation Lookaside Buffers)TLB SLUBSLUB dmakernel_dma_mem mem mapkernel_virtual_addr_map otherkernel-zero-copy 2.4. filesystemubifskernel-ubifs-design 2.5. networkipv6 2.6. toolskernel_source_code_online buildbot 类似的编译tool 还有出现在yocto 上的toaster。JAVA 应用方向上的maven。(JAVA集成工具发展ant -&gt; maven -&gt; gradle(新的发展趋势)) boot_timebootgraphbootchart 3. 设计模式Design_Pattern Design_Pattern_II Design_Pattern_III 4. 敏捷开发敏捷软件开发原则与模式及实践 5. UMLC++_UML 6. DockerDocker 简单介绍]]></content>
+    <content type="text"><![CDATA[整理学习笔记链接 :-) 1. bootloaderbootloader 2. kernel2.1. ArchARMarm-generic-timer 2.2. DriversMTDLinux-Flashkernel_mtd kernel_ubi Cryptokernel-crypto-Ikernel-crypto-IIkernel-crypto-III Clock sourcekernel-timer-system 2.3. mmbasekernel_mem_base cachekernel_mem_cache TLB(Translation Lookaside Buffers)TLB SLUBSLUB dmakernel_dma_mem mem mapkernel_virtual_addr_map otherkernel-zero-copy 2.4. filesystemubifskernel-ubifs-design 2.5. networkipv6 2.6. toolskernel_source_code_online buildbot 类似的编译tool 还有出现在yocto 上的toaster。JAVA 应用方向上的maven。(JAVA集成工具发展ant -&gt; maven -&gt; gradle(新的发展趋势)) boot_timebootgraphbootchart /proc/stat 3. 设计模式Design_Pattern Design_Pattern_II Design_Pattern_III 4. 敏捷开发敏捷软件开发原则与模式及实践 5. UMLC++_UML 6. DockerDocker 简单介绍]]></content>
   </entry>
   <entry>
     <title><![CDATA[我的读书]]></title>
