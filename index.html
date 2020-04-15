@@ -249,7 +249,7 @@
           
           <li class="menu-item menu-item-archives">
     <a href="/archives/" rel="section">
-      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">70</span></a>
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives<span class="badge">71</span></a>
   </li>
 
       
@@ -779,6 +779,169 @@
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/08/01/Better-Man/#more" rel="contents">
+              Read more &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/15/kernel-tickless-idle/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="JShell07">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="JShell07's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/04/15/kernel-tickless-idle/" itemprop="url">
+                  kernel_tickless_idle
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+	  
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2020-04-15 11:15:18 / Modified: 17:51:27" itemprop="dateCreated datePublished" datetime="2020-04-15T11:15:18+08:00">2020-04-15</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/drivers/" itemprop="url" rel="index"><span itemprop="name">drivers</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          <p>在嵌入式设备中对于高功耗都避之若浼。IOT 物联网，手机等更是看中设备的电池使用时间。省电节约功耗基本从考虑降低频率（手机CPU 的大小核），关闭暂未使用模块，睡眠等方向考虑。 在kernel 中就有tickless timer，通过在OS IDLE 时减少scheduling-clock ticks，节省功耗。下面主要分析kernel-4.9.198 Idle dynticks system(tickless idle)。</p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/04/15/kernel-tickless-idle/#more" rel="contents">
               Read more &raquo;
             </a>
           </div>
@@ -1557,7 +1720,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2020-03-26 15:36:46" itemprop="dateModified" datetime="2020-03-26T15:36:46+08:00">2020-03-26</time>
+                <time title="Modified: 2020-04-15 17:57:32" itemprop="dateModified" datetime="2020-04-15T17:57:32+08:00">2020-04-15</time>
               
             
           </span>
@@ -1609,7 +1772,7 @@
 
       
         
-          <p><img src="https://bkimg.cdn.bcebos.com/pic/00e93901213fb80e19be59c239d12f2eb93894b3?x-bce-process=image/watermark,g_7,image_d2F0ZXIvYmFpa2U5Mg==,xp_5,yp_5" alt="slab allocator"></p>
+          <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/slab/slab.jpg" alt="slab allocator"></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2020/03/16/kernel-slub/#more" rel="contents">
@@ -1816,192 +1979,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/03/04/kernel-mm-cache/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="JShell07">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.png">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="JShell07's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2020/03/04/kernel-mm-cache/" itemprop="url">
-                  kernel_mm_cache
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-	  
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-
-              
-                
-              
-
-              <time title="Created: 2020-03-04 17:15:28" itemprop="dateCreated datePublished" datetime="2020-03-04T17:15:28+08:00">2020-03-04</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Edited on</span>
-                
-                <time title="Modified: 2020-03-12 16:44:38" itemprop="dateModified" datetime="2020-03-12T16:44:38+08:00">2020-03-12</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/memory/" itemprop="url" rel="index"><span itemprop="name">memory</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p><img src="https://raw.githubusercontent.com/JShell07/jshell07.github.io/master/images/kernel_mm/arm_cortex-a7_mpcore_cpu_structure.png" alt="arm_cortex-a7_mpcore_cpu_structure"></p>
-<p>从ARM Cortex-a7 mpcore（armv7）的架构图上可以看出, cortex-a7 每个核独享各自L1 cache， 共享L2 cache（使用snoop control unit， soc 保证per core 数据的一致性）。</p>
-<p>cache 分为:  </p>
-<ul>
-<li>Data Cache</li>
-<li>Instruction Cache</li>
-</ul>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2020/03/04/kernel-mm-cache/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/8/">8</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right" aria-label="Next page"></i></a>
   </nav>
 
 
@@ -2048,7 +2030,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">70</span>
+                    <span class="site-state-item-count">71</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
