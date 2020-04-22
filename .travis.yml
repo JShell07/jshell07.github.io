@@ -18,7 +18,7 @@ install:
   - npm install
 
 script:
-  - hexo clean
+ # - hexo clean
   - hexo generate # generate static files
 
 deploy:
@@ -28,4 +28,4 @@ deploy:
   keep-history: true
   on:
     branch: master
-  local-dir: public
+  local-dir: hexoblog/public
