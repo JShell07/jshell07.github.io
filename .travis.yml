@@ -13,10 +13,10 @@ branches:
     - master # build master branch only
 
 before_install:
- # - npm install hexo-cli -g
- # - npm install hexo
+#  - npm install hexo-cli -g
+  - npm install hexo
 install:
-#  - npm install
+  - npm install
 
 script:
  # - hexo clean
