@@ -29,4 +29,4 @@ deploy:
   keep-history: true
   on:
     branch: master
-  local-dir: hexoblog/public
+  local-dir: public
